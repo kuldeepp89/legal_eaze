@@ -1,0 +1,69 @@
+.col-md-3(style = 'background-color: #f8f8f8; padding-left: 30px;')
+  .row
+    .col-md-12
+      .row
+        .col-md-12(style='padding-top:30px;font-size: 15px;font-weight: bold;') Date Range
+      .row.currentdaterange
+        .col-md-4 
+          #amount
+        .col-md-4
+        .col-md-4.pull-right 
+          #amount1
+      .row.dateslider
+        .col-md-12
+          #slider-range.ui-slider.ui-slider-horizontal.ui-widget.ui-widget-content.ui-corner-all(style='margin-top:0.5em; height: 8px')
+            span.ui-slider-handle.ui-state-default.ui-corner-all(style='left: 0%;height: 1em; width: 1em', tabindex='0')
+            span.ui-slider-handle.ui-state-default.ui-corner-all(style='left: 0%;height: 1em; width: 1em', tabindex='0')
+      .row.daterange
+        .col-md-4#sdate(style = 'color: black') 
+          | 
+          input#date1(type = 'hidden', name = 'sdate')
+          
+        .col-md-4
+        .col-md-4.pull-right#edate(style = 'color: black')
+          | 
+          input#date2(type = 'hidden',name = 'edate')
+        
+  .row
+    .col-md-12(style='margin-top: 35px;font-size: 15px;font-weight: bold;')
+      input#meeting(type='checkbox')
+      |   Meetings
+  .row
+    .col-md-6(style='font-size: 15px;font-weight: bold;')
+      input#select-all(type='checkbox')
+      |   All Courts
+    .col-md-2
+    .col-md-4.see-all(style='font-size: 12px;color:rgba(0,0,255,0.7);display:none;cursor: pointer') ...see all
+    .col-md-4.see-less(style='font-size: 12px;color:rgba(0,0,255,0.7);cursor: pointer') ...see less
+  .row.courtentry
+    .col-md-12.small
+      input#check-supreme.check-all(type='checkbox')
+      |   Supreme Court
+  .row.courtentry
+    .col-md-12.small
+      input#check-delhi.check-all(type='checkbox')
+      |   Delhi High Court
+  .row.courtentry
+    .col-md-12.small
+      input#check-green.check-all(type='checkbox')
+      |   National Green Tribunal
+  .row.courtentry
+    .col-md-12.small
+      input#check-telecom.check-all(type='checkbox')
+      |   Telecom Disputes
+  .row.courtentry
+    .col-md-12.small
+      input#check-consdispute.check-all(type='checkbox')
+      |   National Consumer Disputes
+  .row.courtentry
+    .col-md-12.small
+      input#check-karkardooma.check-all(type='checkbox')
+      |   District Court Karkardooma
+  .row.courtentry
+    .col-md-12.small
+      input#check-saket.check-all(type='checkbox')
+      |   District court Saket
+  .row.courtentry
+    .col-md-12.small
+      input#check-bifr.check-all(type='checkbox')
+      |   BIFR

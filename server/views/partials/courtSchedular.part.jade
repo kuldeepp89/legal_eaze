@@ -1,0 +1,28 @@
+.col-md-3
+ #datetimepicker3.input-append.date
+  input(data-format='hh:mm:ss', type='text' name = 'time' autocomplete='off')
+  span.add-on
+    i(data-time-icon='icon-time', data-date-icon='icon-calendar')
+
+
+.col-md-3
+
+  select( name="interval" class="selectpicker" data-style="btn-info" data-size="250px" style='float:center')
+    option(value="") Rescrap After
+    option(value="1") 1 Hour
+    option(value="2") 2 Hour
+    option(value="3") 3 Hour
+    option(value="4") 4 Hour
+    option(value="5") 5 Hour
+    
+.col-md-3
+  select#court-select(name="maxAttempt" class="selectpicker" data-style="btn-info" data-size="250px" style='float:center')
+    option(value="") Maximum attempt
+    option(value="1") 1
+    option(value="2") 2
+    option(value="3") 3
+    option(value="4") 4
+    option(value="5") 5
+
+.col-md-3
+  button.btn.btn-primary(type='submit', style='float:center;width:200px;' data-dismiss="modal") Schedule Scrapper

@@ -1,0 +1,91 @@
+doctype html
+html(lang='en')
+  include ./partials/head.part.jade
+  body(style = 'padding-top: 0')
+    .container-fluid
+      .row
+        .col-md-12.no-padding
+          nav.navbar-default(role='navigation')
+            .container-fluid
+              // Brand and toggle get grouped for better mobile display
+              .navbar-header
+                button.navbar-toggle(data-target='#bs-example-navbar-collapse-1', data-toggle='collapse', type='button')
+                  span.sr-only Toggle navigation
+                  span.icon-bar
+                  span.icon-bar
+                  span.icon-bar
+                a.navbar-brand(href='/', style = 'margin-top: -8px') 
+                  img(src='/public/images/logo.png', height='30px', width:='30px', margin-top: '-7px')
+              // Collect the nav links, forms, and other content for toggling
+              div#bs-example-navbar-collapse-1.collapse.navbar-collapse
+                ul.nav.navbar-nav.navbar-right
+                  li
+                    a(href='/') HOME
+                  li
+                    a(href='/aboutus') ABOUT US
+                  li
+                    a(href='/subscription') SUBSCRIPTION
+                  li
+                    a(href = '/faq') FAQ
+                  li
+                    a(href = 'privacy&security') PRIVACY & SECURITY
+                  li
+                    a(href='/contactus') CONTACT US
+      .row 
+        .col-md-12(style='background-color: rgb(225, 225, 225)')
+          .col-md-12
+            h3
+              | Who are you? 
+            p
+              |  We’ve already told you a lot About Us but if you have something specific to ask or just want to share your thoughts then do feel free to write to us at contact@legaleaze.in 
+            h3
+              | Do I need to register to use Legaleaze? Do you charge?
+            p
+              | Yes, you need to register to use Legaleaze. Creating an account is easy and it helps us authenticate our users for security purposes. Yes, we charge but maintain flexible plans and you can choose the one which suits you best at Subscriptions
+            h3  
+              | My schedule is as versatile as me – how do you propose to manage it? 
+            p
+              | Well, for the most part you will still be making and editing entries - just that you would be typing them out instead of scribbling them down. But the following are a few of the many benefits of this exercise: 
+            ul
+              li
+                | a) It makes your calendar universally accessible, consolidates your schedule and allows you to share them with your office.
+              li
+                | b) The inbuilt docket service means you can access all documents relevant to a particular entry and store them for future reference – and not only can you share these with your office but can also start a comment thread on every entry and pick up those conversations later. 
+              li
+                | c) The automated updating service ensures that your case information, hearing dates and orders are magically updated when they become publicly available.
+            h3  
+              | So this supposedly ‘magical’ automatic updating of my schedule – how will it happen?  
+            p
+              | We monitor publicly accessible information for any changes specific to your entry and then update those changes to reflect in your schedule. 
+            h3
+              | On what kind of entries can I expect this automatic updating service to show up? Is this even reliable? 
+            p
+              | Well, we cover eight (8) forums at the present and so you can expect your schedule to be automatically updated for entries across these eight (8) forums. A list of these eight (8) forums is available here. We are working on covering more forums and shall add them soon. 
+            p
+              | Yes, this service is reliable and accurate. We have tested it and continuously monitor its performance to ensure that there are no inaccuracies. However, as we are monitoring public records which are an externally resource, any problems in the external resource shall reflect in our service too. 
+            h3
+              | Are you one of those clunky case management softwares which profess to manage everything from the billing to the timesheets?
+            p
+              | No - we only hope to simplify the exercise of constantly updating your schedule, keeping watch on the changing status of court cases and coping with the paper in your office. 
+            h3
+              | I have been trying to do something similar using online calendars and storage services. Do you have an option of syncing to such services? 
+            p
+              | No, not yet at least. How would you use such syncing services if at all – do write to us at contact@legaleaze.in 
+            h3
+              | How safe is my information and data? 
+            p
+              | All your exchanges with our website are secure and encrypted. We use all reasonable precautions in keeping with current technology to protect your information from unauthorized access. You can read more about our policies on security and privacy.  
+            h3
+              | You sound dubious - is there a free trial? 
+            p
+              | Of course there is a free trial! If you use our services under a minimum threshold, they are free forever. The storage threshold is .5 GB and the scheduler threshold is 10 cases/engagements. So you can test our features and functions for as long as you like and upgrade to a subscribed account/additional capacity only when convinced.  
+            h3
+              | Any other fun features to look out for apart from the ‘magical’ updating service?
+            p
+              | You could try to generate your cause list for the next day to see how that works. We trust you will like it.  
+            h3
+              | How do I pay?
+            p
+              | We work with a popular payment portal CCAvenue which provides a wide range of secure payment options. Click to subscribe or upgrade immediately->>>> 
+              a(href = '/subscription')
+                | Subscription

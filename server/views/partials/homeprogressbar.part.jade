@@ -1,0 +1,14 @@
+div#progress-bar    
+  div
+    div.choose-court
+      div#court-form
+        form(id='upload-form', method='post', enctype="multipart/form-data" action = '/addMatter')
+          input(type='hidden', name='_csrf', value='#{csrfToken}')
+          
+          br
+          input#case-number(type='text',class='case-number', name='casenumber', placeholder='Case Number', style='margin-top: 20px; margin-left: 20px; width: 220px;')
+          br
+
+          br
+          | &nbsp
+          button.btn.btn-primary#add-matter(type='submit', style='margin-top: 20px; margin-left: 125px;') Submit

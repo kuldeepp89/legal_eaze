@@ -1,0 +1,55 @@
+doctype html
+html(lang='en')
+  include ./partials/head.part.jade
+  body(style = 'padding-top: 0')
+    .container-fluid
+      .row
+        .col-md-12.no-padding
+          nav.navbar-default(role='navigation')
+            .container-fluid
+              // Brand and toggle get grouped for better mobile display
+              .navbar-header
+                button.navbar-toggle(data-target='#bs-example-navbar-collapse-1', data-toggle='collapse', type='button')
+                  span.sr-only Toggle navigation
+                  span.icon-bar
+                  span.icon-bar
+                  span.icon-bar
+                a.navbar-brand(href='/', style = 'margin-top: -8px') 
+                  img(src='/public/images/logo.png', height='30px', width:='30px', margin-top: '-7px')
+              // Collect the nav links, forms, and other content for toggling
+              div#bs-example-navbar-collapse-1.collapse.navbar-collapse
+                ul.nav.navbar-nav.navbar-right
+                  li
+                    a(href='/') HOME
+                  li
+                    a(href='/aboutus') ABOUT US
+                  li
+                    a(href='/subscription') SUBSCRIPTION
+                  li
+                    a(href = '/faq') FAQ
+                  li
+                    a(href = 'privacy&security') PRIVACY & SECURITY
+                  li
+                    a(href='/contactus') CONTACT US
+
+      .row(style = 'background-color: rgb(225, 225, 225); height: 41.8em') 
+        .col-md-12
+          .col-md-12
+            .col-md-offset-4
+              | Email us at contact@legaleaze.in 
+              br
+              | or, write to us at: 
+              br
+              | Legaleaze
+              br
+              | Office No. 2, 3rd Floor,
+              br
+              | Somdutt Plaza,
+              br
+              | 15/299, The Mall,
+              br
+              | Kanpur - 208001
+           
+              If already a user, please write to us at support@legaleaze.in for any issues relating to your account. 
+
+  

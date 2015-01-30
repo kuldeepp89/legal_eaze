@@ -1,0 +1,41 @@
+div#company-law-board-final-submit  
+  .container-fluid
+    .row
+      h2 Add company law board data
+    form(role='form' id='final-company-law-form', method='post', enctype="multipart/form-data" action = '/submitMatter')
+      input#csrf-token-final-case(type='hidden', name='_csrf', value='#{csrfToken}')
+
+      .form-group
+        label.col-md-4(for='new-clb-court-name')
+          | Topic:
+        .col-md-8
+          input#new-clb-court-name.form-control(type='text', name='courtName' placeholder="Court Name" style='width:220px;')
+          p.help-block
+
+      .form-group
+        label.col-md-4(for='new-clb-court-type')
+          | Court Type:
+        .col-md-8
+          input#new-clb-court-type.form-control(type='text', name='courtType' placeholder="Case Type" style='width:220px;')
+          p.help-block
+      .form-group
+        label.col-md-4(for='new-clb-case-date')
+          | Date:
+        .col-md-8
+          input#new-clb-case-date.form-control(type='text', name='caseDate' placeholder="DD.MM.YYYY" style='width:220px;')
+          p.help-block
+      
+      .form-group
+        label.col-md-4(for='new-clb-pdf-link')
+          | Pdf link:
+        .col-md-8
+          input#new-input-clb-case-link(type = 'hidden' name = 'caseLink')
+          a#new-clb-case-link(href = '')
+            | Get case Details
+      br
+      .row
+      .col-md-4
+      .col-md-8
+        button.btn.btn-primary#add-supreme-court-matter(type='submit', style='float:center; margin-top:10px; width:220px;') Submit
+
+

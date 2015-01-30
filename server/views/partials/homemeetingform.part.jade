@@ -1,0 +1,14 @@
+div#meeting-form-modal 
+  center(style="font-size:20px;")
+    | Details About Meeting
+  center
+    form(id='upload-form', method='post', enctype="multipart/form-data" action = 'submitMeeting')
+      input(type='hidden', name='_csrf', value='#{csrfToken}')
+      br
+      input#meeting-time(type='text', name='time', placeholder="MM/DD/YYYY" class="form-control" style='float:center; margin-top:10px; width:220px;')
+      br
+      input#meeting-location(type='text', name='location', placeholder="Meeting Location" class="form-control" style='float:center; margin-top:10px; width:220px;')
+      br
+      input#meeting-description(type='text', name='description', placeholder="Meeting Description " class="form-control" style='float:center; margin-top:10px; width:220px;')
+      br
+      button.btn.btn-primary#button-meeting-submit(type='submit', style='float:center; margin-top:10px; width:220px;') Submit

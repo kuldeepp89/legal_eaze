@@ -1,0 +1,71 @@
+doctype html
+html(lang='en')
+  include ./partials/head.part.jade
+  body(style = 'padding-top: 0')
+    .container-fluid
+      .row
+        .col-md-12.no-padding
+          nav.navbar-default(role='navigation')
+            .container-fluid
+              // Brand and toggle get grouped for better mobile display
+              .navbar-header
+                button.navbar-toggle(data-target='#bs-example-navbar-collapse-1', data-toggle='collapse', type='button')
+                  span.sr-only Toggle navigation
+                  span.icon-bar
+                  span.icon-bar
+                  span.icon-bar
+                a.navbar-brand(href='/', style = 'margin-top: -8px') 
+                  img(src='/public/images/logo.png', height='30px', width:='30px', margin-top: '-7px')
+              // Collect the nav links, forms, and other content for toggling
+              div#bs-example-navbar-collapse-1.collapse.navbar-collapse
+                ul.nav.navbar-nav.navbar-right
+                  li
+                    a(href='/') HOME
+                  li
+                    a(href='/aboutus') ABOUT US
+                  li
+                    a(href='/subscription') SUBSCRIPTION
+                  li
+                    a(href = '/faq') FAQ
+                  li
+                    a(href = 'privacy&security') PRIVACY & SECURITY
+                  li
+                    a(href='/contactus') CONTACT US
+
+      .row
+        .col-md-12(style = 'height: 41.8em; background-color: rgb(225, 225, 225); text-align: justify  ') 
+          .col-md-12
+            h3
+              | ABOUT US
+            p
+              | Legaleaze is dedicated to making life easier for court going lawyers and anybody else who is serious about following ongoing cases in courts. At our core, we hope to replace the scribbles in your traditional diary with something infinitely simpler and modern - a universally accessible schedule with each entry synced to a personal docket where you can upload documents – enabling you to carry your office where you go. 
+            p
+              | Some of the other things we are proud of are: 
+
+            ul
+              li
+                | We eliminate human error and automate processes wherever possible - for instance you need not search for your case status - or miss a date of hearing - if that information is publicly accessible. 
+              li
+                | We allow you to search across, list and sort your schedule using standard parameters. 
+              li
+                | We allow you the flexibility to add all your other engagements - making it easy to consolidate your schedule. 
+              li
+                | And this is more for your assistants/clerks than you - you can even generate your next day’s schedule (or if you prefer to call it a ‘cause-list’) showing all your cases and engagements in a standard printable format.
+            p
+              | We are already working towards developing further features and covering more forums with our automated service as we go forward, ensuring that we continue simplifying your calendar. 
+            p
+              | The credit for the technical expertise in developing this website belongs to Arnium Technologies Pvt. Ltd., a company formed by the graduates of IIT, Kanpur and currently under incubation at IIT, Kanpur. You can reach them at Arnium.com  or read more about them here.
+            p
+              | You can rely on us to make your work easier and your evenings lighter. And we promise to remain simple, reliable and responsible about it. 
+            p
+              | Feel free to write to us at contact@legaleaze.in or send us post at:
+            br
+            | Legaleaze
+            br
+            | Office No. 2, 3rd Floor,
+            br
+            | Somdutt Plaza,
+            br
+            | 15/299, The Mall,
+            br
+            | Kanpur - 208001

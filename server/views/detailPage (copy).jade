@@ -1,0 +1,490 @@
+doctype html
+html(lang='en')
+  include ./partials/head.part.jade
+  body(style = 'padding-top: 0; background-color: rgb(225,225,225);overflow-x: hidden')
+    .container-fluid.no-padding
+      .row
+        .col-md-12.no-padding
+          include ./partials/bars/navbar.part.jade
+      .row
+        include ./partials/bars/sidebar.part.jade
+        .col-md-7.no-padding
+          .row.no-padding.mainContent
+            .col-md-12
+              if(userCaseDetail != undefined && userCaseDetail[0] != undefined)
+                if(userCaseDetail[0].meeting !=  undefined)
+                  h2.sub-header(style = 'margin-top: 0') Your Meeting Details
+                  .row
+                    .col-md-12
+                      span
+                        b
+                          | Meeting Location: 
+                        | #{userCaseDetail[0].meeting.location}
+                  br
+                  .row
+                    .col-md-12
+                      span
+                        b
+                          | Meeting Date:
+                        | Meeting Date: #{userCaseDetail[0].userHearingDate[(userCaseDetail[0].userHearingDate).length-1].hearingDate.getDate()}/#{userCaseDetail[0].userHearingDate[(userCaseDetail[0].userHearingDate).length-1].hearingDate.getMonth()+1}/#{userCaseDetail[0].userHearingDate[(userCaseDetail[0].userHearingDate).length-1].hearingDate.getFullYear()}
+                  br
+                  .row
+                    .col-md-12
+                      span
+                        b
+                          | Description
+                        | #{userCaseDetail[0].meeting.description}
+                  br
+                  .row
+                    .col-md-8
+                      .col-md-4
+                        button.btn.btn-default(data-toggle='modal', data-target='#EditDateDetail' id="add-matter") Update Meeting Date
+              else
+                  h2.sub-header(style = 'margin-top: 0') Your Case Detail
+                .col-md-12(style = 'line-height: 30px')
+                  if(userCaseDetail[0].supremeCourt != undefined)
+                    .row
+                      .col-md-12
+                        span
+                          b
+                            | Breif: 
+                          |#{userCaseDetail[0].supremeCourt.caseBrief}
+                    .row
+                      .col-md-12
+                        span
+                          b
+                            | Location:
+                          | Supreme Court of India
+                    .row
+                      .col-md-12
+                        span
+                          b
+                            | Scrapper Hearing Date: 
+                          | #{userCaseDetail[0].supremeCourt.scrapperHearingDate[0].hearingDate}
+                    .row
+                      .col-md-8
+                        span
+                          b
+                            if(userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1])
+                              | User Hearing Date: 
+                          
+                              | #{userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1].hearingDate}
+                      .col-md-4
+                        button.btn.btn-default(data-toggle='modal', data-target='#EditDateDetail' id="add-matter") Edit Hearing Date
+                    .row
+                      .col-md-12
+                        span
+                          b
+                            | Order Date:
+                          | #{userCaseDetail[0].supremeCourt.caseOrderDates[0].getDate()}/#{userCaseDetail[0].supremeCourt.caseOrderDates[0].getMonth()+1}/#{userCaseDetail[0].supremeCourt.caseOrderDates[0].getFullYear()}
+            
+                .col-md-12
+                  if(userCaseDetail[0].delhiHighCourt != undefined)
+                    .col-md-12
+                      | Location: Delhi High Court
+                      br
+                      br
+                    
+                      | Scrapper Hearing Date: #{userCaseDetail[0].delhiHighCourt.scrapperHearingDate[0].hearingDate}
+                      br
+                      br
+                      if(userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1] !== undefined)
+                        | User Hearing Date: #{userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1].hearingDate}
+                      br
+                      br
+                      button.btn(data-toggle='modal', data-target='#EditDateDetail' id="add-matter") Edit Hearing Date
+                      
+                      br
+                      br
+                      
+                      | Breif:  #{userCaseDetail[0].delhiHighCourt.caseBrief}
+                      br
+                      br
+                      | Order Date:   #{userCaseDetail[0].delhiHighCourt.caseOrderDates[0].getDate()}/#{userCaseDetail[0].delhiHighCourt.caseOrderDates[0].getMonth()+1}/#{userCaseDetail[0].delhiHighCourt.caseOrderDates[0].getFullYear()}
+                .col-md-12
+                  if(userCaseDetail[0].greenTribunal != undefined)
+                    .col-md-12
+                      | Location: National Green Tribunal
+                      br
+                      br
+                    
+                      | Scrapper Hearing Date: #{userCaseDetail[0].greenTribunal.scrapperHearingDate[0].hearingDate}
+                      br
+                      br
+                      if(userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1])
+                        | User Hearing Date: #{userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1].hearingDate}
+                      br
+                      br
+                      button.btn(data-toggle='modal', data-target='#EditDateDetail' id="add-matter") Edit Hearing Date
+                      
+                      br
+                      br
+                      
+                      | Breif:  #{userCaseDetail[0].greenTribunal.caseBrief}
+                      br
+                      br
+                      | Order Date:   #{userCaseDetail[0].greenTribunal.caseOrderDates[0].getDate()}/#{userCaseDetail[0].greenTribunal.caseOrderDates[0].getMonth()+1}/#{userCaseDetail[0].greenTribunal.caseOrderDates[0].getFullYear()}
+                .col-md-12
+                  if(userCaseDetail[0].telecomDispute != undefined)
+                    .col-md-12
+                      | Location: National Telecom Dispute
+                      br
+                      br
+                    
+                      | Scrapper Hearing Date: #{userCaseDetail[0].telecomDispute.scrapperHearingDate[0].hearingDate}
+                      br
+                      br
+                      if(userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1])
+                        | User Hearing Date: #{userCaseDetail[0].userHearingDate[(userCaseDetail[0].userHearingDate).length-1].hearingDate}
+                      br
+                      br
+                      button.btn(data-toggle='modal', data-target='#EditDateDetail' id="add-matter") Edit Hearing Date
+                      
+                      br
+                      br
+                      
+                      | Breif:  #{userCaseDetail[0].telecomDispute.caseBrief}
+                      br
+                      br
+                      | Order Date:   #{userCaseDetail[0].telecomDispute.caseOrderDates[0].getDate()}/#{userCaseDetail[0].telecomDispute.caseOrderDates[0].getMonth()+1}/#{userCaseDetail[0].telecomDispute.caseOrderDates[0].getFullYear()}
+                .col-md-12
+                  if(userCaseDetail[0].companyLawBoard != undefined)
+                    .col-md-12
+                      | Location: Company Law Board
+                      br
+                      br
+                    
+                      | Court Type: #{userCaseDetail[0].companyLawBoard.courtType}
+                      br
+                      br
+                      if(userCaseDetail[0].userHearingDate[(userCaseDetail[0].userHearingDate).length-1] != undefind)
+                        | User Hearing Date: #{userCaseDetail[0].userHearingDate[(userCaseDetail[0].userHearingDate).length-1].hearingDate}
+                      br
+                      br
+                      button.btn.btn-default(data-toggle='modal', data-target='#EditDateDetail' id="add-matter") Edit Hearing Date
+                      
+                      br
+                      br
+                      a(href = '#{userCaseDetail[0].companyLawBoard.caseLink}' target = '_blank')
+                        | caseLink:  #{userCaseDetail[0].companyLawBoard.caseLink}
+                    br
+                    br
+                .col-md-12(style = 'line-height: 30px')
+                  if(userCaseDetail[0].bifrCourt != undefined)
+                    .row
+                      .col-md-12
+                        span
+                          b
+                            | Breif: 
+                          |#{userCaseDetail[0].bifrCourt.caseBrief}
+                    .row
+                      .col-md-12
+                        span
+                          b
+                            | Location:
+                          | BIFR Court
+                    .row
+                      .col-md-12
+                        span
+                          b
+                            | Scrapper Hearing Date: 
+                          | #{userCaseDetail[0].bifrCourt.scrapperHearingDate[0].hearingDate}
+                    .row
+                      .col-md-8
+                        span
+                          b
+                            if(userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1])
+                              | User Hearing Date: 
+                          
+                              | #{userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1].hearingDate}
+                      .col-md-4
+                        button.btn.btn-default(data-toggle='modal', data-target='#EditDateDetail' id="add-matter") Edit Hearing Date
+                    .row
+                      .col-md-12
+                        span
+                          b
+                            | Order Date:    
+                        | #{userCaseDetail[0].bifrCourt.caseOrderDates[0].getDate()}/#{userCaseDetail[0].bifrCourt.caseOrderDates[0].getMonth()+1}/#{userCaseDetail[0].bifrCourt.caseOrderDates[0].getFullYear()}
+
+                .col-md-12(style = 'line-height: 30px')
+                  if(userCaseDetail[0].karkarDooma != undefined)
+                    .row
+                      .col-md-12
+                        span
+                          b
+                            | Breif: 
+                          |#{userCaseDetail[0].karkarDooma.caseBrief}
+                    .row
+                      .col-md-12
+                        span
+                          b
+                            | Location: 
+                          | District Court Karkardooma
+                    .row
+                      .col-md-12
+                        span
+                          b
+                            | Scrapper Hearing Date: 
+                          | #{userCaseDetail[0].karkarDooma.scrapperHearingDate[0].hearingDate}
+                    .row
+                      .col-md-8
+                        span
+                          b
+                            if(userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1])
+                              | User Hearing Date: 
+                          
+                              | #{userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1].hearingDate}
+                      .col-md-4
+                        button.btn.btn-default(data-toggle='modal', data-target='#EditDateDetail' id="add-matter") Edit Hearing Date
+                    .row
+                      .col-md-12
+                        span
+                          b
+                            | Order Date: 
+                        |  #{userCaseDetail[0].karkarDooma.caseOrderDates[0].getDate()}/#{userCaseDetail[0].karkarDooma.caseOrderDates[0].getMonth()+1}/#{userCaseDetail[0].karkarDooma.caseOrderDates[0].getFullYear()}
+
+                .col-md-12(style = 'line-height: 30px')
+                  if(userCaseDetail[0].saket != undefined)
+                    .row
+                      .col-md-12
+                        span
+                          b
+                            | Breif: 
+                          |#{userCaseDetail[0].saket.caseBrief}
+                    .row
+                      .col-md-12
+                        span
+                          b
+                            | Location: 
+                          | District Court Saket
+                    .row
+                      .col-md-12
+                        span
+                          b
+                            | Scrapper Hearing Date: 
+                          | #{userCaseDetail[0].saket.scrapperHearingDate[0].hearingDate}
+                    .row
+                      .col-md-8
+                        span
+                          b
+                            if(userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1])
+                              | User Hearing Date: 
+                          
+                              | #{userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1].hearingDate}
+                      .col-md-4
+                        button.btn.btn-default(data-toggle='modal', data-target='#EditDateDetail' id="add-matter") Edit Hearing Date
+                    .row
+                      .col-md-12
+                        span
+                          b
+                        | Order Upload:   #{userCaseDetail[0].saket.caseOrderDates[0].getDate()}/#{userCaseDetail[0].saket.caseOrderDates[0].getMonth()+1}/#{userCaseDetail[0].saket.caseOrderDates[0].getFullYear()}
+
+                .col-md-12(style = 'line-height: 30px')
+                  if(userCaseDetail[0].consumerDispute != undefined)
+                    .row
+                      .col-md-12
+                        span
+                          b
+                            | Breif: 
+                          |#{userCaseDetail[0].consumerDispute.caseBrief}
+                    .row
+                      .col-md-12
+                        span
+                          b
+                            | Location: 
+                          | District Court Saket
+                    .row
+                      .col-md-12
+                        span
+                          b
+                            | Scrapper Hearing Date: 
+                          | #{userCaseDetail[0].consumerDispute.scrapperHearingDate[0].hearingDate}
+                    .row
+                      .col-md-8
+                        span
+                          b
+                            if(userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1])
+                              | User Hearing Date: 
+                          
+                              | #{userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1].hearingDate}
+                      .col-md-4
+                        button.btn.btn-default(data-toggle='modal', data-target='#EditDateDetail' id="add-matter") Edit Hearing Date
+                    .row
+                      .col-md-12
+                        span
+                          b
+                        | Order Upload:   #{userCaseDetail[0].consumerDispute.caseOrderDates[0].getDate()}/#{userCaseDetail[0].consumerDispute.caseOrderDates[0].getMonth()+1}/#{userCaseDetail[0].consumerDispute.caseOrderDates[0].getFullYear()}  
+
+          .row.mainContent       
+            .col-md-12(style = 'margin-top: 20px;margin-bottom: 20px')
+              .col-md-9(style = 'border-right: 1px solid gray')
+                form(class="form-inline", role="form", method = 'post', action = '/addComment')
+                  textarea#comments(type='text',cols = '70', rows = '3', placeholder='Enter Comment', name = 'comment')
+                  if(userCaseDetail != undefined && userCaseDetail[0] != undefined)
+                    input(type = 'hidden', value = '#{userCaseDetail[0]._id}', name = 'id')
+                  input(type='hidden', name='_csrf', value='#{csrfToken}')
+                  button.btn.btn-default#commentButton(type='submit') Submit
+                br
+                .row(style = 'background-color: rgb(225,225,225);border-bottom: 1px solid gray; padding-top: 10px')
+                  .col-md-3
+                    span
+                      b
+                        | Date:
+                  .col-md-9
+                    span
+                      b
+                        | Comment:
+                if(userCaseDetail != undefined && userCaseDetail[0] != undefined && userCaseDetail[0].comments != undefined && userCaseDetail[0].comments.length != 0)
+                  - for(var i = userCaseDetail[0].comments.length-1; i>=0; i--)
+                    .row
+                      .col-md-12
+                        br
+                        .col-md-12.no-padding(style = 'border-bottom: 1px solid gray')
+
+                          .col-md-3.no-padding
+                            |  #{userCaseDetail[0].comments[i].cAt.getDate()}/#{userCaseDetail[0].comments[i].cAt.getMonth()}/#{userCaseDetail[0].comments[i].cAt.getYear()}
+                          .col-md-9.no-padding
+                            |  #{userCaseDetail[0].comments[i].comment} 
+              .col-md-3
+                form.full-width(method='post', action='/addDocument',enctype = 'multipart/form-data')
+                  select#options(name="docType" class="selectpicker"  style='float:center')
+                    option(value="") Select Document Type
+                    option(value='Type1') Type1
+                    option(value='Type2') Type2
+                    option(value='Type3') Type3
+
+                  input(type='hidden', name='_csrf', value='#{csrfToken}')
+                  input(type='hidden', name='id', value='#{userCaseDetail[0]._id}')
+                  br
+                  input#doc(type='file', name='doc')
+                  br
+                  button.btn.btn-default#uploadDoc(type='submit') Upload Document   
+
+                br
+                if(type1 !== undefined)
+                  span
+                    b
+                      | Type1 Document
+                  - for(var i = 0; i< type1.length; i = i+2)
+                    ul
+                      li
+                        a(target='blank', href='#{type1[i]}')
+                          | #{type1[i+1]}
+                br
+                if(type2 !== undefined)
+                  span
+                    b
+                      | Type2 Document
+                  - for(var j = 0; j< type2.length; j = j+2)
+                    ul
+                      li
+                        a(target='blank', href='#{type2[j]}')
+                          | #{type2[j+1]}
+                br
+                if(type3 !== undefined)
+                  span
+                    b
+                      | Type3 Document
+                  - for(var k = 0; k< type3.length; k = k+2)
+                    ul
+                      li
+                        a(target='blank', href='#{type3[k]}')
+                          | #{type3[k+1]}
+
+                
+                          
+        include ./partials/bars/right-bar.part.jade               
+                          
+      #EditDateDetail.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+        .modal-dialog
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal', aria-hidden='true') × 
+              h4#myModalLabel.modal-title
+                | Edit Hearing Date
+            .modal-body
+              center
+                br
+                
+                form(class="form-inline", role="form", method = 'get', action = '/editHearingDate/#{userCaseDetail[0]._id}')
+                  input#nDate(type = 'text',name = 'ndate', placeholder = 'MM/DD/YYYY')
+                  input(type='hidden', name='_csrf', value='#{csrfToken}')
+                  br
+                  br
+                  button.btn.btn-default#btn-edit-modal-detail(type='input',style=" vertical-align:middle; width:200px")
+                    | Edit Date    
+    #addMatterModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') × 
+            h4#myModalLabel.modal-title
+              | Add A Matter
+          .modal-body
+          div#first-block-modal
+            div#premium-member-block
+              center
+                button.btn.btn-warning#btn-add-premium-member(type='input',style=" vertical-align:middle; width:200px; display:none;")
+                  | Buy a premium membership
+            div#select-court-meeting
+              center
+                select#court-select( name="courtname" class="selectpicker" data-size="250px" style='float:center')
+                  option(value="") --Select Court--
+                  option(value="supreme-court") Supreme Court Of India
+                  option(value="delhi-high-court") Delhi High Court Of India
+                  option(value="national-green-tribunal") National Green Tribunal
+                  option(value="telecom-dispute") Telecom Disputes
+                  option(value="national-consumer-disputes") National Consumer Disputes
+                  option(value="competition-appellate-tribunal") Competition Appellate Tribunal
+                  option(value="company-law-board") Company Law Board
+                br
+                h3(style=" text-align: center; margin-top:20px;") OR
+                br
+                button.btn.btn-warning#btn-meeting-modal(type='input',style=" vertical-align:middle; width:200px")
+                  | Schedule A Meeting
+
+            include ./partials/homemeetingform.part.jade
+            
+            include ./partials/homedelhihighcourt.part.jade
+
+            include ./partials/homegreentribunalcourt.part.jade
+
+            include ./partials/homenationaldisputescourt.part.jade
+
+            include ./partials/hometelecomdisputescourt.part.jade
+
+            include ./partials/homecompanylawcourt.part.jade
+
+            include ./partials/homecompetitionappellate.part.jade
+
+            include ./partials/homesupremecourt.part.jade
+
+
+
+          div#second-block-progress-bar
+            div.progress
+              div.progress-bar.progress-bar-warning.progress-bar-striped(role='progressbar', aria-valuenow='5', aria-valuemin='0', aria-valuemax='100', style='width: 5%')
+                span.sr-only 20% Complete (warning)
+          include ./partials/finalcasedetailform.part.jade
+          include ./partials/finalcompanylaw.part.jade
+
+          div#error-show-block(style="display:none;")
+           | Error: Please enter correct relevent details
+          div#already-added(style="display:none")
+           | Error: You have already added this case.
+          
+          .row-fluid
+            .span6.offset1
+              div.row
+                div.span12
+                  div.progress.progress-striped.active.hide(style='margin-left:50px;; margin-right:50px;; margin-top:20px')
+                    div.bar(style='width: 0%')
+          div.content-detail
+            div.inside-content(style='visibility:hidden')
+              | &nbsp table content             
+          .modal-footer
+            button.btn.btn-default#btn-back-modal(type='button' style="float:left; display:none;") Back
+            button.btn.btn-default#btn-close-modal(type='button', data-dismiss='modal') Close
+            
+      
+                    

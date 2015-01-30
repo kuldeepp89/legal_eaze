@@ -1,0 +1,84 @@
+doctype html
+html(lang='en')
+  include ../partials/head.part.jade
+  body(style = 'padding-top: 0; background-color: rgb(225,225,225)')
+    nav.navbar.navbar-default(role='navigation')
+      .container-fluid
+        // Brand and toggle get grouped for better mobile display
+        .navbar-header
+          button.navbar-toggle(data-target='#bs-example-navbar-collapse-1', data-toggle='collapse', type='button')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='/') 
+            img(src='/public/images/logo.png', height='30px', width:='30px')
+        // Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li.active
+              h2
+                |  #{userName}
+          .col-md-4.col-md-offset-1(style = 'top: 15px')
+            
+
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='/adminHome')
+                button.btn.btn-warning HOME
+            li
+              a(href='/scrapperLog')
+                button.btn.btn-warning LOGS
+            li
+              a(href = '/logout')
+                button.btn.btn-warning(data-toggle='modal', data-target='#addMatterModal' id="add-matter") LOGOUT 
+    .container-fluid.no-padding
+      include ../partials/flash.part.jade
+      .col-md-12.no-padding
+        include ../partials/bars/sidebar.part.jade
+        
+        .col-md-9(style = 'color: black; background-color: white; height: 42em') 
+          .col-md-12(style= ' padding-left: 0; padding-right: 0; margin-top: 20px; color: black')
+            .col-md-3.col-md-offset-1
+              if(inprocess !== undefined && inprocess === true)
+                h3
+                  | Scrapping  is ON
+              else
+                h3
+                  | Scrapping is OFF
+            .col-md-12
+              
+              .col-md-12
+                if(inprocess != undefined && inprocess === true)
+                  input#scrappingvalue(type='hidden', name='scrappingvalue', value='#{inprocess}')
+                else 
+                  input#scrappingvalue(type='hidden', name='scrappingvalue', value='#{inprocess}')
+                form(id='scheduler-form', method='get', action = '/scheduler')
+                  
+                  .col-md-3
+                    if(scrapTime !== undefind)
+                      input#timeScrap(type = 'text', name = 'time', value = '#{scrapTime}')
+                    else 
+                      input#timeScrap(type = 'text', name = 'time')
+                  .col-md-3
+                    button.btn.btn-primary#scheduleScrap(type='submit', style='float:center;width:200px;' data-dismiss="modal") Schedule Scrapper
+
+              .col-md-12(style = 'margin-top:50px; margin-left: 10px')
+                form(id='upload-form', method='get', enctype="multipart/form-data" action = '/scrapNow')
+                  input(type='hidden', id = 'csrf-token' name='_csrf', value='#{csrfToken}')
+                  select#court-select( name="courtname" class="selectpicker" data-size="250px" style='float:center')
+                      option(value="") --Select Court--
+                      option(value="supreme-court") Supreme Court Of India
+                      option(value="delhi-high-court") Delhi High Court Of India
+                      option(value="national-green-tribunal") National Green Tribunal
+                      option(value="telecom-dispute") Telecom Disputes
+                      option(value="national-consumer-disputes") National Consumer Disputes
+                      option(value="competition-appellate-tribunal") Competition Appellate Tribunal
+                      option(value="company-law-board") Company Law Board
+                      option(value = 'karkardooma') District Court Karkardooma
+                      option(value = 'saket') District Court Saket
+                      option(value = "bifr") BIFR  
+                
+                  button.btn.btn-primary#scrapNow(type='submit', style='float:center;width:200px; margin-left: 50px' data-dismiss="modal") Scrap Now
+                    
+              

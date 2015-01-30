@@ -1,0 +1,17 @@
+div#competion-appellate
+  div#competition-appellate-tribunal-data-modal 
+    center(style="font-size:20px;")
+      | Competition Appellate Tribunal
+    center
+      form(id='competition-appellate-tribunal-form')
+        input(type='hidden', name='_csrf', value='#{csrfToken}')
+        select#competition-appellate-tribunal-case-type( size='1', name='casetype' class="selectpicker" data-size="250px" style='float:center; margin-top:10px;')
+          option(value='') --Select Case Type--
+          option(value='pending cases')   Pending cases filed under MRTP Act, 1969
+          option(value='appeals filed')   Appeals filed under Competition Act, 2002
+          option(value='registrar order') Registrar's Orders
+        br
+        input#competition-appellate-tribunal-date(type='text',class="form-control" name='datetime',style="margin-top:10px; width:220px;" placeholder="Case Hearing Date" )
+        br
+        button.btn.btn-primary#btn-competition-appellate-tribunal-submit(type='submit', style='float:center; margin-top:10px; width:220px;') Submit
+          

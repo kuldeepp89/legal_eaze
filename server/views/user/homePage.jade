@@ -1,0 +1,432 @@
+doctype html
+html(lang='en')
+  include ./partials/head.part.jade
+  body(style = 'padding-top: 0; background-color: rgb(225,225,225); overflow-x: hidden')
+    .container-fluid.no-padding
+      .row
+        .col-md-12.no-padding
+          include ./partials/bars/navbar.part.jade
+      .row
+        include ./partials/bars/sidebar.part.jade
+        .col-md-8.no-padding(style = 'margin-top: 5em;margin-left: 16.5%;')
+          .row.mainContent.no-padding
+            .col-md-12
+              .row
+                .col-md-12
+                  h4
+                    | Your Cases
+              .row
+                br
+                .col-md-12
+                  if(allCases == 'no')
+                    | You have no recent hearing or meeting
+                  if(allCases != undefined)
+                    for cases in allCases 
+                      if(cases.meeting != undefined) 
+                        .col-md-5.block
+                          .row(style = 'border-bottom: 1px solid white')
+                            .col-md-11.col-md-offset-4
+                              button.btn.btn-warning
+                                  | Meeting
+                          .row(style = 'border-bottom: 1px solid white; line-height: 30px')
+                            .col-md-12
+                              | Meeting Location: #{cases.meeting.location}
+                          .row.smallRow
+                            .col-md-12
+                            button.btn.btn-warning(data-toggle='modal', data-target='#EditDate' id="add-matter" ,data-id = '#{cases._id}', style = 'font-size: 12px; padding-left: 4px; padding-right: 4px;margin-left: 14px') 
+                              | Meeting Date: #{cases.userHearingDate[(cases.userHearingDate).length-1].hearingDate.getDate()}/#{cases.userHearingDate[(cases.userHearingDate).length-1].hearingDate.getMonth()+1}/#{cases.userHearingDate[(cases.userHearingDate).length-1].hearingDate.getFullYear()}
+
+                          .row.smallRow
+                            .col-md-12(style = 'font-size: 12px;border-right: 1px solid white')
+                              | Meeting Description: #{cases.meeting.description}
+                            
+                          
+                          .row(style = ' line-height: 35px;')
+                  
+                            .col-md-3.col-md-offset-3
+                              a(href = 'caseDetail/#{cases._id}')
+                                button.btn.btn-warning(style = 'font-size: 12px;') 
+                                  | See Details
+
+                      if(cases.supremeCourt != undefined)
+                        .col-md-5.block
+                          .row(style = 'border-bottom: 1px solid white')
+                            .col-md-12(style = 'font-size: 13px')
+                              | #{cases.supremeCourt.caseBrief}
+                          .row.smallRow
+                            .col-md-5(style = 'font-size: 12px;padding-right: 0px')
+                              | case no. #{cases.supremeCourt.caseNumber}/#{cases.supremeCourt.caseYear}
+                            .col-md-7
+                              button.btn.btn-warning(data-toggle='modal', data-target='#EditDate' id="add-matter",data-id = '#{cases._id}', style = 'font-size: 12px; padding-left: 4px; padding-right: 4px;margin-left: 14px') 
+                                if (cases.userHearingDate[cases.userHearingDate.length-1])
+                                  | next hearing date: #{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getDate()}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getFullYear()}
+                                else
+                                  | next hearing date: #{cases.supremeCourt.scrapperHearingDate[cases.supremeCourt.scrapperHearingDate.length-1].hearingDate.getDate()}/#{cases.supremeCourt.scrapperHearingDate[cases.supremeCourt.scrapperHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.supremeCourt.scrapperHearingDate[cases.supremeCourt.scrapperHearingDate.length-1].hearingDate.getFullYear()}
+
+                          .row.smallRow
+                            .col-md-6(style = 'font-size: 12px;border-right: 1px solid white')
+                              | Case Status: #{cases.supremeCourt.caseStatus}
+                            .col-md-6(style = 'font-size: 12px;')
+                              | Order Date: #{cases.supremeCourt.caseOrderDates[cases.supremeCourt.caseOrderDates.length-1].getDate()}/#{cases.supremeCourt.caseOrderDates[cases.supremeCourt.caseOrderDates.length-1].getMonth()+1}/#{cases.supremeCourt.caseOrderDates[cases.supremeCourt.caseOrderDates.length-1].getFullYear()}
+                          .row.smallRow
+                            .col-md-12(style = 'font-size: 12px;')
+                              | Comment: There is always a way.
+                          
+                          .row(style = ' line-height: 35px;')
+                            .col-md-7(style = 'color: orange')
+                              | Supreme Court of India
+                            .col-md-5
+                              a(href = 'caseDetail/#{cases._id}')
+                                button.btn.btn-warning(style = 'font-size: 12px;') 
+                                  | See Details
+
+                      if(cases.delhiHighCourt != undefined)
+                        .col-md-5.block
+                          .row(style = 'border-bottom: 1px solid white')
+                            .col-md-12(style = 'font-size: 13px')
+                              | #{cases.delhiHighCourt.caseBrief}
+                          .row.smallRow
+                            .col-md-5(style = 'font-size: 12px;padding-right: 0px')
+                              | case no. #{cases.delhiHighCourt.caseNumber}/#{cases.delhiHighCourt.caseYear}
+                            .col-md-7
+                              button.btn.btn-warning(data-toggle='modal', data-target='#EditDate' id="add-matter" , data-id = '#{cases._id}' , style = 'font-size: 12px; padding-left: 4px; padding-right: 4px;margin-left: 14px') 
+                                if (cases.userHearingDate[cases.userHearingDate.length-1])
+                                  | next hearing date: #{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getDate()}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getFullYear()}
+                                else
+                                  | next hearing date: #{cases.delhiHighCourt.scrapperHearingDate[cases.delhiHighCourt.scrapperHearingDate.length-1].hearingDate.getDate()}/#{cases.delhiHighCourt.scrapperHearingDate[cases.delhiHighCourt.scrapperHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.delhiHighCourt.scrapperHearingDate[cases.delhiHighCourt.scrapperHearingDate.length-1].hearingDate.getFullYear()}
+
+                          .row.smallRow
+                            .col-md-6(style = 'font-size: 12px;border-right: 1px solid white')
+                              | Case Status: #{cases.delhiHighCourt.caseStatus}
+                            .col-md-6(style = 'font-size: 12px;')
+                              | Order Date: #{cases.delhiHighCourt.caseOrderDates[cases.delhiHighCourt.caseOrderDates.length-1].getDate()}/#{cases.delhiHighCourt.caseOrderDates[cases.delhiHighCourt.caseOrderDates.length-1].getMonth()+1}/#{cases.delhiHighCourt.caseOrderDates[cases.delhiHighCourt.caseOrderDates.length-1].getFullYear()}
+                          .row.smallRow
+                            .col-md-12(style = 'font-size: 12px;')
+                              | Comment: There is always a way.
+                          
+                          .row(style = ' line-height: 35px;')
+                            .col-md-7(style = 'color: orange')
+                              | Delhi high Court
+                            .col-md-5
+                              a(href = 'caseDetail/#{cases._id}')
+                                button.btn.btn-warning(style = 'font-size: 12px;') 
+                                  | See Details  
+
+                      if(cases.greenTribunal != undefined)
+                        .col-md-5.block
+                          .row(style = 'border-bottom: 1px solid white')
+                            .col-md-12(style = 'font-size: 13px')
+                              | #{cases.greenTribunal.caseBrief}
+                          .row.smallRow
+                            .col-md-5(style = 'font-size: 12px;padding-right: 0px')
+                              | case no. #{cases.greenTribunal.caseNumber}
+                            .col-md-7
+                              button.btn.btn-warning(data-toggle='modal', data-target='#EditDate',data-id = '#{cases._id}', id="add-matter", style = 'font-size: 12px; padding-left: 4px; padding-right: 4px;margin-left: 14px') 
+                                if (cases.userHearingDate[cases.userHearingDate.length-1])
+                                  | next hearing date: #{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getDate()}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getFullYear()}
+                                else
+                                  | next hearing date: #{cases.greenTribunal.scrapperHearingDate[cases.greenTribunal.scrapperHearingDate.length-1].hearingDate.getDate()}/#{cases.greenTribunal.scrapperHearingDate[cases.greenTribunal.scrapperHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.greenTribunal.scrapperHearingDate[cases.greenTribunal.scrapperHearingDate.length-1].hearingDate.getFullYear()}
+
+                          .row.smallRow
+                            .col-md-6(style = 'font-size: 12px;border-right: 1px solid white')
+                              | Case Status: #{cases.greenTribunal.caseStatus}
+                            .col-md-6(style = 'font-size: 12px;')
+                              | Order Date: #{cases.greenTribunal.caseOrderDates[cases.greenTribunal.caseOrderDates.length-1].getDate()}/#{cases.greenTribunal.caseOrderDates[cases.greenTribunal.caseOrderDates.length-1].getMonth()+1}/#{cases.greenTribunal.caseOrderDates[cases.greenTribunal.caseOrderDates.length-1].getFullYear()}
+                          .row.smallRow
+                            .col-md-12(style = 'font-size: 12px;')
+                              | Comment: There is always a way.
+                          
+                          .row(style = ' line-height: 35px;')
+                            .col-md-7(style = 'color: orange')
+                              | National Green Tribunal
+                            .col-md-5
+                              a(href = 'caseDetail/#{cases._id}')
+                                button.btn.btn-warning(style = 'font-size: 12px;') 
+                                  | See Details   
+
+                      if(cases.telecomDispute != undefined)
+                        .col-md-5.block
+                          .row(style = 'border-bottom: 1px solid white')
+                            .col-md-12(style = 'font-size: 13px')
+                              | #{cases.telecomDispute.caseBrief}
+                          .row.smallRow
+                            .col-md-5(style = 'font-size: 12px;padding-right: 0px')
+                              | case no. #{cases.telecomDispute.caseNumber}
+                            .col-md-7
+                              button.btn.btn-warning(data-toggle='modal', data-target='#EditDate' ,data-id = '#{cases._id}',id="add-matter", style = 'font-size: 12px; padding-left: 4px; padding-right: 4px;margin-left: 14px') 
+                                if (cases.userHearingDate[cases.userHearingDate.length-1])
+                                  | next hearing date: #{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getDate()}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getFullYear()}
+                                else
+                                  | next hearing date: #{cases.telecomDispute.scrapperHearingDate[cases.telecomDispute.scrapperHearingDate.length-1].hearingDate.getDate()}/#{cases.telecomDispute.scrapperHearingDate[cases.telecomDispute.scrapperHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.telecomDispute.scrapperHearingDate[cases.telecomDispute.scrapperHearingDate.length-1].hearingDate.getFullYear()}
+
+                          .row.smallRow
+                            .col-md-6(style = 'font-size: 12px;border-right: 1px solid white')
+                              | Case Status: #{cases.telecomDispute.caseStatus}
+                            .col-md-6(style = 'font-size: 12px;')
+                              | Order Date: #{cases.telecomDispute.caseOrderDates[cases.telecomDispute.caseOrderDates.length-1].getDate()}/#{cases.telecomDispute.caseOrderDates[cases.telecomDispute.caseOrderDates.length-1].getMonth()+1}/#{cases.telecomDispute.caseOrderDates[cases.telecomDispute.caseOrderDates.length-1].getFullYear()}
+                          .row.smallRow
+                            .col-md-12(style = 'font-size: 12px;')
+                              | Comment: There is always a way.
+                          
+                          .row(style = ' line-height: 35px;')
+                            .col-md-7(style = 'color: orange')
+                              | National Telecom Disputes
+                            .col-md-5
+                              a(href = 'caseDetail/#{cases._id}')
+                                button.btn.btn-warning(style = 'font-size: 12px;') 
+                                  | See Details
+
+                      if(cases.companyLawBoard != undefined)
+                        .col-md-5.block
+                          .row(style = 'border-bottom: 1px solid white')
+                            .col-md-12(style = 'font-size: 13px')
+                              | #{cases.companyLawBoard.caseBrief}
+                          .row.smallRow
+                            .col-md-5(style = 'font-size: 12px;padding-right: 0px')
+                              | case no. #{cases.companyLawBoard.caseNumber}
+                           
+                          .row.smallRow
+                            .col-md-12(style = 'font-size: 12px')
+                              a(href = '#{cases.companyLawBoard.caseLink}', target = '_blank')
+                                | See Case Details Here(PDF)
+                          .row.smallRow
+                            .col-md-12(style = 'font-size: 12px;')
+                              | Comment: There is always a way.
+                          
+                          .row(style = ' line-height: 35px;')
+                            .col-md-7(style = 'color: orange')
+                              | Company Law Board
+                            .col-md-5
+                              a(href = 'caseDetail/#{cases._id}')
+                                button.btn.btn-warning(style = 'font-size: 12px;') 
+                                  | See Details
+
+                      if(cases.competitiveTribunal != undefined)
+                        .col-md-5.block
+                          .row(style = 'border-bottom: 1px solid white')
+                            .col-md-12(style = 'font-size: 13px')
+                              | #{cases.competitiveTribunal.caseBrief}
+                          .row.smallRow
+                            .col-md-5(style = 'font-size: 12px;padding-right: 0px')
+                              | case no. #{cases.competitiveTribunal.caseNumber}
+                            .col-md-7
+                              button.btn.btn-warning(data-toggle='modal', data-target='#EditDate' ,data-id = '#{cases._id}', id="add-matter", style = 'font-size: 12px; padding-left: 4px; padding-right: 4px;margin-left: 14px') 
+                                if (cases.userHearingDate[cases.userHearingDate.length-1])
+                                  | next hearing date: #{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getDate()}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getFullYear()}
+                                else
+                                  |next hearing date: #{cases.competitiveTribunal.scrapperHearingDate[cases.competitiveTribunal.scrapperHearingDate.length-1].hearingDate.getDate()}/#{cases.competitiveTribunal.scrapperHearingDate[cases.competitiveTribunal.scrapperHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.competitiveTribunal.scrapperHearingDate[cases.competitiveTribunal.scrapperHearingDate.length-1].hearingDate.getFullYear()}
+                          .row.smallRow
+                            .col-md-6(style = 'font-size: 12px;border-right: 1px solid white')
+                              | Case Status: #{cases.competitiveTribunal.caseStatus}
+                            .col-md-6(style = 'font-size: 12px;')
+                              |  Order Date: #{cases.competitiveTribunal.caseOrderDates[cases.competitiveTribunal.caseOrderDates.length-1].getDate()}/#{cases.competitiveTribunal.caseOrderDates[cases.competitiveTribunal.caseOrderDates.length-1].getMonth()+1}/#{cases.competitiveTribunal.caseOrderDates[cases.competitiveTribunal.caseOrderDates.length-1].getFullYear()}
+                          .row.smallRow
+                            .col-md-12(style = 'font-size: 12px;')
+                              | Comment: There is always a way.
+                          
+                          .row(style = ' line-height: 35px;')
+                            .col-md-7(style = 'color: orange')
+                              | National 
+                            .col-md-5
+                              a(href = 'caseDetail/#{cases._id}')
+                                button.btn.btn-warning(style = 'font-size: 12px;') 
+                                  | See Details
+
+                      if(cases.bifrCourt != undefined)
+                        .col-md-5.block
+                          .row(style = 'border-bottom: 1px solid white')
+                            .col-md-12(style = 'font-size: 13px')
+                              | #{cases.bifrCourt.caseBrief}
+                          .row.smallRow
+                            .col-md-5(style = 'font-size: 12px;padding-right: 0px')
+                              | case no. #{cases.bifrCourt.caseNumber}
+                            .col-md-7
+                              button.btn.btn-warning(data-toggle='modal', data-target='#EditDate' ,data-id = '#{cases._id}', id="add-matter", style = 'font-size: 12px; padding-left: 4px; padding-right: 4px;margin-left: 14px') 
+                                if (cases.userHearingDate[cases.userHearingDate.length-1])
+                                  | next hearing date: #{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getDate()}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getFullYear()}
+                                else
+                                  |next hearing date: #{cases.bifrCourt.scrapperHearingDate[cases.bifrCourt.scrapperHearingDate.length-1].hearingDate.getDate()}/#{cases.bifrCourt.scrapperHearingDate[cases.bifrCourt.scrapperHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.bifrCourt.scrapperHearingDate[cases.bifrCourt.scrapperHearingDate.length-1].hearingDate.getFullYear()}
+                          .row.smallRow
+                            .col-md-6(style = 'font-size: 12px;border-right: 1px solid white')
+                              | Case Status: #{cases.bifrCourt.caseStatus}
+                            .col-md-6(style = 'font-size: 12px;')
+                              | Order Date: #{cases.bifrCourt.caseOrderDates[cases.bifrCourt.caseOrderDates.length-1].getDate()}/#{cases.bifrCourt.caseOrderDates[cases.bifrCourt.caseOrderDates.length-1].getMonth()+1}/#{cases.bifrCourt.caseOrderDates[cases.bifrCourt.caseOrderDates.length-1].getFullYear()}
+                          .row.smallRow
+                            .col-md-12(style = 'font-size: 12px;')
+                              | Comment: There is always a way.
+                          
+                          .row(style = ' line-height: 35px;')
+                            .col-md-7(style = 'color: orange')
+                              | BIFR Court 
+                            .col-md-5
+                              a(href = 'caseDetail/#{cases._id}')
+                                button.btn.btn-warning(style = 'font-size: 12px;') 
+                                  | See Details
+
+                      if(cases.consumerDispute != undefined)
+                        .col-md-5.block
+                          .row(style = 'border-bottom: 1px solid white')
+                            .col-md-12(style = 'font-size: 13px')
+                              | #{cases.consumerDispute.caseBrief}
+                          .row.smallRow
+                            .col-md-5(style = 'font-size: 12px;padding-right: 0px')
+                              | case no. #{cases.consumerDispute.caseNumber}
+                            .col-md-7
+                              button.btn.btn-warning(data-toggle='modal', data-target='#EditDate' ,data-id = '#{cases._id}', id="add-matter", style = 'font-size: 12px; padding-left: 4px; padding-right: 4px;margin-left: 14px') 
+                                if (cases.userHearingDate[cases.userHearingDate.length-1])
+                                  | next hearing date: #{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getDate()}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getFullYear()}
+                                else
+                                  |next hearing date: #{cases.consumerDispute.scrapperHearingDate[cases.consumerDispute.scrapperHearingDate.length-1].hearingDate.getDate()}/#{cases.consumerDispute.scrapperHearingDate[cases.consumerDispute.scrapperHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.consumerDispute.scrapperHearingDate[cases.consumerDispute.scrapperHearingDate.length-1].hearingDate.getFullYear()}
+                          .row.smallRow
+                            .col-md-6(style = 'font-size: 12px;border-right: 1px solid white')
+                              | Case Status: #{cases.consumerDispute.caseStatus}
+                            .col-md-6(style = 'font-size: 12px;')
+                              | Order Date: #{cases.consumerDispute.caseOrderDates[cases.consumerDispute.caseOrderDates.length-1].getDate()}/#{cases.consumerDispute.caseOrderDates[cases.consumerDispute.caseOrderDates.length-1].getMonth()+1}/#{cases.consumerDispute.caseOrderDates[cases.consumerDispute.caseOrderDates.length-1].getFullYear()}
+                          .row.smallRow
+                            .col-md-12(style = 'font-size: 12px;')
+                              | Comment: There is always a way.
+                          
+                          .row(style = ' line-height: 35px;')
+                            .col-md-7(style = 'color: orange')
+                              | National Consumer Disputes
+                            .col-md-5
+                              a(href = 'caseDetail/#{cases._id}')
+                                button.btn.btn-warning(style = 'font-size: 12px;') 
+                                  | See Details
+
+                      if(cases.karkarDooma != undefined)
+                        .col-md-5.block
+                          .row(style = 'border-bottom: 1px solid white')
+                            .col-md-12(style = 'font-size: 13px')
+                              | #{cases.karkarDooma.caseBrief}
+                          .row.smallRow
+                            .col-md-5(style = 'font-size: 12px;padding-right: 0px')
+                              | case no. #{cases.karkarDooma.caseNumber}/#{cases.karkarDooma.caseYear}
+                            .col-md-7
+                              button.btn.btn-warning(data-toggle='modal', data-target='#EditDate' ,data-id = '#{cases._id}', id="add-matter", style = 'font-size: 12px; padding-left: 4px; padding-right: 4px;margin-left: 14px') 
+                                if (cases.userHearingDate[cases.userHearingDate.length-1])
+                                  | next hearing date: #{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getDate()}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getFullYear()}
+                                else
+                                  |next hearing date: #{cases.karkarDooma.scrapperHearingDate[cases.karkarDooma.scrapperHearingDate.length-1].hearingDate.getDate()}/#{cases.karkarDooma.scrapperHearingDate[cases.karkarDooma.scrapperHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.karkarDooma.scrapperHearingDate[cases.karkarDooma.scrapperHearingDate.length-1].hearingDate.getFullYear()}
+                          .row.smallRow
+                            .col-md-6(style = 'font-size: 12px;border-right: 1px solid white')
+                              | Case Status: #{cases.karkarDooma.caseStatus}
+                            .col-md-6(style = 'font-size: 12px;')
+                              | Order Date: #{cases.karkarDooma.caseOrderDates[cases.karkarDooma.caseOrderDates.length-1].getDate()}/#{cases.karkarDooma.caseOrderDates[cases.karkarDooma.caseOrderDates.length-1].getMonth()+1}/#{cases.karkarDooma.caseOrderDates[cases.karkarDooma.caseOrderDates.length-1].getFullYear()}
+                          .row.smallRow
+                            .col-md-12(style = 'font-size: 12px;')
+                              | Comment: There is always a way.
+                          
+                          .row(style = ' line-height: 35px;')
+                            .col-md-7(style = 'color: orange')
+                              | District Court Karkardooma
+                            .col-md-5
+                              a(href = 'caseDetail/#{cases._id}')
+                                button.btn.btn-warning(style = 'font-size: 12px;') 
+                                  | See Details
+
+        include ./partials/bars/right-bar.part.jade               
+                          
+    // Modal 
+    #EditDate.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+        .modal-dialog
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal', aria-hidden='true') × 
+              h4#myModalLabel.modal-title
+                | Edit Hearing Date
+            .modal-body
+              center
+                br
+                form#edit-date(class="form-inline", role="form", method = 'get')
+                  input#ndate(type = 'text',name = 'ndate', placeholder = 'Enter Date')
+                  input#edit-csrf(type='hidden', name='_csrf', value='#{csrfToken}')
+                  input#homepage-token(type='hidden', name='homepage', value='false')
+                  input#court-id(type='hidden', name='id')
+                  br
+                  br
+                  button.btn.btn-default#btn-edit-modal(type='input',style=" vertical-align:middle; width:200px")
+                    | Edit Date         
+    #addMatterModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') × 
+            h4#myModalLabel.modal-title
+              | Add A Matter
+          .modal-body
+          div#first-block-modal
+            div#select-court-meeting
+              center
+                select#court-select( name="courtname" class="selectpicker" data-size="250px" style='float:center')
+                  option(value="") --Select Court--
+                  option(value="supreme-court") Supreme Court Of India
+                  option(value="delhi-high-court") Delhi High Court Of India
+                  option(value="national-green-tribunal") National Green Tribunal
+                  option(value="telecom-dispute") Telecom Disputes
+                  option(value="national-consumer-disputes") National Consumer Disputes
+                  option(value="competition-appellate-tribunal") Competition Appellate Tribunal
+                  option(value="company-law-board") Company Law Board
+                  option(value = 'karkardooma') District Court Karkardooma
+                  option(value = 'saket') District Court Saket
+                  option(value = "bifr") BIFR  
+                br
+                h3(style=" text-align: center; margin-top:20px;") OR
+                br
+                button.btn.btn-warning#scheduleMeeting(type='button',style=" vertical-align:middle; width:200px")
+                  | Schedule A Meeting
+
+            include ./partials/homemeetingform.part.jade
+            
+            include ./partials/homedelhihighcourt.part.jade
+
+            include ./partials/homegreentribunalcourt.part.jade
+
+            include ./partials/homenationaldisputescourt.part.jade
+
+            include ./partials/hometelecomdisputescourt.part.jade
+
+            include ./partials/homecompanylawcourt.part.jade
+
+            include ./partials/homecompetitionappellate.part.jade
+
+            include ./partials/homesupremecourt.part.jade
+
+            include ./partials/bifrcourt.part.jade
+
+            include ./partials/karkardooma.part.jade
+
+            include ./partials/saket.part.jade
+
+
+
+          div#second-block-progress-bar
+            div.progress
+              div.progress-bar.progress-bar-warning.progress-bar-striped#case-progress-bar(role='progressbar', aria-valuenow='5', aria-valuemin='0', aria-valuemax='100', style='width: 5%')
+                span.sr-only 20% Complete (warning)
+          include ./partials/finalcasedetailform.part.jade
+          include ./partials/finalcompanylaw.part.jade
+
+          div#error-show-block(style="display:none;")
+           | Error: Please Try Again
+          div#already-added(style="display:none")
+           | Error: You have already added this case.
+          div#premium-member-block
+              center
+                button.btn.btn-warning#btn-add-premium-member(type='input',style=" vertical-align:middle; width:200px; display:none;")
+                  | Buy a premium membership
+          
+          .row-fluid
+            .span6.offset1
+              div.row
+                div.span12
+                  div.progress.progress-striped.active.hide(style='margin-left:50px;; margin-right:50px;; margin-top:20px')
+                    div.bar(style='width: 0%')
+          div.content-detail
+            div.inside-content(style='visibility:hidden')
+              | &nbsp table content             
+          .modal-footer
+            button.btn.btn-default#btn-back-modal(type='button' style="float:left; display:none;") Back
+            button.btn.btn-default#btn-close-modal(type='button', data-dismiss='modal') Close
+            
+  

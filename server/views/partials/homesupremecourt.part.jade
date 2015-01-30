@@ -1,0 +1,106 @@
+div#supreme-court
+  div#supreme-court-modal-data    
+    center(style="font-size:20px;") Supreme Court Of India
+      center
+        form(id='upload-form', method='post', enctype="multipart/form-data" action = '/addMatter')
+          input(type='hidden', id = 'csrf-token' name='_csrf', value='#{csrfToken}')
+          input(type='hidden', name='courtName', value='Supreme Court of India')
+          select#supreme-court-case-type(size='1' name='caseType' class="selectpicker" data-size="250px" style='float:center; margin-top:10px;')
+            option(value='1')  SLP (Civil) 
+            option(value='2')  SLP (Criminal) 
+            option(value='3')  Writ Petition (Civil) 
+            option(value='4')  Writ Petition(Criminal) 
+            option(value='5')  Civil Appeal 
+            option(value='6')  Criminal Appeal 
+            option(value='7')  Transfer Petition (Civil) 
+            option(value='8')  Transfer Petition (Criminal) 
+            option(value='9')  Review Petition (Civil) 
+            option(value='10')  Review Petition (Criminal) 
+            option(value='11')  Original Suit 
+            option(value='12')  Tranfer Case (Civil) 
+            option(value='13')  Transfer Case (Criminal) 
+            option(value='14')  Writ Petition (Civil)... 
+            option(value='15')  Writ Petition (Criminal)... 
+            option(value='16')  SLP (Civil) CC 
+            option(value='17')  SLP (Criminal) CRLMP 
+            option(value='18')  Motion Case(Civil) 
+            option(value='19')  Motion Case(Crl.) 
+            option(value='20')  Contempt Petition (Civil) 
+            option(value='21')  Contempt Petition (Criminal) 
+            option(value='22')  Tax Reference Case 
+            option(value='23')  Special Reference Case 
+            option(value='24')  Election Petition (Civil) 
+            option(value='25')  Curative Petition(Civil) 
+            option(value='26')  Curative Petition(Criminal) 
+            option(value='27')  Arbitration Petition 
+            option(value='28')  REF. U/A 317(1) 
+            option(value='34')  SLP (Civil) D. 
+            option(value='35')  SLP (Criminal) D. 
+            option(value='38')  Civil Appeal D 
+            option(value='39')  Criminal Appeal D 
+            option(value='36')  Writ Petition (Civil)  D 
+            option(value='37')  Writ Petition(Criminal)  D 
+            option(value='40')  Transfer Petition (Civil)  D 
+            option(value='41')  Transfer Petition (Criminal)  D 
+            option(value='42')  Review Petition (Civil)   D 
+            option(value='43')  Review Petition (Criminal)  D 
+            option(value='44')  Tranfer Case (Civil)  D 
+            option(value='45')  Transfer Case (Criminal)  D 
+            option(value='46')  SLP (Civil) CC D. 
+            option(value='47')  SLP (Criminal) CRLMP D. 
+            option(value='48')  Writ Petition (Civil)...    D 
+            option(value='49')  Writ Petition (Criminal)...    D 
+            option(value='50')  Original Suit   D 
+            option(value='51')  Death Ref. Case(Criminal)  D 
+            option(value='52')  Contempt Petition (Civil)  D 
+            option(value='53')  Contempt Petition (Criminal)  D 
+            option(value='54')  Tax Reference Case  D 
+            option(value='55')  Special Reference Case   D 
+            option(value='56')  Election Petition (Civil)   D 
+            option(value='57')  Arbitration Petition   D 
+            option(value='58')  Curative Petition(Civil)  D 
+            option(value='59')  Curative Petition(Criminal)  D 
+            option(value='61')  REF. U/A 317(1) D 
+          br
+          input#case-number-supreme-court(type='text' name='caseNumber', placeholder='Case Number',class="form-control" style='float:center; margin-top:10px; width:220px;')
+          br
+          select#case-year-supreme-court(name='caseYear' class="selectpicker" data-size="250px" style='float:center; margin-top:10px;')
+            option(value='')  -- Year -- 
+            option(value='2014') 2014
+            option(value='2013') 2013
+            option(value='2012') 2012
+            option(value='2011') 2011
+            option(value='2010') 2010
+            option(value='2009') 2009
+            option(value='2008') 2008
+            option(value='2007') 2007
+            option(value='2006') 2006
+            option(value='2005') 2005
+            option(value='2004') 2004
+            option(value='2003') 2003
+            option(value='2002') 2002
+            option(value='2001') 2001
+            option(value='2000') 2000
+            option(value='1999') 1999  
+            option(value='1998') 1998 
+            option(value='1997') 1997 
+            option(value='1996') 1996 
+            option(value='1995') 1995 
+            option(value='1994') 1994 
+            option(value='1993') 1993 
+            option(value='1992') 1992 
+            option(value='1991') 1991 
+            option(value='1990') 1990 
+            option(value='1989') 1989 
+            option(value='1988') 1988 
+            option(value='1987') 1987 
+            option(value='1986') 1986 
+            option(value='1985') 1985 
+            option(value='1984') 1984 
+            option(value='1983') 1983 
+            option(value='1982') 1982 
+            option(value='1981') 1981 
+            option(value='1980') 1980 
+          br
+          | &nbsp
+          button.btn.btn-primary#add-supreme-court-matter(type='button', style='float:center; margin-top:10px; width:220px;') Submit

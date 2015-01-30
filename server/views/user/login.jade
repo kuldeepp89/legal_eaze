@@ -1,0 +1,18 @@
+extend ../partials/init.part.jade
+
+block bodyBlock
+ 
+  section#main
+    include ../partials/flash.part.jade
+    .container
+      form.login-form(method='post', action='/login', role='form')
+        h2.form-signin-heading  Sign in
+        input(type='hidden', name='_csrf', value='#{csrfToken}')
+        input.form-control#username(type='email', name='email', autocomplete='off', placeholder='Email..')
+        input.form-control#password(type='password', name='password', autocomplete='off', placeholder='Password..')
+        button.btn.btn-lg.btn-primary.btn-block(type='submit') Sign in
+        a.btn.btn-large.medium-blue.login-btn(href='/forgot')
+        | Forgot password ?
+        a.btn.btn-large.medium-blue.login-btn(href='/register')
+          | Go to Register
+     

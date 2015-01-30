@@ -1,0 +1,56 @@
+doctype html
+html(lang='en')
+  include ./partials/head.part.jade
+  body(style = 'padding-top: 0')
+    .container-fluid
+      .row.bottomborder
+    .col-md-12.nopadding(style='font-size:14px;')
+      nav.navbar-default(role='navigation')
+        .container-fluid
+          // Brand and toggle get grouped for better mobile display
+          .navbar-header
+            button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a.navbar-brand(style='margin-top: -8px', href='/')
+              img(height='30px', margin-top:='-7px', width:='30px', src='/public/images/logo.png')
+          // Collect the nav links, forms, and other content for toggling
+          #bs-example-navbar-collapse-1.collapse.navbar-collapse
+            ul.nav.navbar-nav.navbar-right
+              li
+                a(href='/') HOME
+              li
+                a(href='/aboutus') ABOUT US
+              li
+                a(href='/subscription') SUBSCRIPTION
+              li
+                a(href = '/faq') FAQ
+              li
+                a(href = 'privacy&security') PRIVACY & SECURITY
+              li
+                a(href='/contactus') CONTACT US
+
+      #body-row.row
+  .col-md-12(style='padding-top:10px; font-size:14px; text-align:justify; padding-left:180px; padding-right:180px')
+    p
+      | Email us at contact@legaleaze.in
+      br
+      | or, write to us at:
+      br
+      | Legaleaze
+      br
+      | Office No. 2, 3rd Floor,
+      br
+      | Somdutt Plaza,
+      br
+      | 15/299, The Mall,
+      br
+      | Kanpur - 208001
+      br
+      br
+      | If you are already a user, please write to us at support@legaleaze.in for any issues relating to your account.
+ 
+
+  

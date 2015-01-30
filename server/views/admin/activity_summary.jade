@@ -1,0 +1,37 @@
+extend ../partials/init.part.jade
+
+block bodyBlock
+  
+  include navigation.part.jade
+  include ../dashboard/topbar.part.jade
+  block mainBlock
+    section#main
+      .container-fluid
+        .row-fluid
+          .span12
+            .pageHeadingTitle
+              .box-header
+                i.icon-picture
+                | Dashboard
+            .span11
+              .box.bordered
+                .padded
+                  .row-fluid
+                    .span12
+                      .section-title
+                        | Activity Summary
+                  .gray.row-fluid(style= 'font-size: 17px')
+                    .span12
+                    .span12
+                      | How many properties have been sold: #{pCounts}
+                    .span12
+                      | What is the total amount of investment: $#{totalAmount}
+                    .span12
+                      | What is the total number of users: #{uCounts}
+                    .span12
+                      | What is the total number of transactions: #{bCounts}
+                    .span12
+                      | Total number of users who have actually completed transactions: #{tCounts}
+
+    script(src='/public/javascripts/image-uploader.js', type='text/javascript')
+

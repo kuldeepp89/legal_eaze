@@ -1,0 +1,536 @@
+#calender
+    .col-md-12
+      .row
+        .col-md-3(style='height:35px;border-right:1px solid rgba(220,220,220,1);')
+        .col-md-7
+          .row(style='height:35px;background-color:white;border-right:1px solid rgba(220,220,220,1);')
+            .col-md-12
+              .col-md-1.col-md-offset-5
+                p.text-center#month-name(style='font-weight:bold') 
+              .col-md-1(style = 'margin-left: 25px')
+                p#year-name(style='font-weight:bold') 
+              .col-md-1(style = 'margin-left: 185px')
+                button.btn.btn-primary.arrow-left.btn-xs(type='button' data-toggle='', data-target='' id="left" style = 'padding: 0px 4px; margin-top: 4px')
+                  span.glyphicon.glyphicon-arrow-left
+              .col-md-1(style = 'margin-left: -31px')
+                button.btn.btn-primary.arrow-right.btn-xs(type='button' data-toggle='', data-target='' id="right" style = 'padding: 0px 4px; margin-top: 4px')
+                  span.glyphicon.glyphicon-arrow-right
+      .row
+        .col-md-3(style='height:612px;border-right:1px solid rgba(220,220,220,1);background-color: #f8f8f8; padding-left: 30px;')
+          .row
+            .col-md-12(style='margin-top: 35px;font-size: 15px;font-weight: bold;')
+              input#meeting-calender(type='checkbox')
+              |   Meetings
+          .row
+            .col-md-6(style='font-size: 15px;font-weight: bold;')
+              input#select-all-calender(type='checkbox')
+              |   All Courts
+            .col-md-2
+            .col-md-4.see-all(style='font-size: 12px;color:rgba(0,0,255,0.7);display:none;cursor: pointer') ...see all
+            .col-md-4.see-less(style='font-size: 12px;color:rgba(0,0,255,0.7);cursor: pointer') ...see less
+          .row.courtentry
+            .col-md-12.small
+              input#check-supreme-calender.check-all(type='checkbox')
+              |   Supreme Court
+          .row.courtentry
+            .col-md-12.small
+              input#check-delhi-calender.check-all(type='checkbox')
+              |   Delhi High Court
+          .row.courtentry
+            .col-md-12.small
+              input#check-green-calender.check-all(type='checkbox')
+              |   National Green Tribunal
+          .row.courtentry
+            .col-md-12.small
+              input#check-telecom-calender.check-all(type='checkbox')
+              |   Telecom Disputes
+          .row.courtentry
+            .col-md-12.small
+              input#check-consdispute-calender.check-all(type='checkbox')
+              |   National Consumer Disputes
+          .row.courtentry
+            .col-md-12.small
+              input#check-karkardooma-calender.check-all(type='checkbox')
+              |   District Court Karkardooma
+          .row.courtentry
+            .col-md-12.small
+              input#check-saket-calender.check-all(type='checkbox')
+              |   District court Saket
+          .row.courtentry
+            .col-md-12.small
+              input#check-bifr-calender.check-all(type='checkbox')
+              |   BIFR
+        .col-md-1.column-cald#col1
+          .row.dayheader Mon
+          .row.border-calender.row1
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+              
+          .row.border-calender.row2
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+              
+          .row.border-calender.row3
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+              
+          .row.border-calender.row4
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+              
+          .row.border-calender.row5
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+
+          .row.border-calender.row6
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+          
+        .col-md-1.column-cald#col2
+          .row.dayheader Tue
+          .row.border-calender.row1
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+              
+          .row.border-calender.row2
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+              
+          .row.border-calender.row3
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+              
+          .row.border-calender.row4
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+              
+          .row.border-calender.row5
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+          .row.border-calender.row6
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+              
+
+        .col-md-1.column-cald#col3
+          .row.dayheader Wed
+          .row.border-calender.row1
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+              
+          .row.border-calender.row2
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+             
+          .row.border-calender.row3
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+             
+          .row.border-calender.row4
+            p.number-cald 
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+            
+          .row.border-calender.row5
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+          .row.border-calender.row6
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+              
+
+        .col-md-1.column-cald#col4
+          .row.dayheader Thu
+          .row.border-calender.row1
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+              
+          .row.border-calender.row2
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+              
+          .row.border-calender.row3
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+              
+          .row.border-calender.row4
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+              
+          
+          .row.border-calender.row5
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+          .row.border-calender.row6
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+        .col-md-1.column-cald#col5
+          .row.dayheader Fri
+          .row.border-calender.row1
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+              
+          .row.border-calender.row2
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+              
+          .row.border-calender.row3
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+              
+          .row.border-calender.row4
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+              
+          .row.border-calender.row5
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+          .row.border-calender.row6
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+        .col-md-1.column-cald#col6
+          .row.dayheader Sat
+          .row.border-calender.row1
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+              
+          .row.border-calender.row2
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+              
+          .row.border-calender.row3
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+              
+          .row.border-calender.row4
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+              
+          .row.border-calender.row5
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+          .row.border-calender.row6
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+        .col-md-1.column-cald#col7
+          .row.dayheader(style='border-right:1px solid rgba(220,220,220,1);') Sun
+          .row.border-calender.row1
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+              
+          .row.border-calender.row2
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+              
+          .row.border-calender.row3
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+              
+          .row.border-calender.row4
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+              
+          .row.border-calender.row5
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+          .row.border-calender.row6
+            p.number-cald  
+            p.meeting-cald
+              span.glyphicon.glyphicon-asterisk
+              span.meeting-cald-value
+                | 0
+            p.cases-cald
+              span.glyphicon.glyphicon-star
+              span.cases-cald-value
+                | 0
+        .row
+          .col-md-2
+            span.glyphicon.glyphicon-star(style = 'color: #ffc266')  Case
+            br
+            span.glyphicon.glyphicon-asterisk  Meeting

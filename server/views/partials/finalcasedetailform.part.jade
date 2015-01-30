@@ -1,0 +1,30 @@
+div#third-block-case-details
+  center(style="font-size:20px;")
+    | Add case details
+  center
+    form(id='upload-form', method='post', enctype="multipart/form-data" action = '/submitMatter')
+      input(type='hidden', name='_csrf', value='#{csrfToken}')
+      br
+      input#new-case-time(type='text', name='hearingDate', placeholder="HearingDate" class="form-control" style='float:center; margin-top:10px; width:220px;')
+      br
+      input#new-case-location(type='text', name='courtName', placeholder="Court Name" class="form-control" style='float:center; margin-top:10px; width:220px;')
+      br
+      input#new-case-year(type='text', name='caseYear', placeholder="Case Year" class="form-control" style='float:center; margin-top:10px; width:220px;')
+      br
+      input#new-case-type(type='text', name='caseType', placeholder="Case Type" class="form-control" style='float:center; margin-top:10px; width:220px;')
+      br
+      input#new-case-status(type='text', name='caseStatus', placeholder="Case Status" class="form-control" style='float:center; margin-top:10px; width:220px;')
+      input#new-case-date(type='text', name='caseDate', placeholder="Case Date" class="form-control" style='float:center; margin-top:10px; width:220px;')
+      br
+      input#new-case-number(type='text', name='caseNumber', placeholder="Case Number" class="form-control" style='float:center; margin-top:10px; width:220px;')
+      br  
+      input#new-case-brief(type='text', name='caseBrief', placeholder="Case Breif" class="form-control" style='float:center; margin-top:10px; width:220px;')
+      br
+      input#new-case-orderDate(type='text', name='orderDate', placeholder="Case Order Date" class="form-control" style='float:center; margin-top:10px; width:220px;')
+      
+      input#case-id-number(type='hidden', name='caseId', placeholder="case id number" class="form-control" style='float:center; margin-top:10px; width:220px;')
+      br
+
+      button.btn.btn-primary#add-supreme-court-matter(type='submit', style='float:center; margin-top:10px; width:220px;') Submit
+
+    

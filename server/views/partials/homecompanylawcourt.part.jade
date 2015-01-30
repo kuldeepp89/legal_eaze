@@ -1,0 +1,31 @@
+div#company-law-board-data-modal    
+  .container-fluid
+    .row
+      h2 Company Law Board
+    form(role='form' id='company-law-board-form', method='post', enctype='multipart/form-data')
+      input#csrf-token-company-law-board(type='hidden', name='_csrf', value='#{csrfToken}')
+      input#company-law-board-court-name(type='hidden', name='courtName', value='Company Law Board')
+      .form-group
+        label.col-md-4(for='company-law-board-select')
+          | Court Type:
+        .col-md-8
+          select#company-law-board-select(size='1', name='courtNumber' class="selectpicker")
+            option(value='') --Select Court Type--
+            option(value='Court I') Court I
+            option(value='Court II') Court II
+            option(value='Court III') Court III
+       .form-group
+          label.col-md-4(for='company-law-board-case-date')
+            | Case Date:
+          .col-md-8
+            
+            input#company-law-board-case-date.form-control(type='text', name='caseDate', placeholder="DD.MM.YYYY")
+              
+        .row
+        .col-md-4
+        .col-md-8
+          button.btn.btn-primary#btn-company-law-board-submit(type='button' style="margin-left:5px;")
+            | Submit
+
+
+

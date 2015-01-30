@@ -1,0 +1,513 @@
+doctype html
+html(lang='en')
+  include ./partials/head.part.jade
+  body(style = 'padding-top: 0; background-color: #f8f8f8; overflow-x: hidden')
+    .container-fluid
+  include ./partials/bars/navbar.part.jade
+  #second-navbar.row.bottomborder
+    input(type = 'hidden', name = 'start-date', id = 'start-date', value = '#{sdate}')
+    input(type = 'hidden', name = 'end-date', id = 'end-date', value = '#{edate}')
+    .col-md-1
+    .col-md-4.btn-group(data-toggle='buttons')
+      label.btn.btn-primary.active#list-type
+        span.glyphicon.glyphicon-list
+        input(type='radio', checked='')
+        | List
+      label.btn.btn-primary#calender-type
+        span.glyphicon.glyphicon-calendar
+        input(type='radio')
+        | Calender
+    .col-md-2
+    .col-md-5
+      button.btn.btn-primary#search-button(type='button' data-toggle='modal', data-target='#caseSearchModel')
+        span.glyphicon.glyphicon-search
+        | Search
+      button.btn.btn-primary(type='button' data-toggle='modal', data-target='#addMatterModal' id="add-matter")
+        span.glyphicon.glyphicon-plus
+        | Add Matter
+      a(href = '/personalCauseList')
+        button.btn.btn-primary(type='button')
+          span.glyphicon.glyphicon-user
+            | PersonalCauselist
+  #homelist.row(style = 'margin: 0px; height: 40em')
+    input#isPremium(type = 'hidden', value = '#{isPremium}')
+    include ./partials/bars/sidebar.part.jade
+    .col-md-9.caselist.nopadding
+      .row
+        .col-md-12
+          table#myTable.table.table-hover.tablesorter(style='font-size:12px;')
+            thead.listheader
+              tr
+                th
+                  p.text-center Date
+                th
+                  p.text-center Location
+                th.brief
+                  p.text-center Brief
+                th
+                  p.text-center Case Number
+                th
+                  p.text-center Last Updated On
+                th
+                  p.text-center
+            tbody
+              if(allCases == 'no')
+                | You have no recent hearing or meeting
+              if(allCases != undefined)
+                
+                input(type = 'hidden', id = 'allDates', value = allCases)
+                for cases in allCases 
+                  if(cases.meeting != undefined) 
+                    tr.row-table(style = 'cursor: default')
+                      td.meeting-row
+                        .row
+                          .col-md-5.nopadding
+                            p.text-right
+                              span.glyphicon.glyphicon-pencil(data-toggle='modal', data-target='#EditMeetingDate' id="add-matter",data-id = '#{cases._id}', style = 'font-size: 14px; padding-left: 4px; padding-right: 4px;margin-left: 14px; cursor: pointer')
+                                
+                          .col-md-7.nopadding
+                            p.text-center.meeting-date
+                              | #{cases.userHearingDate[(cases.userHearingDate).length-1].hearingDate.getDate()}/#{cases.userHearingDate[(cases.userHearingDate).length-1].hearingDate.getMonth()+1}/#{cases.userHearingDate[(cases.userHearingDate).length-1].hearingDate.getFullYear()}
+                            if((cases.userHearingDate).length >= 2) 
+                              p.text-center.strike
+                                s
+                                  | #{cases.userHearingDate[(cases.userHearingDate).length-2].hearingDate.getDate()}/#{cases.userHearingDate[(cases.userHearingDate).length-2].hearingDate.getMonth()+1}/#{cases.userHearingDate[(cases.userHearingDate).length-2].hearingDate.getFullYear()}
+                      td
+                        .row
+                          .col-md-5.nopadding
+                            p.text-right
+                          .col-md-7.nopadding
+                            p.text-center #{cases.meeting.location}
+                      td.brief
+                        p.text-center #{cases.meeting.description}
+                      td
+                        p.text-center.meeting Meeting
+                      td
+                        p.text-center #{cases.meeting.lastUpdated.getDate()}/#{cases.meeting.lastUpdated.getMonth()}/#{cases.meeting.lastUpdated.getFullYear()}
+                      td
+                        p.text-center
+                          a(href = 'caseDetail/#{cases._id}')
+                            button.btn.btn-warning.btn-xs(type='button' style = 'font-size: 12px; padding: 2px 6px') Detail
+                          a(href = 'delete/#{cases._id}' style = 'float: right')
+                            span.glyphicon.glyphicon-remove.deleteCase(type='button' style = 'font-size: 14px; padding: 2px 12px; color: grey; margin-left: 3px')
+                              
+                  if(cases.supremeCourt !== undefined)
+                    tr.row-table(style = 'cursor: default')
+                      td.supremeCourtRow
+                        .row
+                          .col-md-5.nopadding
+                            p.text-right
+                              span.glyphicon.glyphicon-pencil(data-toggle='modal', data-target='#EditDate' id="add-matter",data-id = '#{cases._id}', style = 'font-size: 14px; padding-left: 4px; padding-right: 4px;margin-left: 14px; cursor: pointer')
+                                
+                          .col-md-7.nopadding
+                            p.text-center.hearing-date 
+                              if (cases.userHearingDate[cases.userHearingDate.length-1])
+                                  | #{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getDate()}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getFullYear()} 
+                              else
+                                | #{cases.supremeCourt.scrapperHearingDate[cases.supremeCourt.scrapperHearingDate.length-1].hearingDate.getDate()}/#{cases.supremeCourt.scrapperHearingDate[cases.supremeCourt.scrapperHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.supremeCourt.scrapperHearingDate[cases.supremeCourt.scrapperHearingDate.length-1].hearingDate.getFullYear()}
+
+                      td
+                        .row
+                          .col-md-5.nopadding
+                            p.text-right
+                              span.glyphicon.courtsymbol
+                          .col-md-7.nopadding
+                            p.text-center.court-name Supreme Court of India
+                      td.brief
+                        p.text-center #{cases.supremeCourt.caseBrief}
+                      td
+                        p.text-center #{cases.supremeCourt.caseNumber}/#{cases.supremeCourt.caseYear}
+                      td
+                        p.text-center #{cases.supremeCourt.lastUpdated.getDate()}/#{cases.supremeCourt.lastUpdated.getMonth()}/#{cases.supremeCourt.lastUpdated.getFullYear()}
+                      td
+                        p.text-center
+                          a(href = 'caseDetail/#{cases._id}')
+                            button.btn.btn-warning.btn-xs(type='button' style = 'font-size: 12px; padding: 2px 6px') Detail
+                          a(href = 'delete/#{cases._id}' style = 'float: right')
+                            span.glyphicon.glyphicon-remove.deleteCase(type='button' style = 'font-size: 14px; padding: 2px 12px; color: grey; margin-left: 3px')
+                  if(cases.delhiHighCourt != undefined)
+                    tr.row-table(style = 'cursor: default')
+                      td.delhiHighCourtRow
+                        .row
+                          .col-md-5.nopadding
+                            p.text-right
+                              span.glyphicon.glyphicon-pencil(data-toggle='modal', data-target='#EditDate' id="add-matter",data-id = '#{cases._id}', style = 'font-size: 14px; padding-left: 4px; padding-right: 4px;margin-left: 14px; cursor: pointer')
+                          .col-md-7.nopadding
+                            p.text-center.hearing-date
+                              if (cases.userHearingDate[cases.userHearingDate.length-1])
+                                  | #{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getDate()}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getFullYear()}
+                              else
+                                | #{cases.delhiHighCourt.scrapperHearingDate[cases.delhiHighCourt.scrapperHearingDate.length-1].hearingDate.getDate()}/#{cases.delhiHighCourt.scrapperHearingDate[cases.delhiHighCourt.scrapperHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.delhiHighCourt.scrapperHearingDate[cases.delhiHighCourt.scrapperHearingDate.length-1].hearingDate.getFullYear()}
+                      td
+                        .row
+                          .col-md-5.nopadding
+                            p.text-right
+                              span.glyphicon.courtsymbol
+                          .col-md-7.nopadding
+                            p.text-center.court-name Delhi High Court
+                      td.brief
+                        p.text-center #{cases.delhiHighCourt.caseBrief}
+                      td
+                        p.text-center #{cases.delhiHighCourt.caseNumber}/#{cases.delhiHighCourt.caseYear}
+                      td
+                        p.text-center #{cases.delhiHighCourt.lastUpdated.getDate()}/#{cases.delhiHighCourt.lastUpdated.getMonth()}/#{cases.delhiHighCourt.lastUpdated.getFullYear()}
+                      td
+                        p.text-center
+                          a(href = 'caseDetail/#{cases._id}')
+                            button.btn.btn-warning.btn-xs(type='button' style = 'font-size: 12px; padding: 2px 6px') Detail
+                          a(href = 'delete/#{cases._id}' style = 'float: right')
+                            span.glyphicon.glyphicon-remove.deleteCase(type='button' style = 'font-size: 14px; padding: 2px 12px; color: grey; margin-left: 3px')
+                  if(cases.greenTribunal != undefined)
+                    tr.row-table(style = 'cursor: default')
+                      td.greenTribunalRow
+                        .row
+                          .col-md-5.nopadding
+                            p.text-right
+                              span.glyphicon.glyphicon-pencil(data-toggle='modal', data-target='#EditDate' id="add-matter",data-id = '#{cases._id}', style = 'font-size: 14px; padding-left: 4px; padding-right: 4px;margin-left: 14px; cursor: pointer')
+                          .col-md-7.nopadding
+                            p.text-center.hearing-date 
+                              if (cases.userHearingDate[cases.userHearingDate.length-1])
+                                  | #{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getDate()}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getFullYear()}
+                              else
+                                | #{cases.greenTribunal.scrapperHearingDate[cases.greenTribunal.scrapperHearingDate.length-1].hearingDate.getDate()}/#{cases.greenTribunal.scrapperHearingDate[cases.greenTribunal.scrapperHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.greenTribunal.scrapperHearingDate[cases.greenTribunal.scrapperHearingDate.length-1].hearingDate.getFullYear()}
+                      td
+                        .row
+                          .col-md-5.nopadding
+                            p.text-right
+                              span.glyphicon.courtsymbol
+                          .col-md-7.nopadding
+                            p.text-center.court-name National Green Tribunal
+                      td.brief
+                        p.text-center #{cases.greenTribunal.caseBrief}
+                      td
+                        p.text-center #{cases.greenTribunal.caseNumber}
+                      td
+                        p.text-center #{cases.greenTribunal.lastUpdated.getDate()}/#{cases.greenTribunal.lastUpdated.getMonth()}/#{cases.greenTribunal.lastUpdated.getFullYear()}
+                      td
+                        p.text-center
+                          a(href = 'caseDetail/#{cases._id}')
+                            button.btn.btn-warning.btn-xs(type='button' style = 'font-size: 12px; padding: 2px 6px') Detail
+                          a(href = 'delete/#{cases._id}' style = 'float: right')
+                            span.glyphicon.glyphicon-remove.deleteCase(type='button' style = 'font-size: 14px; padding: 2px 12px; color: grey; margin-left: 3px')
+                  if(cases.telecomDispute != undefined)
+                    tr.row-table(style = 'cursor: default')
+                      td.telecomDisputeRow
+                        .row
+                          .col-md-5.nopadding
+                            p.text-right
+                              span.glyphicon.glyphicon-pencil(data-toggle='modal', data-target='#EditDate' id="add-matter",data-id = '#{cases._id}', style = 'font-size: 14px; padding-left: 4px; padding-right: 4px;margin-left: 14px; cursor: pointer')
+                          .col-md-7.nopadding
+                            p.text-center.hearing-date
+                              if (cases.userHearingDate[cases.userHearingDate.length-1])
+                                  |  #{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getDate()}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getFullYear()}
+                              else
+                                |  #{cases.telecomDispute.scrapperHearingDate[cases.telecomDispute.scrapperHearingDate.length-1].hearingDate.getDate()}/#{cases.telecomDispute.scrapperHearingDate[cases.telecomDispute.scrapperHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.telecomDispute.scrapperHearingDate[cases.telecomDispute.scrapperHearingDate.length-1].hearingDate.getFullYear()}
+                            
+                      td
+                        .row
+                          .col-md-5.nopadding
+                            p.text-right
+                              span.glyphicon.courtsymbol
+                          .col-md-7.nopadding
+                            p.text-center.court-name National Telecom Disputes
+                      td.brief
+                        p.text-center #{cases.telecomDispute.caseBrief}
+                      td
+                        p.text-center #{cases.telecomDispute.caseNumber}
+                      td
+                        p.text-center #{cases.telecomDispute.lastUpdated.getDate()}/#{cases.telecomDispute.lastUpdated.getMonth()}/#{cases.telecomDispute.lastUpdated.getFullYear()}
+                      td
+                        p.text-center
+                          a(href = 'caseDetail/#{cases._id}')
+                            button.btn.btn-warning.btn-xs(type='button' style = 'font-size: 12px; padding: 2px 6px') Detail
+                          a(href = 'delete/#{cases._id}' style = 'float: right')
+                            span.glyphicon.glyphicon-remove.deleteCase(type='button' style = 'font-size: 14px; padding: 2px 12px; color: grey; margin-left: 3px')
+                  if(cases.bifrCourt != undefined)
+                    tr.row-table(style = 'cursor: default')
+                      td.bifrCourtRow
+                        .row
+                          .col-md-5.nopadding
+                            p.text-right
+                              span.glyphicon.glyphicon-pencil(data-toggle='modal', data-target='#EditDate' id="add-matter",data-id = '#{cases._id}', style = 'font-size: 14px; padding-left: 4px; padding-right: 4px;margin-left: 14px; cursor: pointer')
+                          .col-md-7.nopadding
+                            p.text-center.hearing-date 
+                              if (cases.userHearingDate[cases.userHearingDate.length-1])
+                                  | #{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getDate()}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getFullYear()}
+                              else
+                                | #{cases.bifrCourt.scrapperHearingDate[cases.bifrCourt.scrapperHearingDate.length-1].hearingDate.getDate()}/#{cases.bifrCourt.scrapperHearingDate[cases.bifrCourt.scrapperHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.bifrCourt.scrapperHearingDate[cases.bifrCourt.scrapperHearingDate.length-1].hearingDate.getFullYear()}
+                            
+                      td
+                        .row
+                          .col-md-5.nopadding
+                            p.text-right
+                              span.glyphicon.courtsymbol
+                          .col-md-7.nopadding
+                            p.text-center.court-name BIFR Court
+                      td.brief
+                        p.text-center #{cases.bifrCourt.caseBrief}
+                      td
+                        p.text-center #{cases.bifrCourt.caseNumber}
+                      td
+                        p.text-center #{cases.bifrCourt.lastUpdated.getDate()}/#{cases.bifrCourt.lastUpdated.getMonth()}/#{cases.bifrCourt.lastUpdated.getFullYear()}
+                      td
+                        p.text-center
+                          a(href = 'caseDetail/#{cases._id}')
+                            button.btn.btn-warning.btn-xs(type='button' style = 'font-size: 12px; padding: 2px 6px') Detail
+                          a(href = 'delete/#{cases._id}' style = 'float: right')
+                            span.glyphicon.glyphicon-remove.deleteCase(type='button' style = 'font-size: 14px; padding: 2px 12px; color: grey; margin-left: 3px')
+                  if(cases.consumerDispute != undefined)
+                    tr.row-table(style = 'cursor: default')
+                      td.consumerDisputeRow
+                        .row
+                          .col-md-5.nopadding
+                            p.text-right
+                              span.glyphicon.glyphicon-pencil(data-toggle='modal', data-target='#EditDate' id="add-matter",data-id = '#{cases._id}', style = 'font-size: 14px; padding-left: 4px; padding-right: 4px;margin-left: 14px; cursor: pointer')
+                          .col-md-7.nopadding
+                            p.text-center.hearing-date
+                              if (cases.userHearingDate[cases.userHearingDate.length-1])
+                                  | #{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getDate()}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getFullYear()}
+                              else
+                                | #{cases.consumerDispute.scrapperHearingDate[cases.consumerDispute.scrapperHearingDate.length-1].hearingDate.getDate()}/#{cases.consumerDispute.scrapperHearingDate[cases.consumerDispute.scrapperHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.consumerDispute.scrapperHearingDate[cases.consumerDispute.scrapperHearingDate.length-1].hearingDate.getFullYear()}
+                      td
+                        .row
+                          .col-md-5.nopadding
+                            p.text-right
+                              span.glyphicon.courtsymbol
+                          .col-md-7.nopadding
+                            p.text-center.court-name National Consumer Dispute
+                      td.brief
+                        p.text-center #{cases.consumerDispute.caseBrief}
+                      td
+                        p.text-center #{cases.consumerDispute.caseNumber}
+                      td
+                        p.text-center #{cases.consumerDispute.lastUpdated.getDate()}/#{cases.consumerDispute.lastUpdated.getMonth()}/#{cases.consumerDispute.lastUpdated.getFullYear()}
+                      td
+                        p.text-center
+                          a(href = 'caseDetail/#{cases._id}')
+                            button.btn.btn-warning.btn-xs(type='button' style = 'font-size: 12px; padding: 2px 6px') Detail
+                          a(href = 'delete/#{cases._id}' style = 'float: right')
+                            span.glyphicon.glyphicon-remove.deleteCase(type='button' style = 'font-size: 14px; padding: 2px 12px; color: grey; margin-left: 3px')
+                  if(cases.karkarDooma != undefined)
+                    tr.row-table(style = 'cursor: default')
+                      td.karkardoomaRow
+                        .row
+                          .col-md-5.nopadding
+                            p.text-right
+                              span.glyphicon.glyphicon-pencil(data-toggle='modal', data-target='#EditDate' id="add-matter",data-id = '#{cases._id}', style = 'font-size: 14px; padding-left: 4px; padding-right: 4px;margin-left: 14px; cursor: pointer')
+                          .col-md-7.nopadding
+                            p.text-center.hearing-date
+                              if (cases.userHearingDate[cases.userHearingDate.length-1])
+                                  | #{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getDate()}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getFullYear()}
+                              else
+                                | #{cases.karkarDooma.scrapperHearingDate[cases.karkarDooma.scrapperHearingDate.length-1].hearingDate.getDate()}/#{cases.karkarDooma.scrapperHearingDate[cases.karkarDooma.scrapperHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.karkarDooma.scrapperHearingDate[cases.karkarDooma.scrapperHearingDate.length-1].hearingDate.getFullYear()}
+                      td
+                        .row
+                          .col-md-5.nopadding
+                            p.text-right
+                              span.glyphicon.courtsymbol
+                          .col-md-7.nopadding
+                            p.text-center.court-name District Court Karkardooma
+                      td
+                        p.text-center #{cases.karkarDooma.caseBrief}
+                      td
+                        p.text-center #{cases.karkarDooma.caseNumber}/#{cases.karkarDooma.caseYear}
+                      td
+                        p.text-center #{cases.karkarDooma.lastUpdated.getDate()}/#{cases.karkarDooma.lastUpdated.getMonth()}/#{cases.karkarDooma.lastUpdated.getFullYear()}
+                      td
+                        p.text-center
+                          a(href = 'caseDetail/#{cases._id}')
+                            button.btn.btn-warning.btn-xs(type='button' style = 'font-size: 12px; padding: 2px 6px') Detail
+                          a(href = 'delete/#{cases._id}' style = 'float: right')
+                            span.glyphicon.glyphicon-remove.deleteCase(type='button' style = 'font-size: 14px; padding: 2px 12px; color: grey; margin-left: 3px')
+                  if(cases.saket != undefined)
+                    tr.row-table(style = 'cursor: default')
+                      td.saketRow
+                        .row
+                          .col-md-5.nopadding
+                            p.text-right
+                              span.glyphicon.glyphicon-pencil(data-toggle='modal', data-target='#EditDate' id="add-matter",data-id = '#{cases._id}', style = 'font-size: 14px; padding-left: 4px; padding-right: 4px;margin-left: 14px; cursor: pointer')
+                          .col-md-7.nopadding
+                            p.text-center.hearing-date
+                              if (cases.userHearingDate[cases.userHearingDate.length-1])
+                                  | #{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getDate()}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.userHearingDate[cases.userHearingDate.length-1].hearingDate.getFullYear()}
+                              else
+                                | #{cases.saket.scrapperHearingDate[cases.saket.scrapperHearingDate.length-1].hearingDate.getDate()}/#{cases.saket.scrapperHearingDate[cases.saket.scrapperHearingDate.length-1].hearingDate.getMonth()+1}/#{cases.saket.scrapperHearingDate[cases.saket.scrapperHearingDate.length-1].hearingDate.getFullYear()}
+                      td
+                        .row
+                          .col-md-5.nopadding
+                            p.text-right
+                              span.glyphicon.courtsymbol
+                          .col-md-7.nopadding
+                            p.text-center.court-name District Court Saket
+                      td
+                        p.text-center #{cases.saket.caseBrief}
+                      td
+                        p.text-center #{cases.saket.caseNumber}/#{cases.saket.caseYear}
+                      td
+                        p.text-center #{cases.saket.lastUpdated.getDate()}/#{cases.saket.lastUpdated.getMonth()}/#{cases.saket.lastUpdated.getFullYear()}
+                      td
+                        p.text-center
+                          a(href = 'caseDetail/#{cases._id}')
+                            button.btn.btn-warning.btn-xs(type='button' style = 'font-size: 12px; padding: 2px 6px') Detail  
+                          a(href = 'delete/#{cases._id}' style = 'float: right')
+                            span.glyphicon.glyphicon-remove.deleteCase(type='button' style = 'font-size: 14px; padding: 2px 12px; color: grey; margin-left: 3px')           
+  include calender.jade
+// [endif]
+  script(src='js/vendor/jquery-1.10.2.js', type='text/javascript')
+
+                  
+                          
+    // Modal 
+#EditDate.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-hidden='true') × 
+          h4#myModalLabel.modal-title
+            | Edit Hearing Date
+        .modal-body
+          center
+            br
+            form#edit-date(class="form-inline", role="form", method = 'get')
+              input#ndate(type = 'text',name = 'ndate', placeholder = 'MM/DD/YYYY')
+              input#edit-csrf(type='hidden', name='_csrf', value='#{csrfToken}')
+              input#homepage-token(type='hidden', name='homepage', value='false')
+              input#court-id(type='hidden', name='id')
+
+              br
+              br
+              button.btn.btn-warning#btn-edit-modal(type='input',style=" vertical-align:middle; width:200px")
+                | Edit Hearing Date
+#EditMeetingDate.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-hidden='true') × 
+          h4#myModalLabel.modal-title
+            | Edit Meeting Date
+        .modal-body
+          center
+            br
+            form#edit-date(class="form-inline", role="form", method = 'get')
+              input#ndate(type = 'text',name = 'ndate', placeholder = 'MM/DD/YYYY')
+              input#edit-csrf(type='hidden', name='_csrf', value='#{csrfToken}')
+              input#homepage-token(type='hidden', name='homepage', value='false')
+              input#court-id(type='hidden', name='id')
+
+              br
+              br
+              button.btn.btn-warning#btn-edit-modal(type='input',style=" vertical-align:middle; width:200px")
+                | Edit Meeting Date         
+#caseSearchModel.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-hidden='true') × 
+          h4#myModalLabel.modal-title
+            | Select Date Range
+        .modal-body
+          center
+            br
+            form#dateRange(class="form-inline", role="form", method = 'post', action = '/filterCases')
+              .col-md-12
+                .form-group
+                  .col-md-2
+                    | From
+                  .col-md-10
+                    input.form-control#s-date(type='text', placeholder  = 'MM/DD/YYYY',  name = 'sdate')
+                    
+                    br
+
+              .col-md-12
+                .form-group
+                  .col-md-2
+                    | To
+                  .col-md-10
+                    input.form-control#e-date(type='text',  placeholder  = 'MM/DD/YYYY',name = 'edate')
+                    
+              input#edit-csrf(type='hidden', name='_csrf', value='#{csrfToken}')
+              
+              br
+              br
+              button.btn.btn-warning#btn-schedule-fil(type='submit',style=" vertical-align:middle; width:200px; margin-top: 12px")
+                | Submit      
+#addMatterModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-hidden='true') × 
+        h4#myModalLabel.modal-title
+          | Add A Matter
+      .modal-body
+      div#first-block-modal
+        div#select-court-meeting
+          center
+            select#court-select( name="courtname" class="selectpicker" data-size="250px" style='float:center')
+              option(value="") --Select Court--
+              option(value="supreme-court") Supreme Court Of India
+              option(value="delhi-high-court") Delhi High Court Of India
+              option(value="national-green-tribunal") National Green Tribunal
+              option(value="telecom-dispute") Telecom Disputes
+              option(value="national-consumer-disputes") National Consumer Disputes
+              option(value = 'karkardooma') District Court Karkardooma
+              option(value = 'saket') District Court Saket
+              option(value = "bifr") BIFR  
+            br
+            h3(style=" text-align: center; margin-top:20px;") OR
+            br
+            button.btn.btn-warning#scheduleMeeting(type='button',style=" vertical-align:middle; width:200px")
+              | Schedule A Meeting
+
+        include ./partials/homemeetingform.part.jade
+        
+        include ./partials/homedelhihighcourt.part.jade
+
+        include ./partials/homegreentribunalcourt.part.jade
+
+        include ./partials/homenationaldisputescourt.part.jade
+
+        include ./partials/hometelecomdisputescourt.part.jade
+
+        include ./partials/homecompanylawcourt.part.jade
+
+        include ./partials/homecompetitionappellate.part.jade
+
+        include ./partials/homesupremecourt.part.jade
+
+        include ./partials/bifrcourt.part.jade
+
+        include ./partials/karkardooma.part.jade
+
+        include ./partials/saket.part.jade
+
+
+
+      div#second-block-progress-bar
+        div.progress
+          div.progress-bar.progress-bar-warning.progress-bar-striped#case-progress-bar(role='progressbar', aria-valuenow='5', aria-valuemin='0', aria-valuemax='100', style='width: 5%')
+            span.sr-only 20% Complete (warning)
+      include ./partials/finalcasedetailform.part.jade
+      include ./partials/finalcompanylaw.part.jade
+
+      #error-show-block
+       | Connection Error: Please Try Again
+      #already-added(style="display:none")
+       | Error: You have already added this case.
+      div#premium-member-block
+          center
+            button.btn.btn-warning#btn-add-premium-member(type='input',style=" vertical-align:middle; width:200px; display:none;")
+              | Buy a premium membership
+      
+      .row-fluid
+        .span6.offset1
+          div.row
+            div.span12
+              div.progress.progress-striped.active.hide(style='margin-left:50px;; margin-right:50px;; margin-top:20px')
+                div.bar(style='width: 0%')
+      div.content-detail
+        div.inside-content(style='visibility:hidden')
+          | &nbsp table content             
+      .modal-footer
+        button.btn.btn-default#btn-back-modal(type='button' style="float:left; display:none;") Back
+        button.btn.btn-default#btn-close-modal(type='button', data-dismiss='modal') Close
+

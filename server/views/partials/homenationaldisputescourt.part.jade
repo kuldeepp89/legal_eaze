@@ -1,0 +1,108 @@
+div#national-consumer-disputes-data-modal    
+  .container-fluid
+    .row
+      h2 National Consumer Disputes
+    form(role='form', id='national-consumer-disputes-form1', method='post', enctype='multipart/form-data')
+      input#csrf-token-consumer-dispute(type='hidden', name='_csrf', value='#{csrfToken}')
+      input#national-consumer-disputes-court-name(type='hidden', name='courtName', value='National Consumer Disputes')
+      .form-group
+        label.col-md-4(for='know-case-status')
+          | Case Status:
+        .col-md-8
+          label.radio
+            input#know-case-status-ncdrc(type='radio',value='B', name='userType')
+            | NCDRC
+          label.radio
+            input#know-case-status-states(type='radio', value='C', name='userType')
+            | State Commission
+          label.radio
+            input#know-case-status-district(type='radio', value='E', name='userType')
+            | District Forum
+      .form-group
+        .col-md-4
+        .col-md-8
+        select#national-consumer-disputes-ncdrc( size='1', name='ncdrc_id')
+          option(value='ncdrc') NCDRC
+      .form-group
+        .col-md-4
+        .col-md-8
+        select#national-consumer-disputes-statelist( size='1', name='state_id')
+          option(value='0') --Select State--
+          option(value='7') Andaman Nicobar
+          option(value='16') Andhra Pradesh
+          option(value='6') Chandigarh
+          option(value='23') Chhattisgarh
+          option(value='36') Circuit Bench Aurangabad
+          option(value='37') Circuit Bench Nagpur
+          option(value='8') Delhi
+          option(value='33') Goa
+          option(value='20') Gujarat
+          option(value='9') Haryana
+          option(value='10') Himachal Pradesh
+          option(value='11') Jammu and Kashmir
+          option(value='2') Jharkhand
+          option(value='17') Kerala
+          option(value='22') Madhya Pradesh
+          option(value='21') Maharashtra
+          option(value='30') Meghalaya
+          option(value='35') Pondicherry
+          option(value='12') Punjab
+          option(value='13') Rajasthan
+          option(value='19') Tamil Nadu
+          option(value='14') Uttar Pradesh
+          option(value='15') Uttaranchal
+          option(value='4') West Bengal
+
+      .form-group
+        .col-md-4
+          select#national-consumer-disputes-state-with-district( size='1', name='state_idD')
+            option(value='0') --Select State--
+            option(value='7') Andaman Nicobar
+            option(value='16') Andhra Pradesh
+            option(value='25') Arunachal Pradesh
+            option(value='5') Assam
+            option(value='1') Bihar
+            option(value='6') Chandigarh
+            option(value='23') Chhattisgarh
+            option(value='31') Daman and Diu
+            option(value='8') Delhi
+            option(value='33') Goa
+            option(value='20') Gujarat
+            option(value='9') Haryana
+            option(value='10') Himachal Pradesh
+            option(value='11') Jammu and Kashmir
+            option(value='2') Jharkhand
+            option(value='18') Karnataka
+            option(value='17') Kerala
+            option(value='34') Lakshadweep
+            option(value='22') Madhya Pradesh
+            option(value='21') Maharashtra
+            option(value='28') Manipur
+            option(value='30') Meghalaya
+            option(value='27') Mizoram
+            option(value='26') Nagaland
+            option(value='3') Orissa
+            option(value='35') Pondicherry
+            option(value='12') Punjab
+            option(value='13') Rajasthan
+            option(value='24') Sikkim
+            option(value='19') Tamil Nadu
+            option(value='29') Tripura
+            option(value='14') Uttar Pradesh
+            option(value='15') Uttaranchal
+            option(value='4') West Bengal
+        .col-md-8
+          select#national-consumer-disputes-district( size='1', name='dist_id')
+            option(value='0') --Select District--
+      
+      .form-group
+        label.col-md-4(for='national-consumer-disputes-case-number')
+          | Case Number:
+        .col-md-8
+          input#national-consumer-disputes-case-number.form-control(type='text', name='caseNumber', placeholder="Format:   A/xx/yy (or) A/xx/yyyy", style='width:220px;')
+          p.help-block
+      .row
+        .col-md-4
+        .col-md-8
+          button.btn.btn-primary#btn-national-consumer-disputes-submit(type='button', style="margin-left:5px;")
+            | Submit

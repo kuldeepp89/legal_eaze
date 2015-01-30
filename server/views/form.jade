@@ -1,0 +1,48 @@
+div#third-block-case-details
+  center(style="font-size:20px;")
+    | Add case details
+  center
+    form(id='case-form', method='post', action = '/submitMatter')
+      input(type='hidden', name='_csrf', value='#{csrfToken}')
+      br
+      input#new-case-time(type='text', name='hearingDate', placeholder="HearingDate" class="form-control" style='float:center; margin-top:10px; width:220px;')
+      br
+      input#new-case-time(type='text', name='orderDate', placeholder="orderDate" class="form-control" style='float:center; margin-top:10px; width:220px;')
+      br
+      
+      input#new-case-time(type='text', name='caseYear', placeholder="Case Year" class="form-control" style='float:center; margin-top:10px; width:220px;')
+      br
+      input#new-case-alert(type='text', name='caseType', placeholder="Case Type" class="form-control" style='float:center; margin-top:10px; width:220px;')
+      br
+      input#new-case-notes(type='text', name='caseStatus', placeholder="Case Status" class="form-control" style='float:center; margin-top:10px; width:220px;')
+      br
+      input#new-case-number(type='text', name='caseNumber', placeholder="Case Number" class="form-control" style='float:center; margin-top:10px; width:220px;')
+      br  
+      input#new-case-topic(type='text', name='caseBreif', placeholder="Case Breif" class="form-control" style='float:center; margin-top:10px; width:220px;')
+      br
+      button.btn.btn-primary#btn-case-detail-submit(type='submit', style='float:center; margin-top:10px; width:220px;' data-dismiss="modal") Submit Case
+      
+    br
+    br
+    form(id='meeting-form', method='post', action = '/update')
+      input(type='hidden', name='_csrf', value='#{csrfToken}')
+      input#new-case-notes(type='text', name='userid', placeholder="53d399db681ccf8a0d704c8b" class="form-control" style='float:center; margin-top:10px; width:220px; ')
+      br 
+      input#new-case-notes(type='text', name='nextHearingDate', placeholder="next hearing date" class="form-control" style='float:center; margin-top:10px; width:220px;')
+      br
+      input#new-case-notes(type='text', name='caseOrderDate', placeholder="order date" class="form-control" style='float:center; margin-top:10px; width:220px;')
+      br
+      input#new-case-notes(type='text', name='caseBreif', placeholder="brief" class="form-control" style='float:center; margin-top:10px; width:220px;')
+      br
+      button.btn.btn-primary#btn-case-detail-submit(type='submit', style='float:center; margin-top:10px; width:220px;' data-dismiss="modal") Update
+
+      br
+      br
+      form(id='meeting-form', method='post', action = '/submitMeeting')
+      input#new-case-notes(type='text', name='time', placeholder="time" class="form-control" style='float:center; margin-top:10px; width:220px; ')
+      br 
+      input#new-case-notes(type='text', name='location', placeholder="location" class="form-control" style='float:center; margin-top:10px; width:220px;')
+      br
+      input#new-case-notes(type='text', name='description', placeholder="description" class="form-control" style='float:center; margin-top:10px; width:220px;')
+      br
+      button.btn.btn-primary#btn-case-detail-submit(type='submit', style='float:center; margin-top:10px; width:220px;' data-dismiss="modal") Submit Meeting

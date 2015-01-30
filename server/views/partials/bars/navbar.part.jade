@@ -1,0 +1,26 @@
+.row.bottomborder
+    .col-md-12.nopadding(style='font-size:14px;')
+      nav.navbar-default(role='navigation' style = 'background-color: #f8f8f8')
+        .container-fluid
+          // Brand and toggle get grouped for better mobile display
+          .navbar-header
+            button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a.navbar-brand(style='margin-top: -8px', href='/')
+              img(height='30px', -7px='', margin-top:='', width:='30px', src='/public/images/logo.png')
+          // Collect the nav links, forms, and other content for toggling
+          #bs-example-navbar-collapse-1.collapse.navbar-collapse
+            ul.nav.navbar-nav.navbar-right
+              li
+                a(href='/') HOME
+              li
+                a(href='/aboutus') ABOUT US
+              li
+                a(href='/subscription') SUBSCRIPTION
+              li
+                a(href='/contactus') CONTACT US
+              li
+                a(href='/logout') LOGOUT
