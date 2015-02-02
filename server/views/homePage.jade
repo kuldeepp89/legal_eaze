@@ -51,8 +51,7 @@ html(lang='en')
                 th
                   p.text-center
             tbody
-              if(allCases == 'no')
-                | You have no recent hearing or meeting
+
               if(allCases != undefined)
                 
                 input(type = 'hidden', id = 'allDates', value = allCases)
@@ -350,8 +349,13 @@ html(lang='en')
                           a(href = 'caseDetail/#{cases._id}')
                             button.btn.btn-warning.btn-xs(type='button' style = 'font-size: 12px; padding: 2px 6px') Detail  
                           a(href = 'delete/#{cases._id}' style = 'float: right')
-                            span.glyphicon.glyphicon-remove.deleteCase(type='button' style = 'font-size: 14px; padding: 2px 12px; color: grey; margin-left: 3px')           
+                            span.glyphicon.glyphicon-remove.deleteCase(type='button' style = 'font-size: 14px; padding: 2px 12px; color: grey; margin-left: 3px') 
+          div(style = 'margin-left: 25%; font-size: 11px')         
+            if(allCases == '')
+              | You have no recent hearing or meeting, please click add matter to add a new case/meeting.
+
   include calender.jade
+              
 // [endif]
   script(src='js/vendor/jquery-1.10.2.js', type='text/javascript')
 
@@ -437,8 +441,10 @@ html(lang='en')
       .modal-header
         button.close(type='button', data-dismiss='modal', aria-hidden='true') × 
         h4#myModalLabel.modal-title
-          | Add A Matter
+          | Add a Matter
       .modal-body
+        #scrapping-message(style = 'margin-left: 126px; font-size: 14px; display: none')
+          | Please wait while we are downloading data.......
       div#first-block-modal
         div#select-court-meeting
           center
@@ -483,16 +489,23 @@ html(lang='en')
 
 
       div#second-block-progress-bar
+        
         div.progress
           div.progress-bar.progress-bar-warning.progress-bar-striped#case-progress-bar(role='progressbar', aria-valuenow='5', aria-valuemin='0', aria-valuemax='100', style='width: 5%')
             span.sr-only 20% Complete (warning)
       include ./partials/finalcasedetailform.part.jade
       include ./partials/finalcompanylaw.part.jade
 
-      #error-show-block
-       | Connection Error: Please Try Again
-      #already-added(style="display:none")
-       | Error: You have already added this case.
+      #error-show-block(style="margin-left: 205px; font-size: 17px")
+       | No Record Found
+      #already-added(style="display:none; margin-left: 160px")
+        | You have already added this case.
+        br
+        |  please click 
+        a#get-already-added-details
+          | Here 
+        |  to see case details
+
       div#premium-member-block
           center
             button.btn.btn-warning#btn-add-premium-member(type='input',style=" vertical-align:middle; width:200px; display:none;")

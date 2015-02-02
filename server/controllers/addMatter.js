@@ -79,7 +79,9 @@ AddMatterCtl.postAddMatter = function(req, res){
                 return res.json({
                   'key': key,
                   'message': {
-                    'failed': 'you have already added this case'
+                    'failed': 'you have already added this case',
+                    'url': 'caseDetail'+'/'+ emailFound[0]._id
+
                   }
                 })  
               }  

@@ -199,9 +199,12 @@ Scrapper.delhiHighCourt = function(caseType, caseNumber, year, callback) {
                 //data.caseDate = caseDateDelhi;
               }
               else if(data.caseStatus === '[DISPOSED OFF]'){
-                data.caseDate =  $(this).text().split('\n')[3].split('on')[1];
-                console.log("Case date=="+ data.caseDate);
-                //data.caseDate = caseDateDelhi;
+                if($(this).text() != undefined && $(this).text().split('\n')[3] != undefined) {
+                  data.caseDate =  $(this).text().split('\n')[3].split('on')[1];
+                  console.log("Case date=="+ data.caseDate);
+                  //data.caseDate = caseDateDelhi;  
+                }
+                
               }
               
             }
@@ -457,14 +460,26 @@ Scrapper.telecomDispute = function(caseType, caseNumber, caseYear, searchDate, c
           //var link = $(this).find('tr').find('a').attr('href');
           $(this).find('tr').each(function(j,elem){
             //console.log($(this).text());
-            var txtRemCol = $(this).text().split('(')[1];
-            var tempDate1 = txtRemCol.split(')')[0].split('to')[0];
-            var tempDate2 = txtRemCol.split(')')[0].split('to')[1];
+            if($(this).text() != undefined) {
+              var txtRemCol = $(this).text().split('(')[1];  
+            }
+            
+            if(txtRemCol != undefined && txtRemCol.split(')')[0] != undefined) {
+              var tempDate1 = txtRemCol.split(')')[0].split('to')[0];  
+            }
+            if (txtRemCol != undefined && txtRemCol.split(')')[0]) {
+              var tempDate2 = txtRemCol.split(')')[0].split('to')[1];  
+            };
+            
 
             //console.log("date 1 = "+date1+" ::: date2 = "+date2);
-
-            var arrStartDate = tempDate1.split("/");
-            var date1 = new Date(arrStartDate[2], arrStartDate[1], arrStartDate[0]);
+            if(tempDate1 != undefined){
+              var arrStartDate = tempDate1.split("/");  
+            }
+            if(arrStartDate != undefined){
+              var date1 = new Date(arrStartDate[2], arrStartDate[1], arrStartDate[0]);  
+            }
+            
             if(tempDate2 != undefined) {
               var arrEndDate = tempDate2.split("/");  
             }

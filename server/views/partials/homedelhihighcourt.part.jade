@@ -1,173 +1,170 @@
 div#delhi-high-court-data-modal    
   .container-fluid
-    .row
-      h2 Delhi High Court
-    form(role='form' id='delhi-high-court-form', method='post', enctype='multipart/form-data')
-      input#csrf-token-delhi(type='hidden', name='_csrf', value='#{csrfToken}')
-      input(type='hidden', name='courtName', value='Delhi High Court')
-      .form-group
-        label.col-md-4(for='delhi-high-court-select')
-          | Case Type:
-        .col-md-8
-          select#delhi-high-court-select(size='1' name='caseType' class="selectpicker" )
-            option(value='') --Select Case Type--
-            option(value='APPEAL(ARB.)') APPEAL(ARB.) - [AARB]
-            option(value='ARB.P.') ARB.P. - [AA]
-            option(value='AW') AW - [AW]
-            option(value='BAIL APPLN.') BAIL APPLN. - [BAILA]
-            option(value='C.O.') C.O. - [XOBJ]
-            option(value='C.O.') C.O. - [CO]
-            option(value='C.R.P.') C.R.P. - [CR]
-            option(value='C.RULE') C.RULE - [CRULE]
-            option(value='CA') CA - [CAV]
-            option(value='CAVEAT(CO.)') CAVEAT(CO.) - [CAVE]
-            option(value='CCP(CO.)') CCP(CO.) - [CCPCO]
-            option(value='CCP(O)') CCP(O) - [CCPO]
-            option(value='CCP(REF)') CCP(REF) - [CCPRF]
-            option(value='CEAC') CEAC - [CEAC]
-            option(value='CEAR') CEAR - [CEAR]
-            option(value='CF') CF - [CF]
-            option(value='CHAT.A.C.') CHAT.A.C. - [CHAC]
-            option(value='CHAT.A.REF') CHAT.A.REF - [CHAR]
-            option(value='CM APPL.') CM APPL. - [CM2]
-            option(value='CM APPL.') CM APPL. - [CM1]
-            option(value='CM(M)') CM(M) - [CMM]
-            option(value='CMI') CMI - [CMI]
-            option(value='CO.A(SB)') CO.A(SB) - [CO.A]
-            option(value='CO.APP.') CO.APP. - [COA]
-            option(value='CO.APPL.') CO.APPL. - [CA]
-            option(value='CO.APPL.(C)') CO.APPL.(C) - [CA(C)]
-            option(value='CO.APPL.(M)') CO.APPL.(M) - [CA(M)]
-            option(value='CO.EX.') CO.EX. - [CO.EX]
-            option(value='CO.PET.') CO.PET. - [CP]
-            option(value='CONT.APP.(C)') CONT.APP.(C) - [CCA]
-            option(value='CONT.CAS(C)') CONT.CAS(C) - [CCP]
-            option(value='CONT.CAS.(CRL)') CONT.CAS.(CRL) - [CRLCP]
-            option(value='CRL.A.') CRL.A. - [CRLA]
-            option(value='CRL.C.REF.') CRL.C.REF. - [CRLCR]
-            option(value='CRL.L.P.') CRL.L.P. - [CRLMA]
-            option(value='CRL.M.(BAIL)') CRL.M.(BAIL) - [CRLMB]
-            option(value='CRL.M.(CO.)') CRL.M.(CO.) - [CRLMC]
-            option(value='CRL.M.A.') CRL.M.A. - [CRLM]
-            option(value='CRL.M.C.') CRL.M.C. - [CRLMM]
-            option(value='CRL.M.I.') CRL.M.I. - [CRLMI]
-            option(value='CRL.O.') CRL.O. - [CRLO]
-            option(value='CRL.O.(CO.)') CRL.O.(CO.) - [CRLOC]
-            option(value='CRL.REF.') CRL.REF. - [CRLRF]
-            option(value='CRL.REV.P.') CRL.REV.P. - [CRLR]
-            option(value='CS(OS)') CS(OS) - [S]
-            option(value='CUS.A.C.') CUS.A.C. - [CUSAC]
-            option(value='CUS.A.R.') CUS.A.R. - [CUSAR]
-            option(value='CUSTOM A.') CUSTOM A. - [CUSAA]
-            option(value='DEATH SENTENCE REF.') DEATH SENTENCE REF. - [MREF]
-            option(value='EDA') EDA - [EDA]
-            option(value='EDC') EDC - [EDC]
-            option(value='EDR') EDR - [EDR]
-            option(value='EFA(OS)') EFA(OS) - [EFAOS]
-            option(value='EL.PET.') EL.PET. - [EP]
-            option(value='ETR') ETR - [ETR]
-            option(value='EX.APPL.(OS)') EX.APPL.(OS) - [EA]
-            option(value='EX.F.A.') EX.F.A. - [EFA]
-            option(value='EX.P.') EX.P. - [EX]
-            option(value='EX.S.A.') EX.S.A. - [ESA]
-            option(value='FAO') FAO - [FAO]
-            option(value='FAO(OS)') FAO(OS) - [FAOOS]
-            option(value='GCAC') GCAC - [GCAC]
-            option(value='GCAR') GCAR - [GCAR]
-            option(value='GTA') GTA - [GTA]
-            option(value='GTC') GTC - [GTC]
-            option(value='GTR') GTR - [GTR]
-            option(value='I.A.') I.A. - [IA]
-            option(value='I.P.A.') I.P.A. - [IPA]
-            option(value='ITA') ITA - [ITA]
-            option(value='ITC') ITC - [ITC]
-            option(value='ITR') ITR - [ITR]
-            option(value='ITSA') ITSA - [ITSA]
-            option(value='LA.APP.') LA.APP. - [LAA]
-            option(value='LPA') LPA - [LPA]
-            option(value='MAC.APP.') MAC.APP. - [MACA]
-            option(value='MAT.') MAT. - [MAT]
-            option(value='MAT.APP.') MAT.APP. - [MATA]
-            option(value='MAT.CASE') MAT.CASE - [MATC]
-            option(value='MAT.REF.') MAT.REF. - [MATR]
-            option(value='NA') NA - [NA]
-            option(value='O.A.') O.A. - [OA]
-            option(value='O.M.P.') O.M.P. - [OMP]        
-            option(value='O.REF.') O.REF. - [CRF]
-            option(value='OBJ. IN SUIT') OBJ. IN SUIT - [OBJ]
-            option(value='OCJA') OCJA - [OCJA]
-            option(value='OD') OD - [OD]
-            option(value='OLR') OLR - [OLR]
-            option(value='R.A.') R.A. - [RA]
-            option(value='RC.REV.') RC.REV. - [RCR]
-            option(value='RC.S.A.') RC.S.A. - [SAO]
-            option(value='REVIEW PET.') REVIEW PET. - [RP]
-            option(value='RFA') RFA - [RFA]
-            option(value='RFA(OS)') RFA(OS) - [RFAOS]
-            option(value='RSA') RSA - [RSA]
-            option(value='SCA') SCA - [SCA]
-            option(value='SDR') SDR - [SDR]
-            option(value='ST.APPL.') ST.APPL. - [STC]
-            option(value='ST.REF.') ST.REF. - [STR]
-            option(value='SUR.T.REF.') SUR.T.REF. - [SRTR]
-            option(value='TEST.CAS.') TEST.CAS. - [PR]
-            option(value='TR.P.(C)') TR.P.(C) - [TRP]
-            option(value='TR.P.(C.)') TR.P.(C.) - [TPC]
-            option(value='TR.P.(CRL.)') TR.P.(CRL.) - [TPCRL]
-            option(value='W.P.(C)') W.P.(C) - [CW]
-            option(value='W.P.(CRL)') W.P.(CRL) - [CRLW]
-            option(value='WTA') WTA - [WTA]
-            option(value='WTC') WTC - [WTC]
-            option(value='WTR') WTR - [WTR]
-      .form-group
-        label.col-md-4(for='delhi-high-court-case-number')
-          | Case Number:
-        .col-md-8
-          input#delhi-high-court-case-number.form-control(type='text' name='caseNumber', placeholder='Case Number' style="width:220px;")
-          p.help-block
-      .form-group
-        label.col-md-4(for='delhi-high-court-case-year')
-          | Case Year:
-        .col-md-8
-          select#delhi-high-court-case-year(name='caseYear' class="selectpicker")
-            option(value='')  -- Year -- 
-            option(value='2014') 2014
-            option(value='2013') 2013
-            option(value='2012') 2012
-            option(value='2011') 2011
-            option(value='2010') 2010
-            option(value='2009') 2009
-            option(value='2008') 2008
-            option(value='2007') 2007
-            option(value='2006') 2006
-            option(value='2005') 2005
-            option(value='2004') 2004
-            option(value='2003') 2003
-            option(value='2002') 2002
-            option(value='2001') 2001
-            option(value='2000') 2000
-            option(value='1999') 1999  
-            option(value='1998') 1998 
-            option(value='1997') 1997 
-            option(value='1996') 1996 
-            option(value='1995') 1995 
-            option(value='1994') 1994 
-            option(value='1993') 1993 
-            option(value='1992') 1992 
-            option(value='1991') 1991 
-            option(value='1990') 1990 
-            option(value='1989') 1989 
-            option(value='1988') 1988 
-            option(value='1987') 1987 
-            option(value='1986') 1986 
-            option(value='1985') 1985 
-            option(value='1984') 1984 
-            option(value='1983') 1983 
-            option(value='1982') 1982 
-            option(value='1981') 1981 
-            option(value='1980') 1980 
-      .row
-        .col-md-4
-        .col-md-8
-          button.btn.btn-primary#btn-delhi-high-court-submit(type='button' style="margin-left:5px;")
-            | Submit
+    center(style="font-size:20px;")  
+        |   Delhi High Court
+        form(role='form' id='delhi-high-court-form', method='post', enctype='multipart/form-data')
+          input#csrf-token-delhi(type='hidden', name='_csrf', value='#{csrfToken}')
+          input(type='hidden', name='courtName', value='Delhi High Court')
+          .form-group
+            
+            .col-md-8(style = 'margin-left: 64px; margin-top: 10px')
+              select#delhi-high-court-select(size='1' name='caseType' class="selectpicker" )
+                option(value='') --Select Case Type--
+                option(value='APPEAL(ARB.)') APPEAL(ARB.) - [AARB]
+                option(value='ARB.P.') ARB.P. - [AA]
+                option(value='AW') AW - [AW]
+                option(value='BAIL APPLN.') BAIL APPLN. - [BAILA]
+                option(value='C.O.') C.O. - [XOBJ]
+                option(value='C.O.') C.O. - [CO]
+                option(value='C.R.P.') C.R.P. - [CR]
+                option(value='C.RULE') C.RULE - [CRULE]
+                option(value='CA') CA - [CAV]
+                option(value='CAVEAT(CO.)') CAVEAT(CO.) - [CAVE]
+                option(value='CCP(CO.)') CCP(CO.) - [CCPCO]
+                option(value='CCP(O)') CCP(O) - [CCPO]
+                option(value='CCP(REF)') CCP(REF) - [CCPRF]
+                option(value='CEAC') CEAC - [CEAC]
+                option(value='CEAR') CEAR - [CEAR]
+                option(value='CF') CF - [CF]
+                option(value='CHAT.A.C.') CHAT.A.C. - [CHAC]
+                option(value='CHAT.A.REF') CHAT.A.REF - [CHAR]
+                option(value='CM APPL.') CM APPL. - [CM2]
+                option(value='CM APPL.') CM APPL. - [CM1]
+                option(value='CM(M)') CM(M) - [CMM]
+                option(value='CMI') CMI - [CMI]
+                option(value='CO.A(SB)') CO.A(SB) - [CO.A]
+                option(value='CO.APP.') CO.APP. - [COA]
+                option(value='CO.APPL.') CO.APPL. - [CA]
+                option(value='CO.APPL.(C)') CO.APPL.(C) - [CA(C)]
+                option(value='CO.APPL.(M)') CO.APPL.(M) - [CA(M)]
+                option(value='CO.EX.') CO.EX. - [CO.EX]
+                option(value='CO.PET.') CO.PET. - [CP]
+                option(value='CONT.APP.(C)') CONT.APP.(C) - [CCA]
+                option(value='CONT.CAS(C)') CONT.CAS(C) - [CCP]
+                option(value='CONT.CAS.(CRL)') CONT.CAS.(CRL) - [CRLCP]
+                option(value='CRL.A.') CRL.A. - [CRLA]
+                option(value='CRL.C.REF.') CRL.C.REF. - [CRLCR]
+                option(value='CRL.L.P.') CRL.L.P. - [CRLMA]
+                option(value='CRL.M.(BAIL)') CRL.M.(BAIL) - [CRLMB]
+                option(value='CRL.M.(CO.)') CRL.M.(CO.) - [CRLMC]
+                option(value='CRL.M.A.') CRL.M.A. - [CRLM]
+                option(value='CRL.M.C.') CRL.M.C. - [CRLMM]
+                option(value='CRL.M.I.') CRL.M.I. - [CRLMI]
+                option(value='CRL.O.') CRL.O. - [CRLO]
+                option(value='CRL.O.(CO.)') CRL.O.(CO.) - [CRLOC]
+                option(value='CRL.REF.') CRL.REF. - [CRLRF]
+                option(value='CRL.REV.P.') CRL.REV.P. - [CRLR]
+                option(value='CS(OS)') CS(OS) - [S]
+                option(value='CUS.A.C.') CUS.A.C. - [CUSAC]
+                option(value='CUS.A.R.') CUS.A.R. - [CUSAR]
+                option(value='CUSTOM A.') CUSTOM A. - [CUSAA]
+                option(value='DEATH SENTENCE REF.') DEATH SENTENCE REF. - [MREF]
+                option(value='EDA') EDA - [EDA]
+                option(value='EDC') EDC - [EDC]
+                option(value='EDR') EDR - [EDR]
+                option(value='EFA(OS)') EFA(OS) - [EFAOS]
+                option(value='EL.PET.') EL.PET. - [EP]
+                option(value='ETR') ETR - [ETR]
+                option(value='EX.APPL.(OS)') EX.APPL.(OS) - [EA]
+                option(value='EX.F.A.') EX.F.A. - [EFA]
+                option(value='EX.P.') EX.P. - [EX]
+                option(value='EX.S.A.') EX.S.A. - [ESA]
+                option(value='FAO') FAO - [FAO]
+                option(value='FAO(OS)') FAO(OS) - [FAOOS]
+                option(value='GCAC') GCAC - [GCAC]
+                option(value='GCAR') GCAR - [GCAR]
+                option(value='GTA') GTA - [GTA]
+                option(value='GTC') GTC - [GTC]
+                option(value='GTR') GTR - [GTR]
+                option(value='I.A.') I.A. - [IA]
+                option(value='I.P.A.') I.P.A. - [IPA]
+                option(value='ITA') ITA - [ITA]
+                option(value='ITC') ITC - [ITC]
+                option(value='ITR') ITR - [ITR]
+                option(value='ITSA') ITSA - [ITSA]
+                option(value='LA.APP.') LA.APP. - [LAA]
+                option(value='LPA') LPA - [LPA]
+                option(value='MAC.APP.') MAC.APP. - [MACA]
+                option(value='MAT.') MAT. - [MAT]
+                option(value='MAT.APP.') MAT.APP. - [MATA]
+                option(value='MAT.CASE') MAT.CASE - [MATC]
+                option(value='MAT.REF.') MAT.REF. - [MATR]
+                option(value='NA') NA - [NA]
+                option(value='O.A.') O.A. - [OA]
+                option(value='O.M.P.') O.M.P. - [OMP]        
+                option(value='O.REF.') O.REF. - [CRF]
+                option(value='OBJ. IN SUIT') OBJ. IN SUIT - [OBJ]
+                option(value='OCJA') OCJA - [OCJA]
+                option(value='OD') OD - [OD]
+                option(value='OLR') OLR - [OLR]
+                option(value='R.A.') R.A. - [RA]
+                option(value='RC.REV.') RC.REV. - [RCR]
+                option(value='RC.S.A.') RC.S.A. - [SAO]
+                option(value='REVIEW PET.') REVIEW PET. - [RP]
+                option(value='RFA') RFA - [RFA]
+                option(value='RFA(OS)') RFA(OS) - [RFAOS]
+                option(value='RSA') RSA - [RSA]
+                option(value='SCA') SCA - [SCA]
+                option(value='SDR') SDR - [SDR]
+                option(value='ST.APPL.') ST.APPL. - [STC]
+                option(value='ST.REF.') ST.REF. - [STR]
+                option(value='SUR.T.REF.') SUR.T.REF. - [SRTR]
+                option(value='TEST.CAS.') TEST.CAS. - [PR]
+                option(value='TR.P.(C)') TR.P.(C) - [TRP]
+                option(value='TR.P.(C.)') TR.P.(C.) - [TPC]
+                option(value='TR.P.(CRL.)') TR.P.(CRL.) - [TPCRL]
+                option(value='W.P.(C)') W.P.(C) - [CW]
+                option(value='W.P.(CRL)') W.P.(CRL) - [CRLW]
+                option(value='WTA') WTA - [WTA]
+                option(value='WTC') WTC - [WTC]
+                option(value='WTR') WTR - [WTR]
+          .form-group
+            
+            .col-md-8(style = 'margin-left: 64px; margin-top: 15px')
+              input#delhi-high-court-case-number.form-control(type='text' name='caseNumber', placeholder='Case Number' style="width:200px;")
+              p.help-block
+          .form-group
+        
+            .col-md-8(style = 'margin-left: 64px; margin-top: 10px')
+              select#delhi-high-court-case-year(name='caseYear' class="selectpicker")
+                option(value='')  -- Select Year -- 
+                option(value='2014') 2014
+                option(value='2013') 2013
+                option(value='2012') 2012
+                option(value='2011') 2011
+                option(value='2010') 2010
+                option(value='2009') 2009
+                option(value='2008') 2008
+                option(value='2007') 2007
+                option(value='2006') 2006
+                option(value='2005') 2005
+                option(value='2004') 2004
+                option(value='2003') 2003
+                option(value='2002') 2002
+                option(value='2001') 2001
+                option(value='2000') 2000
+                option(value='1999') 1999  
+                option(value='1998') 1998 
+                option(value='1997') 1997 
+                option(value='1996') 1996 
+                option(value='1995') 1995 
+                option(value='1994') 1994 
+                option(value='1993') 1993 
+                option(value='1992') 1992 
+                option(value='1991') 1991 
+                option(value='1990') 1990 
+                option(value='1989') 1989 
+                option(value='1988') 1988 
+                option(value='1987') 1987 
+                option(value='1986') 1986 
+                option(value='1985') 1985 
+                option(value='1984') 1984 
+                option(value='1983') 1983 
+                option(value='1982') 1982 
+                option(value='1981') 1981 
+                option(value='1980') 1980 
+          .row
+            
+            .col-md-8
+              button.btn.btn-warning#btn-delhi-high-court-submit(type='button' style="margin-left:137px; margin-top: 10px")
+                | Submit

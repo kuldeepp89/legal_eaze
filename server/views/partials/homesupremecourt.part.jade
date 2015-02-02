@@ -1,11 +1,12 @@
 div#supreme-court
   div#supreme-court-modal-data    
     center(style="font-size:20px;") Supreme Court Of India
-      center
+      center(style="margin-top:20px;")
         form(id='upload-form', method='post', enctype="multipart/form-data" action = '/addMatter')
           input(type='hidden', id = 'csrf-token' name='_csrf', value='#{csrfToken}')
           input(type='hidden', name='courtName', value='Supreme Court of India')
-          select#supreme-court-case-type(size='1' name='caseType' class="selectpicker" data-size="250px" style='float:center; margin-top:10px;')
+          select#supreme-court-case-type(size='1' name='caseType' class="selectpicker" data-size="250px" style='float:center; margin-top:20px;')
+            option(value='')  Select
             option(value='1')  SLP (Civil) 
             option(value='2')  SLP (Criminal) 
             option(value='3')  Writ Petition (Civil) 
@@ -62,9 +63,9 @@ div#supreme-court
             option(value='59')  Curative Petition(Criminal)  D 
             option(value='61')  REF. U/A 317(1) D 
           br
-          input#case-number-supreme-court(type='text' name='caseNumber', placeholder='Case Number',class="form-control" style='float:center; margin-top:10px; width:220px;')
+          input#case-number-supreme-court(type='text' name='caseNumber', placeholder='Case Number',class="form-control" style='float:center; margin-top:20px; width:200px;margin-bottom: 0px')
           br
-          select#case-year-supreme-court(name='caseYear' class="selectpicker" data-size="250px" style='float:center; margin-top:10px;')
+          select#case-year-supreme-court(name='caseYear' class="selectpicker" data-size="250px" style='float:center; margin-top:20px;')
             option(value='')  -- Year -- 
             option(value='2014') 2014
             option(value='2013') 2013
@@ -103,4 +104,4 @@ div#supreme-court
             option(value='1980') 1980 
           br
           | &nbsp
-          button.btn.btn-primary#add-supreme-court-matter(type='button', style='float:center; margin-top:10px; width:220px;') Submit
+          button.btn.btn-warning#add-supreme-court-matter(type='button', style='float:center; margin-top:20px; width:212px;text-align: center') Submit

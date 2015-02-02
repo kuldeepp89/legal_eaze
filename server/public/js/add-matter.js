@@ -233,6 +233,7 @@ $('#scheduleMeeting').on('click', function(event){
   $('#first-block-modal').css('display', 'block');
   $('#select-court-meeting').css('display','block');
   $('#second-block-progress-bar').css('display','none');
+  $('#scrapping-message').css('display', 'none');
   $('#third-block-case-details').css('display','none');
 
   $('#bifr-court-modal-data').css('display','none');
@@ -263,6 +264,7 @@ $(".close").on('click', function(event){
   $('#first-block-modal').css('display', 'block');
   $('#select-court-meeting').css('display','block');
   $('#second-block-progress-bar').css('display','none');
+  $('#scrapping-message').css('display', 'none');
   $('#third-block-case-details').css('display','none');
 
   $('#bifr-court-modal-data').css('display','none');
@@ -314,6 +316,7 @@ $('#add-supreme-court-matter').on('click',function(event){
 
     var formData = {'_csrf':caseCsrf, 'courtName': courtName , 'caseType':caseType, 'caseNumber':caseNumber, 'caseYear': caseYear};  //Array
     $('#second-block-progress-bar').show();
+    $('#scrapping-message').show();
     $('#first-block-modal').hide();
     $('#third-block-case-details').hide();
     $('#case-progress-bar').css('width',  '10%');
@@ -350,6 +353,7 @@ $('#btn-delhi-high-court-submit').on('click',function(event){
     var percentage = 10;
     var formData = {'_csrf':caseCsrfD, 'courtName': courtName , 'caseType':caseType, 'caseNumber':caseNumber, 'caseYear': caseYear}; //Array
       $('#second-block-progress-bar').show();
+      $('#scrapping-message').show();
       $('#first-block-modal').hide();
       $('#case-progress-bar').css('width',  '10%');
       $('#case-progress-bar').html("10%");  
@@ -387,6 +391,7 @@ $('#btn-national-green-tribunal-submit').on('click',function(event){
 
     var formData = {'_csrf':caseCsrfNg, 'courtName': courtName , 'caseYear': caseDate, 'caseType':caseType, 'caseNumber':caseNumber};  //Array
     $('#second-block-progress-bar').show();
+    $('#scrapping-message').show();
     $('#first-block-modal').hide();
     $('#third-block-case-details').hide();
     $('#case-progress-bar').css('width',  '10%');
@@ -442,6 +447,7 @@ $('#btn-national-consumer-disputes-submit').on('click',function(event){
 var formData = {'_csrf':csrfNtConsDisp, 'courtName': courtName ,'userType': userType, 'stateCode':
                stateCode, 'stateCode_D':stateCode_D, 'distCode': distCode, 'caseNumber': caseNumber};  //Array
    $('#second-block-progress-bar').show();
+   $('#scrapping-message').show();
    $('#first-block-modal').hide();
    $('#third-block-case-details').hide();
    $('#case-progress-bar').css('width',  '10%');
@@ -490,6 +496,7 @@ $('#btn-telecom-dispute-submit').on('click',function(event){
 
     var formData = {'_csrf':csrfTelecom, 'courtName': courtName ,'caseType':caseType, 'caseNumber':caseNumber,'caseYear': caseYear,  'caseDate': caseDate};  //Array
     $('#second-block-progress-bar').show();
+    $('#scrapping-message').show();
     $('#first-block-modal').hide();
     $('#third-block-case-details').hide();
     $('#case-progress-bar').css('width',  '10%');
@@ -519,6 +526,7 @@ $('#btn-company-law-board-submit').on('click',function(event){
 
     var formData = {'_csrf':csrfClb, 'courtName': courtName ,'courtType':courtType, 'caseDate': caseDate};  //Array
     $('#second-block-progress-bar').show();
+    $('#scrapping-message').show();
     $('#first-block-modal').hide();
     $('#third-block-case-details').hide();
     $('#case-progress-bar').css('width',  '10%');
@@ -567,6 +575,7 @@ $('#add-bifr-court-matter').on('click',function(event){
     var percentage = 10;
     var formData = {'_csrf':csrfBifr, 'courtName': courtName ,'caseNumber': caseNumber, 'caseYear': caseYear};  //Array
     $('#second-block-progress-bar').show();
+    $('#scrapping-message').show();
     $('#first-block-modal').hide();
     $('#third-block-case-details').hide();
     $('#case-progress-bar').css('width',  '10%');
@@ -608,6 +617,7 @@ $('#btn-karkardooma-submit').on('click',function(event){
 
     var formData = {'_csrf':csrfKK, 'courtName': courtName , 'caseType': caseType, 'caseNumber': caseNumber, 'caseYear': caseYear, 'caseId': caseId};  //Array
     $('#second-block-progress-bar').show();
+    $('#scrapping-message').show();
     $('#first-block-modal').hide();
     $('#third-block-case-details').hide();
     $('#case-progress-bar').css('width',  '10%');
@@ -648,6 +658,7 @@ $('#btn-saket-submit').on('click',function(event){
     var percentage = 10;
     var formData = {'_csrf':csrfSaket, 'courtName': courtName , 'caseType': caseType, 'caseNumber': caseNumber, 'caseYear': caseYear, 'caseId': caseId};  //Array
     $('#second-block-progress-bar').show();
+    $('#scrapping-message').show();
     $('#first-block-modal').hide();
     $('#third-block-case-details').hide();
     $('#case-progress-bar').css('width',  '10%');

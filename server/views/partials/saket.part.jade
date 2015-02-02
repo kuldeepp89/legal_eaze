@@ -1,150 +1,148 @@
 div#saket-data-modal    
   .container-fluid
-    .col-md-offset-4
-      h2 District Court Saket
-    form(role='form' id='saket', method='post', enctype='multipart/form-data')
-      input#csrf-token-saket(type='hidden', name='_csrf', value='#{csrfToken}')
-      .form-group
-        .col-md-8.col-md-offset-4
-          select#saket-case-type(size='1', name='case_type' class="selectpicker")
-            option(selected='') SELECT CASE TYPE
-            option(value='20') CA(CRIMINAL APPEAL)
-            option(value='26') CBI(CBI)
-            option(value='50') CBI(Central Buearu of Investigation)
-            option(value='29') CC(CORRUPTION CASES)
-            option(value='41') Court Complaint(Court Complaint)
-            option(value='22') CR(CRIMINAL REVISION)
-            option(value='5') CR(COPY RIGHT)
-            option(value='21') Cr. Case(CRIMINAL CASE)
-            option(value='16') CS(CIVIL SUIT FOR CIVIL JUDGE)
-            option(value='17') CS(CIVIL SUIT FOR DJ & ADJ)
-            option(value='24') Ct. Cases(COMPLAINT CASES)
-            option(value='31') Dpt. Eq(DEPARTMENTAL ENQUIRY)
-            option(value='30') Dpt.Eq(DEPARTMENTAL ENQUIRY)
-            option(value='42') ESIC(Employee State Insurance Act)
-            option(value='39') EX(EXECUTION)
-            option(value='38') EX(EXECUTION)
-            option(value='45') GP(GUARDIAN CASES)
-            option(value='15') Hindu Adp.(HINDU ADOPTATION & MAINT. ACT)
-            option(value='1') HMA(HINDU MARRIAGE ACT)
-            option(value='4') HTA(HOUSE TAX APPEAL)
-            option(value='40') Insolvency(Insolvency Case)
-            option(value='11') ITA(INDUSTRIAL TRIBUNAL)
-            option(value='2') LAC(LAND ACQ. ACT)
-            option(value='10') LC(LABOUR COURT)
-            option(value='52') LCA(Labour Court Application)
-            option(value='19') LIR(LABOUR/IND. TRIBUNAL REFERENCE MATTER)
-            option(value='35') M(MISC. CASES FOR CJ)
-            option(value='36') M(MISC. CASES)
-            option(value='33') M(MISC. CASES FOR DJ & ADJ)
-            option(value='54') M-Ex(Misc. Execution)
-            option(value='37') MACT(MACT)
-            option(value='12') MACT(M.A.C.T.)
-            option(value='25') MC(MAHILA COURT)
-            option(value='34') MCA(MISC. CIVIL APPEAL FOR CJ)
-            option(value='32') MCA(MISC. CIVIL APPEAL FOR DJ & ADJ)
-            option(value='47') MGP(Misc. Guardianship cases)
-            option(value='46') MHA(MENTAL HEALTH CASES)
-            option(value='14') ML(MUSLIM LAW & DELHI WAKF BOARD)
-            option(value='48') MPC(Misc.Probate cases)
-            option(value='53') OP(Approval)
-            option(value='7') PC(PROBATE/LETTER OF ADMIN)
-            option(value='3') PPA(PUBLIC PREMISES ACT)
-            option(value='8') RC/ARC(RENT CONTROLlER/ADDL. R.C.)
-            option(value='28') RCA(REGULAR CIVIL APPEAL FOR DJ & ADJ)
-            option(value='27') RCA(REGULAR CIVIL APPEAL FOR CJ)
-            option(value='9') RCT/ARCT(RENT CONTROL TRIBUNAL/ADDL. R.C.T)
-            option(value='51') REC. CASES(RECEIVERSHIP CASES)
-            option(value='43') RTI appeal(Right to Information Act appeal)
-            option(value='18') S. Cause(SMALL CAUSE COURT)
-            option(value='23') SC(SESSIONS CASE)
-            option(value='13') Succ. Court(SUCCESSION COURT)
-            option(value='49') TA(Trust Act cases)
-            option(value='44') TC(TRAFFIC CHALLAN)
-            option(value='6') TM(TRADE MARKS)
-
+    center(style="font-size:20px;")  District Court Saket
+      form(role='form' id='saket', method='post', enctype='multipart/form-data')
+        input#csrf-token-saket(type='hidden', name='_csrf', value='#{csrfToken}')
         .form-group
-          .col-md-offset-4(style = 'width: 200px; margin-left: 204px')
+          .col-md-8(style = 'margin-top: 10px; margin-left: 97px')
+            select#saket-case-type(size='1', name='case_type' class="selectpicker")
+              option(selected='') SELECT CASE TYPE
+              option(value='20') CA(CRIMINAL APPEAL)
+              option(value='26') CBI(CBI)
+              option(value='50') CBI(Central Buearu of Investigation)
+              option(value='29') CC(CORRUPTION CASES)
+              option(value='41') Court Complaint(Court Complaint)
+              option(value='22') CR(CRIMINAL REVISION)
+              option(value='5') CR(COPY RIGHT)
+              option(value='21') Cr. Case(CRIMINAL CASE)
+              option(value='16') CS(CIVIL SUIT FOR CIVIL JUDGE)
+              option(value='17') CS(CIVIL SUIT FOR DJ & ADJ)
+              option(value='24') Ct. Cases(COMPLAINT CASES)
+              option(value='31') Dpt. Eq(DEPARTMENTAL ENQUIRY)
+              option(value='30') Dpt.Eq(DEPARTMENTAL ENQUIRY)
+              option(value='42') ESIC(Employee State Insurance Act)
+              option(value='39') EX(EXECUTION)
+              option(value='38') EX(EXECUTION)
+              option(value='45') GP(GUARDIAN CASES)
+              option(value='15') Hindu Adp.(HINDU ADOPTATION & MAINT. ACT)
+              option(value='1') HMA(HINDU MARRIAGE ACT)
+              option(value='4') HTA(HOUSE TAX APPEAL)
+              option(value='40') Insolvency(Insolvency Case)
+              option(value='11') ITA(INDUSTRIAL TRIBUNAL)
+              option(value='2') LAC(LAND ACQ. ACT)
+              option(value='10') LC(LABOUR COURT)
+              option(value='52') LCA(Labour Court Application)
+              option(value='19') LIR(LABOUR/IND. TRIBUNAL REFERENCE MATTER)
+              option(value='35') M(MISC. CASES FOR CJ)
+              option(value='36') M(MISC. CASES)
+              option(value='33') M(MISC. CASES FOR DJ & ADJ)
+              option(value='54') M-Ex(Misc. Execution)
+              option(value='37') MACT(MACT)
+              option(value='12') MACT(M.A.C.T.)
+              option(value='25') MC(MAHILA COURT)
+              option(value='34') MCA(MISC. CIVIL APPEAL FOR CJ)
+              option(value='32') MCA(MISC. CIVIL APPEAL FOR DJ & ADJ)
+              option(value='47') MGP(Misc. Guardianship cases)
+              option(value='46') MHA(MENTAL HEALTH CASES)
+              option(value='14') ML(MUSLIM LAW & DELHI WAKF BOARD)
+              option(value='48') MPC(Misc.Probate cases)
+              option(value='53') OP(Approval)
+              option(value='7') PC(PROBATE/LETTER OF ADMIN)
+              option(value='3') PPA(PUBLIC PREMISES ACT)
+              option(value='8') RC/ARC(RENT CONTROLlER/ADDL. R.C.)
+              option(value='28') RCA(REGULAR CIVIL APPEAL FOR DJ & ADJ)
+              option(value='27') RCA(REGULAR CIVIL APPEAL FOR CJ)
+              option(value='9') RCT/ARCT(RENT CONTROL TRIBUNAL/ADDL. R.C.T)
+              option(value='51') REC. CASES(RECEIVERSHIP CASES)
+              option(value='43') RTI appeal(Right to Information Act appeal)
+              option(value='18') S. Cause(SMALL CAUSE COURT)
+              option(value='23') SC(SESSIONS CASE)
+              option(value='13') Succ. Court(SUCCESSION COURT)
+              option(value='49') TA(Trust Act cases)
+              option(value='44') TC(TRAFFIC CHALLAN)
+              option(value='6') TM(TRADE MARKS)
+
+        
+          .col-md-8(style = 'width: 230px; margin-left: 170px; margin-top: 10px')
             input#saket-case-number.form-control(type='text', name='caseNumber', placeholder="Case Number")
 
-        .form-group
-          .col-md-8.col-md-offset-4
-            select#saket-case-year(name='c_year', size='1', class="selectpicker")
-              option(value='')  Select Year 
-              option(value='2014')  2014 
-              option(value='2013')  2013 
-              option(value='2012')  2012 
-              option(value='2011')  2011 
-              option(value='2010')  2010 
-              option(value='2009')  2009 
-              option(value='2008')  2008 
-              option(value='2007')  2007 
-              option(value='2006')  2006 
-              option(value='2005')  2005 
-              option(value='2004')  2004 
-              option(value='2003')  2003 
-              option(value='2002')  2002 
-              option(value='2001')  2001 
-              option(value='2000')  2000 
-              option(value='1999')  1999 
-              option(value='1998')  1998 
-              option(value='1997')  1997 
-              option(value='1996')  1996 
-              option(value='1995')  1995 
-              option(value='1994')  1994 
-              option(value='1993')  1993 
-              option(value='1992')  1992 
-              option(value='1991')  1991 
-              option(value='1990')  1990 
-              option(value='1989')  1989 
-              option(value='1988')  1988 
-              option(value='1987')  1987 
-              option(value='1986')  1986 
-              option(value='1985')  1985 
-              option(value='1984')  1984 
-              option(value='1983')  1983 
-              option(value='1982')  1982 
-              option(value='1981')  1981 
-              option(value='1980')  1980 
-              option(value='1979')  1979 
-              option(value='1978')  1978 
-              option(value='1977')  1977 
-              option(value='1976')  1976 
-              option(value='1975')  1975 
-              option(value='1974')  1974 
-              option(value='1973')  1973 
-              option(value='1972')  1972 
-              option(value='1971')  1971 
-              option(value='1970')  1970 
-              option(value='1969')  1969 
-              option(value='1968')  1968 
-              option(value='1967')  1967 
-              option(value='1966')  1966 
-              option(value='1965')  1965 
-              option(value='1964')  1964 
-              option(value='1963')  1963 
-              option(value='1962')  1962 
-              option(value='1961')  1961 
-              option(value='1960')  1960 
-              option(value='1959')  1959 
-              option(value='1958')  1958 
-              option(value='1957')  1957 
-              option(value='1956')  1956 
-              option(value='1955')  1955 
-              option(value='1954')  1954 
-              option(value='1953')  1953 
-              option(value='1952')  1952 
-              option(value='1951')  1951 
-              option(value='1950')  1950 
+        
+        .col-md-8(style = ' margin-left: 97px;')
+          select#saket-case-year(name='c_year', size='1', class="selectpicker")
+            option(value='')  Select Year 
+            option(value='2014')  2014 
+            option(value='2013')  2013 
+            option(value='2012')  2012 
+            option(value='2011')  2011 
+            option(value='2010')  2010 
+            option(value='2009')  2009 
+            option(value='2008')  2008 
+            option(value='2007')  2007 
+            option(value='2006')  2006 
+            option(value='2005')  2005 
+            option(value='2004')  2004 
+            option(value='2003')  2003 
+            option(value='2002')  2002 
+            option(value='2001')  2001 
+            option(value='2000')  2000 
+            option(value='1999')  1999 
+            option(value='1998')  1998 
+            option(value='1997')  1997 
+            option(value='1996')  1996 
+            option(value='1995')  1995 
+            option(value='1994')  1994 
+            option(value='1993')  1993 
+            option(value='1992')  1992 
+            option(value='1991')  1991 
+            option(value='1990')  1990 
+            option(value='1989')  1989 
+            option(value='1988')  1988 
+            option(value='1987')  1987 
+            option(value='1986')  1986 
+            option(value='1985')  1985 
+            option(value='1984')  1984 
+            option(value='1983')  1983 
+            option(value='1982')  1982 
+            option(value='1981')  1981 
+            option(value='1980')  1980 
+            option(value='1979')  1979 
+            option(value='1978')  1978 
+            option(value='1977')  1977 
+            option(value='1976')  1976 
+            option(value='1975')  1975 
+            option(value='1974')  1974 
+            option(value='1973')  1973 
+            option(value='1972')  1972 
+            option(value='1971')  1971 
+            option(value='1970')  1970 
+            option(value='1969')  1969 
+            option(value='1968')  1968 
+            option(value='1967')  1967 
+            option(value='1966')  1966 
+            option(value='1965')  1965 
+            option(value='1964')  1964 
+            option(value='1963')  1963 
+            option(value='1962')  1962 
+            option(value='1961')  1961 
+            option(value='1960')  1960 
+            option(value='1959')  1959 
+            option(value='1958')  1958 
+            option(value='1957')  1957 
+            option(value='1956')  1956 
+            option(value='1955')  1955 
+            option(value='1954')  1954 
+            option(value='1953')  1953 
+            option(value='1952')  1952 
+            option(value='1951')  1951 
+            option(value='1950')  1950 
 
-          .form-group
-            .col-md-offset-4(style = 'width: 200px; margin-left: 204px')
-              input#saket-case-id.form-control(type='text', name='caseId', placeholder="Case Id")
+            
+        .col-md-8(style = 'width: 230px; margin-left: 170px; margin-top: 10px')
+          input#saket-case-id.form-control(type='text', name='caseId', placeholder="Case Id")
 
         br
-        br
-        .col-md-8.col-md-offset-4(style = ' margin-left: 250px')
-          button.btn.btn-primary#btn-saket-submit(type='button' style="margin-left:5px;")
+        .col-md-8(style = ' margin-left: 92px')
+          button.btn.btn-warning#btn-saket-submit(type='button' style="margin-left:5px;")
             | Submit
 
 

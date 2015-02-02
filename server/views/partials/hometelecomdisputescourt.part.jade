@@ -1,60 +1,57 @@
 div#telecom-dispute-data-modal  
   .container-fluid
-    .row
-      h2 Telecom Disputes
-    form(role='form' id='telecom-dispute-form', method='post', enctype='multipart/form-data')
-      input#csrf-token-telecom-dispute(type='hidden', name='_csrf', value='#{csrfToken}')
-      input#telecom-dispute-courtname(type='hidden', name='courtName', value='Telecom Disputes')
-      .form-group
-        label.col-md-4(for='telecom-dispute-case-type')
-          | Case Type:
-        .col-md-8
-          select#telecom-dispute-case-type(size='1' name='caseType' class="selectpicker" )
-            option(value='') --Select Case Type--
-            option(value='Petition No.') Petition No.
-            option(value='Appeal No.') Appeal No.
-            option(value='M.A No.') M.A. No.
-            option(value='E.A No.') E.A. No.     
-      .form-group
-        label.col-md-4(for='telecom-dispute-case-number')
-          | Case Number:
-        .col-md-8
-          input#telecom-dispute-case-number.form-control(type='text', name='caseNumber' placeholder="Case Number" style='width:220px;')
-          p.help-block
+    center(style="font-size:20px;") National Telecom Disputes
+      form(role='form' id='telecom-dispute-form', method='post', enctype='multipart/form-data')
+        input#csrf-token-telecom-dispute(type='hidden', name='_csrf', value='#{csrfToken}')
+        input#telecom-dispute-courtname(type='hidden', name='courtName', value='Telecom Disputes')
+        .form-group
+          
+          .col-md-8(style= 'margin-left: 65px')
+            select#telecom-dispute-case-type.form-control(size='1' name='caseType' class="selectpicker" )
+              option(value='') --Select Case Type--
+              option(value='Petition No.') Petition No.
+              option(value='Appeal No.') Appeal No.
+              option(value='M.A No.') M.A. No.
+              option(value='E.A No.') E.A. No.     
+        .form-group
+          
+          .col-md-8(style= 'margin-left: 65px; margin-top: 10px')
+            select#telecom-dispute-case-year.form-control(name='caseYear' class="selectpicker")
+              option(value='')  -- Year -- 
+              option(value='2014') 2014
+              option(value='2013') 2013
+              option(value='2012') 2012
+              option(value='2011') 2011
+              option(value='2010') 2010
+              option(value='2009') 2009
+              option(value='2008') 2008
+              option(value='2007') 2007
+              option(value='2006') 2006
+              option(value='2005') 2005
+              option(value='2004') 2004
+              option(value='2003') 2003
+              option(value='2002') 2002
+              option(value='2001') 2001
+              option(value='2000') 2000
+        .form-group
+          
+          .col-md-8(style= 'margin-left: 65px; margin-top: 10px')
+            input#telecom-dispute-case-number.form-control(type='text', name='caseNumber' placeholder="Case Number")
+            p.help-block
 
-      .form-group
-        label.col-md-4(for='telecom-dispute-case-year')
-          | Case Year:
-        .col-md-8
-          select#telecom-dispute-case-year(name='caseYear' class="selectpicker")
-            option(value='')  -- Year -- 
-            option(value='2014') 2014
-            option(value='2013') 2013
-            option(value='2012') 2012
-            option(value='2011') 2011
-            option(value='2010') 2010
-            option(value='2009') 2009
-            option(value='2008') 2008
-            option(value='2007') 2007
-            option(value='2006') 2006
-            option(value='2005') 2005
-            option(value='2004') 2004
-            option(value='2003') 2003
-            option(value='2002') 2002
-            option(value='2001') 2001
-            option(value='2000') 2000
+        
 
-      .form-group
-        label.col-md-4(for='telecom-dispute-date')
-         | Case Date:
-        .col-md-8
-            input#telecom-dispute-date.form-control(type='text', name='caseDate', placeholder="DD/MM/YYYY")
-          p.help-block
-        .row
-        .col-md-4
-        .col-md-8
-          button.btn.btn-primary#btn-telecom-dispute-submit(type='button')
-            | Submit
+        .form-group
+          
+          .col-md-8(style= 'margin-left: 65px;margin-top: 10px')
+              input#telecom-dispute-date.form-control(type='text', name='caseDate', placeholder="case date e.g.DD/MM/YYYY")
+            p.help-block
+          
+
+          
+          .col-md-8(style= 'margin-left: 65px;margin-top: 10px')
+            button.btn.btn-warning#btn-telecom-dispute-submit(type='button')
+              | Submit
 
 
 

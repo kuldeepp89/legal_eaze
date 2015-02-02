@@ -1,30 +1,55 @@
-div#third-block-case-details
-  center(style="font-size:20px;")
-    | Add case details
-  center
-    form(id='upload-form', method='post', enctype="multipart/form-data" action = '/submitMatter')
-      input(type='hidden', name='_csrf', value='#{csrfToken}')
-      br
-      input#new-case-time(type='text', name='hearingDate', placeholder="HearingDate" class="form-control" style='float:center; margin-top:10px; width:220px;')
-      br
-      input#new-case-location(type='text', name='courtName', placeholder="Court Name" class="form-control" style='float:center; margin-top:10px; width:220px;')
-      br
-      input#new-case-year(type='text', name='caseYear', placeholder="Case Year" class="form-control" style='float:center; margin-top:10px; width:220px;')
-      br
-      input#new-case-type(type='text', name='caseType', placeholder="Case Type" class="form-control" style='float:center; margin-top:10px; width:220px;')
-      br
-      input#new-case-status(type='text', name='caseStatus', placeholder="Case Status" class="form-control" style='float:center; margin-top:10px; width:220px;')
-      input#new-case-date(type='text', name='caseDate', placeholder="Case Date" class="form-control" style='float:center; margin-top:10px; width:220px;')
-      br
-      input#new-case-number(type='text', name='caseNumber', placeholder="Case Number" class="form-control" style='float:center; margin-top:10px; width:220px;')
-      br  
-      input#new-case-brief(type='text', name='caseBrief', placeholder="Case Breif" class="form-control" style='float:center; margin-top:10px; width:220px;')
-      br
-      input#new-case-orderDate(type='text', name='orderDate', placeholder="Case Order Date" class="form-control" style='float:center; margin-top:10px; width:220px;')
-      
-      input#case-id-number(type='hidden', name='caseId', placeholder="case id number" class="form-control" style='float:center; margin-top:10px; width:220px;')
-      br
+div#third-block-case-details(style = 'margin-left: 97px; margin-right: 0px')
+  div(style="font-size:20px;margin-left: 90px")
+    | Your Case Details
+  
+  form(id='upload-form', method='post', enctype="multipart/form-data" action = '/submitMatter')
+    input(type='hidden', name='_csrf', value='#{csrfToken}')
 
-      button.btn.btn-primary#add-supreme-court-matter(type='submit', style='float:center; margin-top:10px; width:220px;') Submit
+    .col-md-4#new-case-time-label(style = 'margin-top:7px;')
+      | Hearing Date
+    input#new-case-time(type='text', name='hearingDate', placeholder="HearingDate" class="form-control" style='float:center; margin-top:14px; width:200px;')
+
+    .col-md-4#new-case-location-label(style = 'margin-top:7px;')
+      | Court Name
+    input#new-case-location(type='text', name='courtName', placeholder="Court Name" class="form-control" style='float:center; margin-top:7px; width:200px;')
+
+    .col-md-4#new-case-year-label(style = 'margin-top:7px;')
+      | Case Year
+    input#new-case-year(type='text', name='caseYear', placeholder="Case Year" class="form-control" style='float:center; margin-top:7px; width:200px;')
+
+
+    .col-md-4#new-case-type-label(style = 'margin-top:7px;')
+      | Case Type
+    input#new-case-type(type='text', name='caseType', placeholder="Case Type" class="form-control" style='float:center; margin-top:7px; width:200px;')
+
+  
+    .col-md-4#new-case-status-label(style = 'margin-top:7px;')
+      | Case Status
+    input#new-case-status(type='text', name='caseStatus', placeholder="Case Status" class="form-control" style='float:center; margin-top:7px; width:200px;')
+
+    .col-md-4#new-case-date-label(style = 'margin-top:7px;')
+      | Case Date
+   
+    input#new-case-date(type='text', name='caseDate', placeholder="Case Date" class="form-control" style='float:center; margin-top:7px; width:200px;')
+
+  
+    .col-md-4#new-case-number-label(style = 'margin-top:7px;')
+      | Case Number
+    input#new-case-number(type='text', name='caseNumber', placeholder="Case Number" class="form-control" style='float:center; margin-top:7px; width:200px;')
 
     
+    .col-md-4#new-case-brief-label(style = 'margin-top:7px;')
+      | Case Brief
+    textarea#new-case-brief(type='text', name='caseBrief', placeholder="Case Breif" class="form-control" style='float:center; margin-top:7px; width:200px;' cols: 30, rows: 12)
+
+    .col-md-4#new-case-order-date-label(style = 'margin-top:7px;')
+      | Case Order Date
+    input#new-case-orderDate(type='text', name='orderDate', placeholder="Case Order Date" class="form-control" style='float:center; margin-top:7px; width:200px;')
+
+    .col-md-4#case-id-number-label(style = 'margin-top:7px;')
+      | Case ID Number
+    input#case-id-number(type='hidden', name='caseId', placeholder="case id number" class="form-control" style='float:center; margin-top:7px; width:200px;')
+
+    
+    button.btn.btn-warning#add-supreme-court-matter(type='submit', style='float:center; margin-top:7px; width:250px;margin-left: 57px') Add this case to your Dashboard
+ 
