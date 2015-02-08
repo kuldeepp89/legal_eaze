@@ -65,10 +65,10 @@ html(lang='en')
               form(role='form' method = 'post' action = '/login')
                 #login-form.form-group
                   input(type='hidden', name='_csrf', value='#{csrfToken}')
-                  input#email.form-control(type='email',name = 'email', placeholder='USERNAME', style='font-size:12px; font-weight:bold; color:#F7AB2E; background:black; text-align:center')
+                  input#email.form-control(type='email',name = 'email', placeholder='EMAIL', style='font-size:12px; font-weight:bold; color:#F7AB2E; background:black; text-align:center')
                 .form-group
                   input#pwd.form-control(type='password',name = 'password', placeholder='PASSWORD', style='font-size:12px; font-weight:bold; color:#F7AB2E;  background:black; text-align:center; margin-top:-8px')
-                button.btn.btn-default.btn-block(style='font-size:12px; color:#F7AB2E; margin-top:-7px', type='submit') LOGIN
+                button.btn.btn-default.btn-block(style='font-size:12px; color:#F7AB2E; margin-top:-7px;border-radius: 0px;margin-left:0px;text-align: center', type='submit') LOGIN
                 #inside-inside-column1.row
                   .col-md-5
                     a(href = '/register')
