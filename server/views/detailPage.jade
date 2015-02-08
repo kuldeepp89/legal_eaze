@@ -27,7 +27,7 @@ html(lang='en')
                       b 
                         | Meeting Date: 
                       |   #{userCaseDetail[0].userHearingDate[(userCaseDetail[0].userHearingDate).length-1].hearingDate.toString().split('00')[0]}
-                      button.btn.btn-warning.btn-xs(style='font-size: 13px; padding: 2px 20px; margin-bottom:10px; border-radius: 0px', type='button', data-target='#EditDateDetail', data-toggle='modal') EDIT 
+                      button.btn.btn-warning.btn-xs(style='font-size: 13px; margin-bottom:10px; border-radius: 0px', type='button', data-target='#EditDateDetail', data-toggle='modal') EDIT 
                 else if(userCaseDetail[0].supremeCourt != undefined)
                   h5(style='text-align:left; color: grey')
                     b
@@ -45,12 +45,14 @@ html(lang='en')
                       b 
                         | Scrapper Hearing Date:   
                       | #{userCaseDetail[0].supremeCourt.scrapperHearingDate[0].hearingDate.toString().split('00')[0]}
+                      if(!(userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1]))
+                        button#add-matter.btn.btn-warning.btn-xs(style='font-size: 13px; margin-bottom:10px; border-radius: 0px', type='button', data-target='#EditDateDetail', data-toggle='modal') EDIT
                     if(userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1])
                       h5(style='text-align:left; margin-top:20px; color: grey') 
                         b
                           | User Hearing Date: 
                         | #{userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1].hearingDate.toString().split('00')[0]}
-                        button#add-matter.btn.btn-warning.btn-xs(style='font-size: 13px; padding: 2px 20px; margin-bottom:10px; border-radius: 0px', type='button', data-target='#EditDateDetail', data-toggle='modal') EDIT 
+                        button#add-matter.btn.btn-warning.btn-xs(style='font-size: 13px; margin-bottom:10px; border-radius: 0px', type='button', data-target='#EditDateDetail', data-toggle='modal') EDIT 
                 else if(userCaseDetail[0].delhiHighCourt != undefined)
                   h5(style='text-align:left; color: grey')
                     b
@@ -68,12 +70,14 @@ html(lang='en')
                       b 
                         | Scrapper Hearing Date:   
                       | #{userCaseDetail[0].delhiHighCourt.scrapperHearingDate[0].hearingDate.toString().split('00')[0]}
+                      if(!(userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1]))
+                        button#add-matter.btn.btn-warning.btn-xs(style='font-size: 13px; margin-bottom:10px; border-radius: 0px', type='button', data-target='#EditDateDetail', data-toggle='modal') EDIT
                     if(userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1])
                       h5(style='text-align:left; margin-top:20px; color: grey') 
                         b
                           | User Hearing Date: 
                         | #{userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1].hearingDate.toString().split('00')[0]}
-                        button#add-matter.btn.btn-warning.btn-xs(style='font-size: 13px; padding: 2px 20px; margin-bottom:10px; border-radius: 0px', type='button', data-target='#EditDateDetail', data-toggle='modal') EDIT 
+                        button#add-matter.btn.btn-warning.btn-xs(style='font-size: 13px; margin-bottom:10px; border-radius: 0px', type='button', data-target='#EditDateDetail', data-toggle='modal') EDIT 
                 else if(userCaseDetail[0].greenTribunal != undefined)
                   h5(style='text-align:left; color: grey')
                     b
@@ -91,12 +95,14 @@ html(lang='en')
                       b 
                         | Scrapper Hearing Date:   
                       | #{userCaseDetail[0].greenTribunal.scrapperHearingDate[0].hearingDate.toString().split('00')[0]}
+                      if(!(userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1]))
+                        button#add-matter.btn.btn-warning.btn-xs(style='font-size: 13px; margin-bottom:10px; border-radius: 0px', type='button', data-target='#EditDateDetail', data-toggle='modal') EDIT
                     if(userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1])
                       h5(style='text-align:left; margin-top:20px; color: grey') 
                         b
                           | User Hearing Date: 
                         | #{userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1].hearingDate.toString().split('00')[0]}
-                        button#add-matter.btn.btn-warning.btn-xs(style='font-size: 13px; padding: 2px 20px; margin-bottom:10px; border-radius: 0px', type='button', data-target='#EditDateDetail', data-toggle='modal') EDIT 
+                        button#add-matter.btn.btn-warning.btn-xs(style='font-size: 13px; margin-bottom:10px; border-radius: 0px', type='button', data-target='#EditDateDetail', data-toggle='modal') EDIT 
                 else if(userCaseDetail[0].telecomDispute != undefined)
                   h5(style='text-align:left; color: grey')
                     b
@@ -114,12 +120,14 @@ html(lang='en')
                       b 
                         | Scrapper Hearing Date:   
                       | #{userCaseDetail[0].telecomDispute.scrapperHearingDate[0].hearingDate.toString().split('00')[0]}
+                      if(!(userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1]))
+                        button#add-matter.btn.btn-warning.btn-xs(style='font-size: 13px; margin-bottom:10px; border-radius: 0px', type='button', data-target='#EditDateDetail', data-toggle='modal') EDIT
                     if(userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1])
                       h5(style='text-align:left; margin-top:20px; color: grey') 
                         b
                           | User Hearing Date: 
                         | #{userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1].hearingDate.toString().split('00')[0]}
-                        button#add-matter.btn.btn-warning.btn-xs(style='font-size: 13px; padding: 2px 20px; margin-bottom:10px; border-radius: 0px', type='button', data-target='#EditDateDetail', data-toggle='modal') EDIT 
+                        button#add-matter.btn.btn-warning.btn-xs(style='font-size: 13px; margin-bottom:10px; border-radius: 0px', type='button', data-target='#EditDateDetail', data-toggle='modal') EDIT 
                 else if(userCaseDetail[0].consumerDispute != undefined)
                   h5(style='text-align:left; color: grey')
                     b
@@ -137,12 +145,14 @@ html(lang='en')
                       b 
                         | Scrapper Hearing Date:   
                       | #{userCaseDetail[0].consumerDispute.scrapperHearingDate[0].hearingDate.toString().split('00')[0]}
+                      if(!(userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1]))
+                        button#add-matter.btn.btn-warning.btn-xs(style='font-size: 13px; margin-bottom:10px; border-radius: 0px', type='button', data-target='#EditDateDetail', data-toggle='modal') EDIT
                     if(userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1])
                       h5(style='text-align:left; margin-top:20px; color: grey') 
                         b
                           | User Hearing Date: 
                         | #{userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1].hearingDate.toString().split('00')[0]}
-                        button#add-matter.btn.btn-warning.btn-xs(style='font-size: 13px; padding: 2px 20px; margin-bottom:10px; border-radius: 0px', type='button', data-target='#EditDateDetail', data-toggle='modal') EDIT 
+                        button#add-matter.btn.btn-warning.btn-xs(style='font-size: 13px; margin-bottom:10px; border-radius: 0px', type='button', data-target='#EditDateDetail', data-toggle='modal') EDIT 
                 else if(userCaseDetail[0].bifrCourt != undefined)
                   h5(style='text-align:left; color: grey')
                     b
@@ -160,12 +170,14 @@ html(lang='en')
                       b 
                         | Scrapper Hearing Date:   
                       | #{userCaseDetail[0].bifrCourt.scrapperHearingDate[0].hearingDate.toString().split('00')[0]}
+                      if(!(userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1]))
+                        button#add-matter.btn.btn-warning.btn-xs(style='font-size: 13px; margin-bottom:10px; border-radius: 0px', type='button', data-target='#EditDateDetail', data-toggle='modal') EDIT
                     if(userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1])
                       h5(style='text-align:left; margin-top:20px; color: grey') 
                         b
                           | User Hearing Date: 
                         | #{userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1].hearingDate.toString().split('00')[0]}
-                        button#add-matter.btn.btn-warning.btn-xs(style='font-size: 13px; padding: 2px 20px; margin-bottom:10px; border-radius: 0px', type='button', data-target='#EditDateDetail', data-toggle='modal') EDIT 
+                        button#add-matter.btn.btn-warning.btn-xs(style='font-size: 13px; margin-bottom:10px; border-radius: 0px', type='button', data-target='#EditDateDetail', data-toggle='modal') EDIT 
                 else if(userCaseDetail[0].karkarDooma != undefined)
                   h5(style='text-align:left; color: grey')
                     b
@@ -183,12 +195,14 @@ html(lang='en')
                       b 
                         | Scrapper Hearing Date:   
                       | #{userCaseDetail[0].karkarDooma.scrapperHearingDate[0].hearingDate.toString().split('00')[0]}
+                      if(!(userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1]))
+                        button#add-matter.btn.btn-warning.btn-xs(style='font-size: 13px; margin-bottom:10px; border-radius: 0px', type='button', data-target='#EditDateDetail', data-toggle='modal') EDIT
                     if(userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1])
                       h5(style='text-align:left; margin-top:20px; color: grey') 
                         b
                           | User Hearing Date: 
                         | #{userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1].hearingDate.toString().split('00')[0]}
-                        button#add-matter.btn.btn-warning.btn-xs(style='font-size: 13px; padding: 2px 20px; margin-bottom:10px; border-radius: 0px', type='button', data-target='#EditDateDetail', data-toggle='modal') EDIT 
+                        button#add-matter.btn.btn-warning.btn-xs(style='font-size: 13px; margin-bottom:10px; border-radius: 0px', type='button', data-target='#EditDateDetail', data-toggle='modal') EDIT 
                 else if(userCaseDetail[0].saket != undefined)
                   h5(style='text-align:left; color: grey')
                     b
@@ -206,12 +220,15 @@ html(lang='en')
                       b 
                         | Scrapper Hearing Date:   
                       | #{userCaseDetail[0].saket.scrapperHearingDate[0].hearingDate.toString().split('00')[0]}
+                      if(!(userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1]))
+                        button#add-matter.btn.btn-warning.btn-xs(style='font-size: 13px; margin-bottom:10px; border-radius: 0px', type='button', data-target='#EditDateDetail', data-toggle='modal') EDIT 
+
                     if(userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1])
                       h5(style='text-align:left; margin-top:20px; color: grey') 
                         b
                           | User Hearing Date: 
                         | #{userCaseDetail[0].userHearingDate[userCaseDetail[0].userHearingDate.length-1].hearingDate.toString().split('00')[0]}
-                        button#add-matter.btn.btn-warning.btn-xs(style='font-size: 13px; padding: 2px 20px; margin-bottom:10px; border-radius: 0px', type='button', data-target='#EditDateDetail', data-toggle='modal') EDIT 
+                        button#add-matter.btn.btn-warning.btn-xs(style='font-size: 13px; margin-bottom:10px; border-radius: 0px', type='button', data-target='#EditDateDetail', data-toggle='modal') EDIT 
           .row(style='background-color:white; margin-top:30px; height: 25em')
             .col-md-12(style = 'padding: 3px; background-color:white; padding: 0px')
               h5(style="text-align:left; color: grey; padding: 3px")
