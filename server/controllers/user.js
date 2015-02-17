@@ -17,6 +17,7 @@ var request = require('request');
 var cheerio = require('cheerio');
 var UserCaseDetail = require('../models/userCaseDetail');
 var CaseDetail = require('../models/caseDetail');
+var PlanDetail = require('../models/planDetail');
 
 
 // =============================================================================
@@ -641,6 +642,24 @@ UserCtl.aboutUs = function(req, res) {
 
 /*** GET subscription page.*/
 UserCtl.subscription = function(req, res) {
+  var savePlan = new PlanDetail({
+    'small': '',
+    'medium': '',
+    'large' :''
+
+  });
+
+  PlanDetail.find({}, {}, function(err, allPlans){
+    if(err) console.log(err);
+    console.log(allPlans);
+    if(allPlans.length == 0) {
+      savePlan.save(err, function(){
+        if(err) console.log(err);
+        console.log('planDetail saved');
+      })
+    }
+  })
+  
   res.render('subscription');
 };
 
@@ -671,5 +690,11 @@ UserCtl.deleteCase = function(req, res) {
       res.redirect('home');    
     })
   })
+}
+
+
+//Get Payment Page
+UserCtl.getPaymentPage = function(req, res) {
+  res.render('paymentInfo.jade');
 }
 

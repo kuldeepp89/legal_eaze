@@ -5,5 +5,6 @@ var models = module.exports = {
   userCaseDetail: require('./userCaseDetail'),
   caseDetail: require('./caseDetail'),
   scheduler: require('./scheduler'),
-  logger: require('./logger')
+  logger: require('./logger'),
+  planDetail: require('./planDetail')
 };

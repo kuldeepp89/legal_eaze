@@ -32,10 +32,13 @@ var UserSchema = new mongoose.Schema({
     isAdmin: { type: Boolean, default: false },
     lastLogin: { type: Date },
     joinedAt: { type: Date, default: Date.now },
-    isPremium: {type: Boolean, default: false}
+    isPremium: {type: Boolean, default: false},
   },
   isDisable: {type: Boolean, default: false},
-  noMatter: {type: Number, default:0}
+  noMatter: {type: Number, default:0},
+  planName: {type: String},
+  planStartDate: { type: Date}
+
 });
 
 /**

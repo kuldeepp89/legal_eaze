@@ -55,6 +55,7 @@ module.exports = {
     app.get('/privacy&security', controllers.user.privacy);
     app.get('/faq', controllers.user.faq);
     app.get('/delete/:id', isAuthenticated, controllers.user.deleteCase);
+    app.get('/payment/detail', isAuthenticated, controllers.user.getPaymentPage);
     
     // =========================================================================
 

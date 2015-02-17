@@ -1,0 +1,25 @@
+html(lang='en')
+  include ./partials/head.part.jade
+  body(style = 'padding-top: 0; background-color: rgb(225,225,225);overflow-x: hidden')
+    .container-fluid
+      .row
+        .col-md-12.no-padding
+          include ./partials/bars/navbar.part.jade
+      .row(style='padding-left:20px; padding-right:20px; margin-top:20px')
+        .col-md-4(style='padding-right:30px; padding-left:30px')
+          .row(style='background-color:white; padding: 3px 7px')
+            form(method='post', action='https://secure.payu.com/api/v2_1/orders')
+              
+              input(type='hidden', name='currencyCode', value='INR')
+              input(type='hidden', name='customerIp', value='192.168.1.100')
+              input(type='hidden', name='description', value='Order description')
+              input(type='hidden', name='merchantPosId', value='77')
+              
+              
+              input(type='hidden', name='totalAmount', value='10')
+              input(type='hidden', name='OpenPayu-Signature', value='sender=77;algorithm=MD5;signature=0fcbdfd920b218edd56366966bef2dcc')
+              button(type='submit', formtarget='_blank')
+
+            
+      
+                    
