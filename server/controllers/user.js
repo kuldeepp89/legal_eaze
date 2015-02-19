@@ -4,6 +4,7 @@
 var _ = require('lodash');
 var async = require('async');
 var crypto = require('crypto');
+var krypto = require('krypto');
 var nodemailer = require('nodemailer');
 var passport = require('passport');
 var User = require('../models/user');
@@ -648,6 +649,7 @@ UserCtl.subscription = function(req, res) {
     'large' :''
 
   });
+  
 
   PlanDetail.find({}, {}, function(err, allPlans){
     if(err) console.log(err);
@@ -695,6 +697,11 @@ UserCtl.deleteCase = function(req, res) {
 
 //Get Payment Page
 UserCtl.getPaymentPage = function(req, res) {
-  res.render('paymentInfo.jade');
+  var shasum = crypto.createHash('sha512');
+  shasum.digest('hex');
+  //("'zzLz4z'|1|100.00|'scrap cases'|'kuldeep'|'kuldeepp89@gmail.com'|||||||||||'VXtL4f0y'");
+  res.render('paymentInfo.jade', {
+    //salt: salt
+  });
 }
 

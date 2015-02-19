@@ -8,17 +8,24 @@ html(lang='en')
       .row(style='padding-left:20px; padding-right:20px; margin-top:20px')
         .col-md-4(style='padding-right:30px; padding-left:30px')
           .row(style='background-color:white; padding: 3px 7px')
-            form(method='post', action='https://secure.payu.com/api/v2_1/orders')
-              
-              input(type='hidden', name='currencyCode', value='INR')
-              input(type='hidden', name='customerIp', value='192.168.1.100')
-              input(type='hidden', name='description', value='Order description')
-              input(type='hidden', name='merchantPosId', value='77')
-              
-              
-              input(type='hidden', name='totalAmount', value='10')
-              input(type='hidden', name='OpenPayu-Signature', value='sender=77;algorithm=MD5;signature=0fcbdfd920b218edd56366966bef2dcc')
-              button(type='submit', formtarget='_blank')
+            form(action='https://test.payu.in/_payment', method='post')
+              input(type='hidden', name='firstname', value='kuldeep')
+              input(type='hidden', name='lastname', value='patel')
+              input(type='hidden', name='surl', value='https://www.google.com')
+              input(type='hidden', name='phone', value='8130857967')
+              input(type='hidden', name='key', value='zzLz4z')
+              input(type='hidden', name='hash')              
+              input(type='hidden', name='txnid', value='1')
+              input(type='hidden', name='productinfo', value='scrap cases')
+              input(type='hidden', name='amount', value='100.00')              
+              input(type='submit', value='submit')
+  script(src='http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha512.js')
+  script.
+    var hash = CryptoJS.SHA512('zzLz4z'|1|100.00|'scrap cases'|'kuldeep'|'kuldeepp89@gmail.com'|'VXtL4f0y');
+    document.getElementByName('hash').val(hash);
+    alert(hash);
+
+
 
             
       
