@@ -71,6 +71,7 @@ module.exports = {
     app.post('/addComment', isAuthenticated, controllers.addMatter.postAddComment);
     app.post('/addDocument', isAuthenticated, controllers.addMatter.postAddDocument);
     app.post('/update', isAuthenticated, controllers.addMatter.update);
+    
 
     // ========================================================================= 
     // Get Details for client =============================================================

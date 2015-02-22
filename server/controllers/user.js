@@ -4,7 +4,7 @@
 var _ = require('lodash');
 var async = require('async');
 var crypto = require('crypto');
-var krypto = require('krypto');
+var sha512 = require('sha512');
 var nodemailer = require('nodemailer');
 var passport = require('passport');
 var User = require('../models/user');
@@ -19,6 +19,7 @@ var cheerio = require('cheerio');
 var UserCaseDetail = require('../models/userCaseDetail');
 var CaseDetail = require('../models/caseDetail');
 var PlanDetail = require('../models/planDetail');
+var request = require('request');
 
 
 // =============================================================================
@@ -694,14 +695,35 @@ UserCtl.deleteCase = function(req, res) {
   })
 }
 
-
+var shasum;
 //Get Payment Page
 UserCtl.getPaymentPage = function(req, res) {
-  var shasum = crypto.createHash('sha512');
-  shasum.digest('hex');
-  //("'zzLz4z'|1|100.00|'scrap cases'|'kuldeep'|'kuldeepp89@gmail.com'|||||||||||'VXtL4f0y'");
+  shasum = sha512("zzLz4z|a1|100.00|small plan|kuldeep|kuldeepp89@gmail.com|||||||||||VXtL4f0y");
   res.render('paymentInfo.jade', {
-    //salt: salt
+    salt: shasum.toString('hex')
   });
 }
+
+UserCtl.makePayment = function(req, res){
+  request.post({url:'https://secure.payu.in/_payment',
+  form: {
+    firstname:'kuldeep',
+    surl: 'http://legaleaze.in',
+    furl: 'http://legaleaze.in',
+    email: 'kuldeepp89@gmail.com',
+    phone: '8130857967',
+    key: 'zzLz4z',
+    hash: shasum,
+    txnid: 'abcjj1',
+    productinfo: 'small plan',
+    amount: '100:00'
+  }}, 
+  function(err,httpResponse,body) {
+    if (err) {console.log('jjlk '+ err)};
+    
+
+  })  
+}
+
+
 
