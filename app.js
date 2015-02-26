@@ -109,8 +109,8 @@ var cspPolicy = {
     // 'report-uri': 'oursite/cspreport' // atleast log the violations
   }
 };
-//helmet.csp.policy(cspPolicy);
-//app.use(helmet.csp());
+helmet.csp.policy(cspPolicy);
+app.use(helmet.csp());
 app.use(helmet.xframe('sameorigin'));
 app.use(helmet.iexss());
 app.use(helmet.contentTypeOptions());
