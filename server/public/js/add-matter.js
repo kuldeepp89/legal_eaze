@@ -1,4 +1,39 @@
 $(function(){
+/*form(action='https://secure.payu.in/_payment', method='post')
+              input#csrf-token-bifr(type='hidden', name='_csrf', value='#{csrfToken}')
+              input(type='hidden', name='firstname', value='kuldeep')        
+              input(type='hidden', name='surl', value='http://legaleaze.in')
+              input(type='hidden', name='phone', value='8130857967')
+              input(type='hidden', name='key', value='zzLz4z')
+              input(type='hidden', name='hash', value='#{salt}')                          
+              input(type='hidden', name='txnid', value='a11')
+              input(type='hidden', name='productinfo', value='small plan')
+              input(type='hidden', name='amount', value='100.00')
+              input(type='hidden', name='email', value='kuldeepp89@gmail.com')
+              input(type='submit', value='submit')
+*/
+
+  var hash = $('#salt').val();
+  
+  var formData1 = {'_csrf':$("#csrf-token").val(), 'firstname': 'kuldeep' , 
+  'surl':'http://legaleaze.in', 'phone':'8130857967', 'key': 'zzLz4z',
+  'hash': hash, 'txnid': 'a11', 'productinfo': 'small',
+  'amount': 1, 'email': 'kuldeepp89@gmail.com' }; 
+
+  $('#payment').on('click', function() {
+    alert(hash);
+    $.ajax({
+      type: "POST",
+      url: 'https://secure.payu.in/_payment',
+      data: formData1,
+      headers:{
+                'Access-Control-Allow-Origin': 'http://localhost:9010'
+            },
+      success: function(data) {
+        console.log(data);
+      }
+    });
+  });
 $("#court-select").change(function(){
     if (this.value == "supreme-court") {
       $('#supreme-court-modal-data').show();
@@ -724,6 +759,25 @@ $('#btn-saket-submit').on('click',function(event){
         $('#timeScrap').prop('disabled', true);
       }
     }, 1000)
+
+    
+  $('.managementDocument').change(function(e) {
+    var file_list = e.target.files;
+    for (var i = 0, file; file = file_list[i]; i++) {
+      var sFileName = file.name;
+      var sFileExtension = sFileName.split('.')[sFileName.split('.').length - 1].toLowerCase();
+      if (!(sFileExtension === "pdf" || sFileExtension === "doc" || sFileExtension === "docx" || sFileExtension === "text")) {
+        txt = "File type : " + sFileExtension + "\n\n";
+        txt += "Your file is not in pdf or doc format";
+        alert(txt);
+        return false;
+      }
+      else {
+        $('#propertymanagement').text($('.managementDocument').val().replace(/C:\\fakepath\\/i, ''));
+        return true;
+      }
+    }
+  });
     
  
 });

@@ -103,14 +103,14 @@ var cspPolicy = {
   defaultPolicy: {
     'default-src': ["'self'"],
     'style-src': ["'unsafe-inline' 'self'"],
-    'script-src': ['http://maps.googleapis.com/',
+    'script-src': ['http://maps.googleapis.com/', 
      "'unsafe-eval' 'unsafe-inline' 'self'"],
     'img-src': ["'self' data:", 'http://m.c.lnkd.licdn.com/', 'http://*.gstatic.com/', 'http://*.googleapis.com/', 'http://mt0.googleapis.com']  // the day we use the cdn
     // 'report-uri': 'oursite/cspreport' // atleast log the violations
   }
 };
-helmet.csp.policy(cspPolicy);
-app.use(helmet.csp());
+//helmet.csp.policy(cspPolicy);
+//app.use(helmet.csp());
 app.use(helmet.xframe('sameorigin'));
 app.use(helmet.iexss());
 app.use(helmet.contentTypeOptions());

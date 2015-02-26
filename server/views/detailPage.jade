@@ -239,9 +239,9 @@ html(lang='en')
                     if(userCaseDetail[0].meeting !=  undefined)
                       
                       - for(var i = userCaseDetail[0].userHearingDate.length-1; i>=0; i--)
-                        .col-md-3(style = 'padding: 0px; background-color: grey; color: white; text-align: center; font-size: 10px; margin-top: 10px;')
+                        .col-md-3(style = 'padding: 0px; background-color: grey; color: white; text-align: center; font-size: 12px; margin-top: 10px;')
                           
-                          | #{userCaseDetail[0].userHearingDate[i].cAt.toString().split('GMT')[0]}
+                          | #{userCaseDetail[0].userHearingDate[i].cAt.toString().slice(0, 15)}
                         .col-md-1(style = 'padding: 0px;')
                           img(src = '/public/images/arrow.png', style = 'height: 52px; width: 250%')
                         .col-md-7(style = 'left: 37px;background-color: lightgrey; color: black; text-align: center; font-size: 10px; margin-top: 10px')
@@ -252,7 +252,7 @@ html(lang='en')
                       - for(var i = userCaseDetail[0].userHearingDate.length-1; i>=0; i--)
                         .col-md-3(style = 'padding: 0px; background-color: grey; color: white; text-align: center; font-size: 10px; margin-top: 10px;')
                           
-                          | #{userCaseDetail[0].userHearingDate[i].cAt.toString().split('GMT')[0]}
+                          | #{userCaseDetail[0].userHearingDate[i].cAt.toString().slice(0, 15)}
                         .col-md-1(style = 'padding: 0px;')
                           img(src = '/public/images/arrow.png', style = 'height: 52px; width: 250%')
                         .col-md-7(style = 'left: 37px;background-color: lightgrey; color: black; text-align: center; font-size: 10px; margin-top: 10px')
@@ -262,7 +262,7 @@ html(lang='en')
                       - for(var i = userCaseDetail[0].supremeCourt.scrapperHearingDate.length-1; i>=0; i--)
                         .col-md-3(style = 'padding: 0px; background-color: grey; color: white; text-align: center; font-size: 10px; margin-top: 10px;')
                           
-                          | #{userCaseDetail[0].supremeCourt.scrapperHearingDate[i].cAt.toString().split('GMT')[0]}
+                          | #{userCaseDetail[0].supremeCourt.scrapperHearingDate[i].cAt.toString().slice(0, 15)}
                         .col-md-1(style = 'padding: 0px;')
                           img(src = '/public/images/arrow.png', style = 'height: 52px; width: 250%')
                         .col-md-7(style = 'left: 37px;background-color: lightgrey; color: black; text-align: center; font-size: 10px; margin-top: 10px')
@@ -273,7 +273,7 @@ html(lang='en')
                       - for(var i = userCaseDetail[0].userHearingDate.length-1; i>=0; i--)
                         .col-md-3(style = 'padding: 0px; background-color: grey; color: white; text-align: center; font-size: 10px; margin-top: 10px;')
                           
-                          | #{userCaseDetail[0].userHearingDate[i].cAt.toString().split('GMT')[0]}
+                          | #{userCaseDetail[0].userHearingDate[i].cAt.toString().slice(0, 15)}
                         .col-md-1(style = 'padding: 0px;')
                           img(src = '/public/images/arrow.png', style = 'height: 52px; width: 250%')
                         .col-md-7(style = 'left: 37px;background-color: lightgrey; color: black; text-align: center; font-size: 10px; margin-top: 10px')
@@ -465,7 +465,7 @@ html(lang='en')
                 input(type='hidden', name='id', value='#{userCaseDetail[0]._id}')
                 br
                 br
-                input#doc(type='file', name='doc')
+                input#doc.managementDocument(type='file', name='doc')
                 br
                 button.btn.btn-warning#uploadDoc(style='font-size: 12px; padding: 2px 6px; margin-bottom:10px; border-radius: 0px', type='submit') UPLOAD DOCUMENT
             .col-md-11
@@ -482,8 +482,8 @@ html(lang='en')
                         - for(var j = 0; j< type1.length; j = j+2)
                           ul
                             li
-                              a(target='_blank', href='#{type1[i]}')
-                                | #{type1[i+1]}
+                              a(target='_blank', href='#{type1[j]}')
+                                | #{type1[j]}
                 
                 br
                 if(type2 !== undefined)
@@ -498,7 +498,7 @@ html(lang='en')
                           ul
                             li
                               a(target='_blank', href='#{type2[j]}')
-                                | #{type2[j+1]}
+                                | #{type2[j]}
                 br
                 if(type3 !== undefined)
                   .panel.panel-default(style = 'border-radius: 0px')
@@ -512,7 +512,7 @@ html(lang='en')
                           ul
                             li
                               a(target='_blank', href='#{type3[k]}')
-                                | #{type3[k+1]}
+                                | #{type3[k]}
 
              
                           

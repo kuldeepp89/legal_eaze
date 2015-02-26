@@ -1100,7 +1100,7 @@ AddMatterCtl.postAddDocument = function(req, res) {
   console.log('hey ' +req.files.doc.name);
   var id = req.body.id,
     oldPath = req.files.doc.path,
-    newPath = '../court_easy/upload/';
+    newPath = './upload/';
   if(req.files.doc.size) {
     mkdirp((newPath), '0755', function (err) {
       newPath = newPath + req.files.doc.name;

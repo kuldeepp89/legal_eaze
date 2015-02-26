@@ -698,7 +698,7 @@ UserCtl.deleteCase = function(req, res) {
 var shasum;
 //Get Payment Page
 UserCtl.getPaymentPage = function(req, res) {
-  shasum = sha512("zzLz4z|a1|100.00|small plan|kuldeep|kuldeepp89@gmail.com|||||||||||VXtL4f0y");
+  shasum = sha512("zzLz4z|a11|100.00|small plan|kuldeep|kuldeepp89@gmail.com|||||||||||VXtL4f0y");
   res.render('paymentInfo.jade', {
     salt: shasum.toString('hex')
   });
