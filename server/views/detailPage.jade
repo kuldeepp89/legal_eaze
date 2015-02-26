@@ -250,7 +250,7 @@ html(lang='en')
                         
                     else if(userCaseDetail[0].supremeCourt !=  undefined)
                       - for(var i = userCaseDetail[0].userHearingDate.length-1; i>=0; i--)
-                        .col-md-3(style = 'padding: 0px; background-color: grey; color: white; text-align: center; font-size: 10px; margin-top: 10px;')
+                        .col-md-3(style = 'padding: 0px; background-color: grey; color: white; text-align: center; font-size: 12px; margin-top: 10px;')
                           
                           | #{userCaseDetail[0].userHearingDate[i].cAt.toString().slice(0, 15)}
                         .col-md-1(style = 'padding: 0px;')
@@ -260,7 +260,7 @@ html(lang='en')
                             | Hearing Date changed by you to #{userCaseDetail[0].userHearingDate[i].hearingDate.toString().split('00')[0]}
                         
                       - for(var i = userCaseDetail[0].supremeCourt.scrapperHearingDate.length-1; i>=0; i--)
-                        .col-md-3(style = 'padding: 0px; background-color: grey; color: white; text-align: center; font-size: 10px; margin-top: 10px;')
+                        .col-md-3(style = 'padding: 0px; background-color: grey; color: white; text-align: center; font-size: 12px; margin-top: 10px;')
                           
                           | #{userCaseDetail[0].supremeCourt.scrapperHearingDate[i].cAt.toString().slice(0, 15)}
                         .col-md-1(style = 'padding: 0px;')
@@ -271,7 +271,7 @@ html(lang='en')
                         
                     else if(userCaseDetail[0].delhiHighCourt !=  undefined)
                       - for(var i = userCaseDetail[0].userHearingDate.length-1; i>=0; i--)
-                        .col-md-3(style = 'padding: 0px; background-color: grey; color: white; text-align: center; font-size: 10px; margin-top: 10px;')
+                        .col-md-3(style = 'padding: 0px; background-color: grey; color: white; text-align: center; font-size: 12px; margin-top: 10px;')
                           
                           | #{userCaseDetail[0].userHearingDate[i].cAt.toString().slice(0, 15)}
                         .col-md-1(style = 'padding: 0px;')
@@ -281,9 +281,9 @@ html(lang='en')
                             | Hearing Date changed by you to #{userCaseDetail[0].userHearingDate[i].hearingDate.toString().split('00')[0]}
                         
                       - for(var i = userCaseDetail[0].delhiHighCourt.scrapperHearingDate.length-1; i>=0; i--)
-                        .col-md-3(style = 'padding: 0px; background-color: grey; color: white; text-align: center; font-size: 10px; margin-top: 10px;')
+                        .col-md-3(style = 'padding: 0px; background-color: grey; color: white; text-align: center; font-size: 12px; margin-top: 10px;')
                           
-                          | #{userCaseDetail[0].delhiHighCourt.scrapperHearingDate[i].cAt.toString().split('GMT')[0]}
+                          | #{userCaseDetail[0].delhiHighCourt.scrapperHearingDate[i].cAt.toString().slice(0, 15)}
                         .col-md-1(style = 'padding: 0px;')
                           img(src = '/public/images/arrow.png', style = 'height: 52px; width: 250%')
                         .col-md-7(style = 'left: 37px;background-color: lightgrey; color: black; text-align: center; font-size: 10px; margin-top: 10px')
@@ -292,9 +292,9 @@ html(lang='en')
                         
                     else if(userCaseDetail[0].greenTribunal !=  undefined)
                       - for(var i = userCaseDetail[0].userHearingDate.length-1; i>=0; i--)
-                        .col-md-3(style = 'padding: 0px; background-color: grey; color: white; text-align: center; font-size: 10px; margin-top: 10px;')
+                        .col-md-3(style = 'padding: 0px; background-color: grey; color: white; text-align: center; font-size: 12px; margin-top: 10px;')
                           
-                          | #{userCaseDetail[0].userHearingDate[i].cAt.toString().split('GMT')[0]}
+                          | #{userCaseDetail[0].userHearingDate[i].cAt.toString().slice(0, 15)}
                         .col-md-1(style = 'padding: 0px;')
                           img(src = '/public/images/arrow.png', style = 'height: 52px; width: 250%')
                         .col-md-7(style = 'left: 37px;background-color: lightgrey; color: black; text-align: center; font-size: 10px; margin-top: 10px')
@@ -302,9 +302,9 @@ html(lang='en')
                             | Hearing Date changed by you to #{userCaseDetail[0].userHearingDate[i].hearingDate.toString().split('00')[0]}
                         
                       - for(var i = userCaseDetail[0].greenTribunal.scrapperHearingDate.length-1; i>=0; i--)
-                        .col-md-3(style = 'padding: 0px; background-color: grey; color: white; text-align: center; font-size: 10px; margin-top: 10px;')
+                        .col-md-3(style = 'padding: 0px; background-color: grey; color: white; text-align: center; font-size: 12px; margin-top: 10px;')
                           
-                          | #{userCaseDetail[0].greenTribunal.scrapperHearingDate[i].cAt.toString().split('GMT')[0]}
+                          | #{userCaseDetail[0].greenTribunal.scrapperHearingDate[i].cAt.toString().slice(0, 15)}
                         .col-md-1(style = 'padding: 0px;')
                           img(src = '/public/images/arrow.png', style = 'height: 52px; width: 250%')
                         .col-md-7(style = 'left: 37px;background-color: lightgrey; color: black; text-align: center; font-size: 10px; margin-top: 10px')
@@ -313,9 +313,9 @@ html(lang='en')
                         
                     else if(userCaseDetail[0].consumerDispute !=  undefined)
                       - for(var i = userCaseDetail[0].userHearingDate.length-1; i>=0; i--)
-                        .col-md-3(style = 'padding: 0px; background-color: grey; color: white; text-align: center; font-size: 10px; margin-top: 10px;')
+                        .col-md-3(style = 'padding: 0px; background-color: grey; color: white; text-align: center; font-size: 12px; margin-top: 10px;')
                           
-                          | #{userCaseDetail[0].userHearingDate[i].cAt.toString().split('GMT')[0]}
+                          | #{userCaseDetail[0].userHearingDate[i].cAt.toString().slice(0, 15)}
                         .col-md-1(style = 'padding: 0px;')
                           img(src = '/public/images/arrow.png', style = 'height: 52px; width: 250%')
                         .col-md-7(style = 'left: 37px;background-color: lightgrey; color: black; text-align: center; font-size: 10px; margin-top: 10px')
@@ -323,9 +323,9 @@ html(lang='en')
                             | Hearing Date changed by you to #{userCaseDetail[0].userHearingDate[i].hearingDate.toString().split('00')[0]}
                         
                       - for(var i = userCaseDetail[0].consumerDispute.scrapperHearingDate.length-1; i>=0; i--)
-                        .col-md-3(style = 'padding: 0px; background-color: grey; color: white; text-align: center; font-size: 10px; margin-top: 10px;')
+                        .col-md-3(style = 'padding: 0px; background-color: grey; color: white; text-align: center; font-size: 12px; margin-top: 10px;')
                           
-                          | #{userCaseDetail[0].consumerDispute.scrapperHearingDate[i].cAt.toString().split('GMT')[0]}
+                          | #{userCaseDetail[0].consumerDispute.scrapperHearingDate[i].cAt.toString().slice(0, 15)}
                         .col-md-1(style = 'padding: 0px;')
                           img(src = '/public/images/arrow.png', style = 'height: 52px; width: 250%')
                         .col-md-7(style = 'left: 37px;background-color: lightgrey; color: black; text-align: center; font-size: 10px; margin-top: 10px')
@@ -334,9 +334,9 @@ html(lang='en')
                         
                     else if(userCaseDetail[0].telecomDispute !=  undefined)
                       - for(var i = userCaseDetail[0].userHearingDate.length-1; i>=0; i--)
-                        .col-md-3(style = 'padding: 0px; background-color: grey; color: white; text-align: center; font-size: 10px; margin-top: 10px;')
+                        .col-md-3(style = 'padding: 0px; background-color: grey; color: white; text-align: center; font-size: 12px; margin-top: 10px;')
                           
-                          | #{userCaseDetail[0].userHearingDate[i].cAt.toString().split('GMT')[0]}
+                          | #{userCaseDetail[0].userHearingDate[i].cAt.toString().slice(0, 15)}
                         .col-md-1(style = 'padding: 0px;')
                           img(src = '/public/images/arrow.png', style = 'height: 52px; width: 250%')
                         .col-md-7(style = 'left: 37px;background-color: lightgrey; color: black; text-align: center; font-size: 10px; margin-top: 10px')
@@ -344,9 +344,9 @@ html(lang='en')
                             | Hearing Date changed by you to #{userCaseDetail[0].userHearingDate[i].hearingDate.toString().split('00')[0]}
                         
                       - for(var i = userCaseDetail[0].telecomDispute.scrapperHearingDate.length-1; i>=0; i--)
-                        .col-md-3(style = 'padding: 0px; background-color: grey; color: white; text-align: center; font-size: 10px; margin-top: 10px;')
+                        .col-md-3(style = 'padding: 0px; background-color: grey; color: white; text-align: center; font-size: 12px; margin-top: 10px;')
                           
-                          | #{userCaseDetail[0].telecomDispute.scrapperHearingDate[i].cAt.toString().split('GMT')[0]}
+                          | #{userCaseDetail[0].telecomDispute.scrapperHearingDate[i].cAt.toString().slice(0, 15)}
                         .col-md-1(style = 'padding: 0px;')
                           img(src = '/public/images/arrow.png', style = 'height: 52px; width: 250%')
                         .col-md-7(style = 'left: 37px;background-color: lightgrey; color: black; text-align: center; font-size: 10px; margin-top: 10px')
@@ -355,9 +355,9 @@ html(lang='en')
                         
                     else if(userCaseDetail[0].bifrCourt !=  undefined)
                       - for(var i = userCaseDetail[0].userHearingDate.length-1; i>=0; i--)
-                        .col-md-3(style = 'padding: 0px; background-color: grey; color: white; text-align: center; font-size: 10px; margin-top: 10px;')
+                        .col-md-3(style = 'padding: 0px; background-color: grey; color: white; text-align: center; font-size: 12px; margin-top: 10px;')
                           
-                          | #{userCaseDetail[0].userHearingDate[i].cAt.toString().split('GMT')[0]}
+                          | #{userCaseDetail[0].userHearingDate[i].cAt.toString().slice(0, 15)}
                         .col-md-1(style = 'padding: 0px;')
                           img(src = '/public/images/arrow.png', style = 'height: 52px; width: 250%')
                         .col-md-7(style = 'left: 37px;background-color: lightgrey; color: black; text-align: center; font-size: 10px; margin-top: 10px')
@@ -365,9 +365,9 @@ html(lang='en')
                             | Hearing Date changed by you to #{userCaseDetail[0].userHearingDate[i].hearingDate.toString().split('00')[0]}
                         
                       - for(var i = userCaseDetail[0].bifrCourt.scrapperHearingDate.length-1; i>=0; i--)
-                        .col-md-3(style = 'padding: 0px; background-color: grey; color: white; text-align: center; font-size: 10px; margin-top: 10px;')
+                        .col-md-3(style = 'padding: 0px; background-color: grey; color: white; text-align: center; font-size: 12px; margin-top: 10px;')
                           
-                          | #{userCaseDetail[0].bifrCourt.scrapperHearingDate[i].cAt.toString().split('GMT')[0]}
+                          | #{userCaseDetail[0].bifrCourt.scrapperHearingDate[i].cAt.toString().slice(0, 15)}
                         .col-md-1(style = 'padding: 0px;')
                           img(src = '/public/images/arrow.png', style = 'height: 52px; width: 250%')
                         .col-md-7(style = 'left: 37px;background-color: lightgrey; color: black; text-align: center; font-size: 10px; margin-top: 10px')
@@ -434,16 +434,16 @@ html(lang='en')
                   
                   
       
-          .row(style='margin-top:10px; background-color: white; padding: 0px')
+          .row(style='margin-top:10px; background-color: white; padding: 0px;')
               if(userCaseDetail != undefined && userCaseDetail[0] != undefined && userCaseDetail[0].comments != undefined && userCaseDetail[0].comments.length != 0)
                 - for(var i = userCaseDetail[0].comments.length-1; i>=0; i--)
                   .row(style='margin-top:15px; padding: 5px')
                     .col-md-12
-                      .col-md-3(style='font-size: 10px; padding-right: 0px; background-color: grey;height: 3em; color: white')
+                      .col-md-3(style='font-size: 12px; padding-right: 0px; background-color: grey;height: 3em; color: white;')
                         
-                          | #{userCaseDetail[0].comments[i].cAt.toString().split('GMT')[0]}
+                          | #{userCaseDetail[0].comments[i].cAt.toString().slice(0, 15)}
                         
-                      .col-md-9(style=' height: 5em; background-color: lightgrey')
+                      .col-md-9(style=' height: 5em; background-color: lightgrey; overflow-y: scroll')
                         
                           | #{userCaseDetail[0].comments[i].comment} 
     
