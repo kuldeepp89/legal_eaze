@@ -479,7 +479,7 @@ html(lang='en')
                           | Type 1 Document
                     #collapseOne.panel-collapse.collapse(role='tabpanel', aria-labelledby='headingOne')
                       .panel-body
-                        - for(var j = 0; j< type1.length; j = j+2)
+                        - for(var j = 0; j< type1.length; j = j+1)
                           ul
                             li
                               a(target='_blank', href='#{type1[j]}')
@@ -494,11 +494,11 @@ html(lang='en')
                           | Type 2 Document
                     #collapseTwo.panel-collapse.collapse(role='tabpanel', aria-labelledby='headingTwo')
                       .panel-body
-                        - for(var j = 0; j< type2.length; j = j+2)
+                        - for(var i = 0; i< type2.length; i = i+1)
                           ul
                             li
-                              a(target='_blank', href='#{type2[j]}')
-                                | #{type2[j]}
+                              a(target='_blank', href='#{type2[i]}')
+                                | #{type2[i]}
                 br
                 if(type3 !== undefined)
                   .panel.panel-default(style = 'border-radius: 0px')
@@ -508,7 +508,7 @@ html(lang='en')
                           | Type 3 Document
                     #collapseThree.panel-collapse.collapse(role='tabpanel', aria-labelledby='headingThree')
                       .panel-body
-                        - for(var k = 0; k< type3.length; k = k+2)
+                        - for(var k = 0; k< type3.length; k = k+1)
                           ul
                             li
                               a(target='_blank', href='#{type3[k]}')

@@ -430,25 +430,25 @@ DetailCtl.getCaseDetail = function(req, res) {
       if(type === 'Type1') {
         
         type1.push(add[0].documents[i].path.slice(1));
-        console.log(type1);
+        
       }  
     }
     for(var i = 0; i< add[0].documents.length ; i++) {
        var type = add[0].documents[i].docType;
       if(type === 'Type2') {
         type2.push(add[0].documents[i].path.slice(1));
-        console.log(type2);
+        
       }
     }
     for(var i = 0; i< add[0].documents.length ; i++) {
        var type = add[0].documents[i].docType;
       if(type === 'Type3') {
         type3.push(add[0].documents[i].path.slice(1));
-        console.log(type3);
+        
       } 
     } 
 
-    //console.log(name1, name2, name3);
+    console.log(type1, type2, type3);
     
     return res.render('detailPage', {
       userCaseDetail: add,

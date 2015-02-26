@@ -21,14 +21,10 @@ $(function(){
   'amount': 1, 'email': 'kuldeepp89@gmail.com' }; 
 
   $('#payment').on('click', function() {
-    alert(hash);
     $.ajax({
       type: "POST",
       url: 'https://secure.payu.in/_payment',
       data: formData1,
-      headers:{
-                'Access-Control-Allow-Origin': 'http://localhost:9010'
-            },
       success: function(data) {
         console.log(data);
       }
