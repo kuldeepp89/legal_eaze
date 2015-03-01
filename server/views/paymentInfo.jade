@@ -8,7 +8,17 @@ html(lang='en')
       .row(style='padding-left:20px; padding-right:20px; margin-top:20px')
         .col-md-4(style='padding-right:30px; padding-left:30px')
           .row(style='background-color:white; padding: 3px 7px')
-            button#payment
-              | Submit
+            form(action='https://secure.payu.in/_payment', method='post')
+              input#csrf-token-bifr(type='hidden', name='_csrf', value='#{csrfToken}')
+              input(type='hidden', name='firstname', value='kuldeep')        
+              input(type='hidden', name='surl', value='http://legaleaze.in')
+              input(type='hidden', name='phone', value='8130857967')
+              input(type='hidden', name='key', value='zzLz4z')
+              input(type='hidden', name='hash', value='#{salt}')                          
+              input(type='hidden', name='txnid', value='a11')
+              input(type='hidden', name='productinfo', value='small plan')
+              input(type='hidden', name='amount', value='100.00')
+              input(type='hidden', name='email', value='kuldeepp89@gmail.com')
+              input(type='submit', value='submit')
           
   

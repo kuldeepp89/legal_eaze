@@ -13,23 +13,7 @@ $(function(){
               input(type='submit', value='submit')
 */
 
-  var hash = $('#salt').val();
   
-  var formData1 = {'_csrf':$("#csrf-token").val(), 'firstname': 'kuldeep' , 
-  'surl':'http://legaleaze.in', 'phone':'8130857967', 'key': 'zzLz4z',
-  'hash': hash, 'txnid': 'a11', 'productinfo': 'small',
-  'amount': 1, 'email': 'kuldeepp89@gmail.com' }; 
-
-  $('#payment').on('click', function() {
-    $.ajax({
-      type: "POST",
-      url: 'https://secure.payu.in/_payment',
-      data: formData1,
-      success: function(data) {
-        console.log(data);
-      }
-    });
-  });
 $("#court-select").change(function(){
     if (this.value == "supreme-court") {
       $('#supreme-court-modal-data').show();

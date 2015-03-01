@@ -101,7 +101,7 @@ app.use(express.methodOverride());
 // -----------------------------------------------------------------------------
 var cspPolicy = {
   defaultPolicy: {
-    'default-src': ["'self'"],
+    
     'style-src': ["'unsafe-inline' 'self'"],
     'script-src': ['http://maps.googleapis.com/','https://secure.payu.in/_payment',
      "'unsafe-eval' 'unsafe-inline' 'self'"],
@@ -191,13 +191,23 @@ app.use(function(req, res) {
   res.render('404');
 });
 */
+var config = {
+  "responseSettings": {
+    "AccessControlAllowOrigin": "*",
+    "AccessControlAllowHeaders": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
+    "AccessControlAllowMethods": "POST,GET,PUT,DELETE",
+    "AccessControlAllowCredentials": true
+  }
+}
 
-app.all("https://secure.payu.in/_payment/*", function(req, res, next) {
-        res.header("Access-Control-Allow-Origin", "*");
-        res.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With, Accept");
-        res.header("Access-Control-Allow-Methods", "GET, PUT, POST, HEAD, DELETE, OPTIONS");
-        return next();
-    });
+app.all('/*', function(req, res, next) {
+res.header("Access-Control-Allow-Credentials", config.responseSettings.AccessControlAllowCredentials);
+res.header("Access-Control-Allow-Origin", (req.headers.origin) ? req.headers.origin : config.responseSettings.AccessControlAllowOrigin);
+res.header("Access-Control-Allow-Headers", (req.headers['access-control-request-headers']) ? req.headers['access-control-request-headers'] : "x-requested-with");
+res.header("Access-Control-Allow-Methods", (req.headers['access-control-request-method']) ? req.headers['access-control-request-method'] : config.responseSettings.AccessControlAllowMethods);
+next();
+});
+
 
 // development only
 if ('development' == app.get('env')) {
