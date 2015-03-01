@@ -101,7 +101,7 @@ app.use(express.methodOverride());
 // -----------------------------------------------------------------------------
 var cspPolicy = {
   defaultPolicy: {
-    
+    'default-src': ["'self'"],
     'style-src': ["'unsafe-inline' 'self'"],
     'script-src': ['http://maps.googleapis.com/','https://secure.payu.in/_payment',
      "'unsafe-eval' 'unsafe-inline' 'self'"],
@@ -145,14 +145,14 @@ var csrfValue = function(req) {
     || (req.headers['x-xsrf-token']);
   return token;
 };
-app.use(express.csrf(csrfValue));
+//app.use(express.csrf(csrfValue));
 
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(function(req, res, next) {
   res.locals.user = req.user;
-  res.locals.csrfToken = req.csrfToken();
+  //res.locals.csrfToken = req.csrfToken();
   res.locals.secrets = mvc.config.secrets; // Not sure if this is good...
   next();
 });

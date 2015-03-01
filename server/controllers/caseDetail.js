@@ -489,3 +489,4 @@ DetailCtl.getEditHearingDate = function(req, res) {
     }
   })
 }
+

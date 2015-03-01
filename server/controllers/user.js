@@ -698,9 +698,28 @@ UserCtl.deleteCase = function(req, res) {
 var shasum;
 //Get Payment Page
 UserCtl.getPaymentPage = function(req, res) {
-  shasum = sha512("zzLz4z|a11|100.00|small plan|kuldeep|kuldeepp89@gmail.com|||||||||||VXtL4f0y");
+  console.log(req.param('noOfSchedules'));
+  var temp = Math.random() * Math.pow(10, 10);
+  var payuId = temp.toFixed(0);
+  var userName = req.user.profile.name;
+  var userEmail = req.user.local.email;
+  console.log(userName + " "+ userEmail);
+  var money = 1.0;
+  var plan = "small name";
+  var mobile = 8130857967;
+
+  
+  shasum = sha512("zzLz4z|"+payuId+ "|" +money+ "|" +plan+ "|" +userName+ "|" +userEmail+ "|||||||||||VXtL4f0y");
+  
   res.render('paymentInfo.jade', {
-    salt: shasum.toString('hex')
+    salt: shasum.toString('hex'),
+    txnid: payuId,
+    name: userName,
+    email: userEmail,
+    plan: plan,
+    amount: money,
+    mobile: mobile,
+    paymentToken: 0
   });
 }
 
@@ -716,7 +735,7 @@ UserCtl.makePayment = function(req, res){
     hash: shasum,
     txnid: 'abcjj1',
     productinfo: 'small plan',
-    amount: '100:00'
+    amount: '1:00'
   }}, 
   function(err,httpResponse,body) {
     if (err) {console.log('jjlk '+ err)};
@@ -725,5 +744,16 @@ UserCtl.makePayment = function(req, res){
   })  
 }
 
+UserCtl.payment = function(req, res) {
+  
+ console.log(req.body);
+ res.render('paymentInfo.jade', {
+
+  status: req.body.status,
+  amountPaid: req.body.net_amount_debit,
+  paymentToken: 1
+
+ });
+}
 
 

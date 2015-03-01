@@ -49,8 +49,15 @@ html(lang='en')
             .col-md-12.service1-descr1
               h4.service1-descr2 10 SCHEDULES
               h4.service1-descr3 0.5 GB SPACE
-        a(href = '/payment/detail/')
-          .col-md-3.inside-row1#small-plan
+        
+        .col-md-3.inside-row1#small-plan
+          form(action = '/payment/detail', method = 'get')
+            input(type = 'hidden', name = 'noOfSchedules', value = '60')
+            input(type = 'hidden', name = 'space', value = '2048')
+            input(type = 'hidden', name = 'amountPerMonth', value = '450')
+            input(type = 'hidden', name = 'amountPerYear', value = '5000')
+            input(type = 'submit', value = 'submit')
+            
             .row
               .col-md-12.inside-column3
                 h4.title4 SMALL
@@ -65,12 +72,18 @@ html(lang='en')
                   span.price2-descr1-1 ₹
                   span.price2-descr1-2 5,000/
                   | YEAR
-            .row
-              .col-md-12.service1-descr1
-                h4.service1-descr2 60 SCHEDULES
-                h4.service1-descr3 2.0 GB SPACE
-        a(href = '/payment/detail/')
-          .col-md-3.inside-row1#medium-plan
+              .row
+                .col-md-12.service1-descr1
+                  h4.service1-descr2 60 SCHEDULES
+                  h4.service1-descr3 2.0 GB SPACE
+        
+        .col-md-3.inside-row1#medium-plan
+          form(action = '/payment/detail', method = 'get')
+            input(type = 'hidden', name = 'noOfSchedules', value = '150')
+            input(type = 'hidden', name = 'space', value = '6144')
+            input(type = 'hidden', name = 'amountPerMonth', value = '750')
+            input(type = 'hidden', name = 'amountPerYear', value = '8500')  
+            input(type = 'submit', value = 'submit')
             .row
               .col-md-12.inside-column3
                 h4.title3 MEDIUM
@@ -89,8 +102,14 @@ html(lang='en')
               .col-md-12.service1-descr1
                 h4.service1-descr2 150 SCHEDULES
                 h4.service1-descr3 6.0 GB SPACE
-        a(href = '/payment/detail/')
-          .col-md-3.inside-row1#large-plan
+        
+        .col-md-3.inside-row1#large-plan
+          form(action = '/payment/detail', method = 'get')
+            input(type = 'hidden', name = 'noOfSchedules', value = '500')
+            input(type = 'hidden', name = 'space', value = '51200')
+            input(type = 'hidden', name = 'amountPerMonth', value = '1000')
+            input(type = 'hidden', name = 'amountPerYear', value = '11200')
+            input(type = 'submit', value = 'submit')
             .row
               .col-md-12.inside-column3
                 h4.title4 LARGE
@@ -118,7 +137,7 @@ html(lang='en')
       p#body-row5 DETAILS OF TERMS OF USE
       h3 Terms of Use
       p
-        | These Terms and Conditions (“Agreement”) govern the use of the services (“Service”) that are made available by “Legaleaze” through its website www.legaleaze.in and any allied services thereto. This Agreement represents the whole agreement and understanding between Legaleaze and the individual or entity (“subscriber”) subscribing to such services of Legaleaze.
+        | These Terms and Conditions (“Agreement”) govern the use of the services (“Service”) that are made available by “Legaleaze” through its website www.legaleaze.in and any allied services thereto. This Agreement represents the whole agreement and understanding between Legaleaze and the individual or entity (“subscriber”) subscribing to such se   rvices of Legaleaze.
       p
         | Legaleaze may, in its sole discretion, change or modify this Agreement at any time, with or without notice. Such changes or modification shall be made effective for all subscribers upon the publication of such Agreement on this web address - ______________. Please read this Agreement regularly to ensure that the use of this service remains in compliance with this Agreement.
       h3 Account, Registration and Subscriptions 

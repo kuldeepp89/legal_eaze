@@ -8,17 +8,26 @@ html(lang='en')
       .row(style='padding-left:20px; padding-right:20px; margin-top:20px')
         .col-md-4(style='padding-right:30px; padding-left:30px')
           .row(style='background-color:white; padding: 3px 7px')
+            if(paymentToken == 1)  
+              | Transaction Status: #{status}
+              br
+              | Total Amount Paid: '#{amountPaid}'
+
             form(action='https://secure.payu.in/_payment', method='post')
               input#csrf-token-bifr(type='hidden', name='_csrf', value='#{csrfToken}')
-              input(type='hidden', name='firstname', value='kuldeep')        
-              input(type='hidden', name='surl', value='http://legaleaze.in')
-              input(type='hidden', name='phone', value='8130857967')
+              input(type='hidden', name='firstname', value='#{name}')        
+              input(type='hidden', name='surl', value='http://legaleaze.in/payment')
+              input(type='hidden', name='furl', value='http://legaleaze.in/payment')
+              input(type='hidden', name='phone', value='#{mobile}')
               input(type='hidden', name='key', value='zzLz4z')
               input(type='hidden', name='hash', value='#{salt}')                          
-              input(type='hidden', name='txnid', value='a11')
-              input(type='hidden', name='productinfo', value='small plan')
-              input(type='hidden', name='amount', value='100.00')
-              input(type='hidden', name='email', value='kuldeepp89@gmail.com')
-              input(type='submit', value='submit')
-          
+              input(type='hidden', name='txnid', value='#{txnid}')
+              input(type='hidden', name='productinfo', value='#{plan}')
+              input(type='hidden', name='amount', value='#{amount}')
+              input(type='hidden', name='email', value='#{email}')
+              input#payment(type='submit',  style = 'border: 0px; height: 180px; width: 345px;background-repeat: no-repeat; cursor: pointer; background-image: url("/public/images/pyu.jpg")')
+                      
   
+
+    
+   
