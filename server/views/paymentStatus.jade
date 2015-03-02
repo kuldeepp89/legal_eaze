@@ -1,0 +1,15 @@
+html(lang='en')
+  include ./partials/head.part.jade
+  body(style = 'padding-top: 0; background-color: rgb(225,225,225);overflow-x: hidden')
+    .container-fluid
+      .row
+        .col-md-12.no-padding
+          include ./partials/bars/navbar.part.jade     
+      .row(style='padding-left:20px; padding-right:20px; margin-top:20px')
+        .col-md-4(style='padding-right:30px; padding-left:30px')
+          .row(style='background-color:white; padding: 3px 7px')
+            if(paymentToken == 1)  
+              | Transaction Status: #{status}
+              br
+              | Total Amount Paid: '#{amountPaid}'
+            

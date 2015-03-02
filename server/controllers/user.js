@@ -707,6 +707,7 @@ UserCtl.getPaymentPage = function(req, res) {
   var money = 1.0;
   var plan = "small name";
   var mobile = 8130857967;
+  console
 
   
   shasum = sha512("zzLz4z|"+payuId+ "|" +money+ "|" +plan+ "|" +userName+ "|" +userEmail+ "|||||||||||VXtL4f0y");
@@ -747,7 +748,7 @@ UserCtl.makePayment = function(req, res){
 UserCtl.payment = function(req, res) {
   
  console.log(req.body);
- res.render('paymentInfo.jade', {
+ res.render('paymentStatus.jade', {
 
   status: req.body.status,
   amountPaid: req.body.net_amount_debit,
