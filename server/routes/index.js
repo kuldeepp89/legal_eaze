@@ -71,7 +71,7 @@ module.exports = {
     app.post('/addComment', isAuthenticated, controllers.addMatter.postAddComment);
     app.post('/addDocument', isAuthenticated, controllers.addMatter.postAddDocument);
     app.post('/update', isAuthenticated, controllers.addMatter.update);
-    app.post('/payment', isAuthenticated, controllers.user.payment);
+    app.post('/payment/status', isAuthenticated, controllers.user.payment);
     
 
     // ========================================================================= 
