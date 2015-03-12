@@ -20,8 +20,7 @@ var UserCaseDetail = require('../models/userCaseDetail');
 var CaseDetail = require('../models/caseDetail');
 var PlanDetail = require('../models/planDetail');
 var request = require('request');
-var pdf = require('html-pdf');
-var htmlToPdf = require('html-to-pdf');
+
 
 
 
