@@ -20,6 +20,9 @@ var UserCaseDetail = require('../models/userCaseDetail');
 var CaseDetail = require('../models/caseDetail');
 var PlanDetail = require('../models/planDetail');
 var request = require('request');
+var pdf = require('html-pdf');
+var htmlToPdf = require('html-to-pdf');
+
 
 
 // =============================================================================
@@ -698,19 +701,22 @@ UserCtl.deleteCase = function(req, res) {
 var shasum;
 //Get Payment Page
 UserCtl.getPaymentPage = function(req, res) {
+
   console.log(req.param('noOfSchedules'));
   var temp = Math.random() * Math.pow(10, 10);
   var payuId = temp.toFixed(0);
   var userName = req.user.profile.name;
   var userEmail = req.user.local.email;
-  console.log(userName + " "+ userEmail);
-  var money = 1.0;
-  var plan = "small name";
-  var mobile = 8130857967;
-  console
-
   
-  shasum = sha512("zzLz4z|"+payuId+ "|" +money+ "|" +plan+ "|" +userName+ "|" +userEmail+ "|||||||||||VXtL4f0y");
+  var money = 1.0;
+  var plan = req.param('planName');
+  var mobile = req.user.profile.mobile;
+  var address = req.user.profile.address;
+  var udf1 = req.param('noOfSchedules');
+  var udf2 = req.param('space');
+  
+  console.log(userName + " "+ userEmail + " mobile" + mobile + "address" + address);
+  shasum = sha512("zzLz4z|"+payuId+ "|" +money+ "|" +plan+ "|" +userName+ "|" +userEmail+ "|"+ udf1 +"|"+  udf2 + "|||||||||VXtL4f0y");
   
   res.render('paymentInfo.jade', {
     salt: shasum.toString('hex'),
@@ -720,36 +726,61 @@ UserCtl.getPaymentPage = function(req, res) {
     plan: plan,
     amount: money,
     mobile: mobile,
-    paymentToken: 0
+    paymentToken: 0,
+    udf1: udf1,
+    udf2: udf2,
+    address: address
+
   });
 }
 
-UserCtl.makePayment = function(req, res){
-  request.post({url:'https://secure.payu.in/_payment',
-  form: {
-    firstname:'kuldeep',
-    surl: 'http://legaleaze.in',
-    furl: 'http://legaleaze.in',
-    email: 'kuldeepp89@gmail.com',
-    phone: '8130857967',
-    key: 'zzLz4z',
-    hash: shasum,
-    txnid: 'abcjj1',
-    productinfo: 'small plan',
-    amount: '1:00'
-  }}, 
-  function(err,httpResponse,body) {
-    if (err) {console.log('jjlk '+ err)};
-    
-
-  })  
-}
 
 UserCtl.payment = function(req, res) {
   
  console.log(req.body);
- res.render('paymentStatus.jade', {
+ var smtpTransport = nodemailer.createTransport('SMTP', {
+          service: 'Gmail',
+          auth: {
+            user: config.secrets.nodeMailer.gmail.email,
+            pass: config.secrets.nodeMailer.gmail.password
+          }
+        });
+        var mailOptions = {
+          to: req.user.local.email,
+          from: 'legalease.dummy@gmail.com',
+          subject: 'Invoice/Payment Receipt',
+          text:
+            'Dear User,\n\n'+
+            'We are pleased to inform you that you have been subscribed to the services of Legaleaze with following details: '+ '\n\n'+
+            'Subscription Type: ' + req.body.productinfo + '\n'+
+            'Maximum No of Schedules which can be maintained: ' + req.body.udf1+ '\n'+
+            'Maximum Space to upload necessary documents: ' + req.body.udf2+ '\n\n'+
+            'Details of your transaction are as follows:\n'+
+            'Subscription ID :' + req.body.mihpayid+ '\n'+
+            'Order Date: ' +req.body.addedon+ '\n'+
+            'Invoice Date: ' +req.body.addedon+ '\n\n'+
 
+            'Subscription Charges: ' + req.body.net_amount_debit+ '\n'+
+            'Tax: ' +   0.0+ ' \n'+
+            'Total Paid Amount: ' + req.body.net_amount_debit +'\n\n'+
+
+            'We wish to cope-up with your requirements.\n\n'+
+
+            'For query or complaints, contact us:\n'+
+            'Mobile Number: 8130857967\n'+
+            'E-mail ID: contact@legaleaze.in\n\n'+
+
+            'Thanks and regards\n'+
+            'Legaleaze\n'+
+            '801, Gokul Apartments\n'+
+            '16/16 Civil Lines\n'+
+            'Kanpur – 208001\n'
+          };
+          smtpTransport.sendMail(mailOptions, function(err) {
+            if (err) {console.log(err)};
+          });
+ res.render('paymentStatus.jade', {
+  payment: req.body,
   status: req.body.status,
   amountPaid: req.body.net_amount_debit,
   paymentToken: 1

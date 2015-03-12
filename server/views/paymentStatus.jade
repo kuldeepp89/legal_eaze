@@ -6,10 +6,18 @@ html(lang='en')
         .col-md-12.no-padding
           include ./partials/bars/navbar.part.jade     
       .row(style='padding-left:20px; padding-right:20px; margin-top:20px')
-        .col-md-4(style='padding-right:30px; padding-left:30px')
-          .row(style='background-color:white; padding: 3px 7px')
-            if(paymentToken == 1)  
-              | Transaction Status: #{status}
-              br
-              | Total Amount Paid: '#{amountPaid}'
-            
+        .col-md-12(style='padding-right:30px; padding-left:30px')
+          .row
+            .col-md-6.col-md-offset-3(style = 'text-align: center')
+              .col-md-12(style = ' text-align: center; margin-top: 5em')
+               
+              if(status == 'failure')
+                .row
+                  | Your last transaction was not successfull.
+                br 
+                a(href= '/subscription')
+                  .btn-warning.btn.btn-large
+                    | Try Again
+              if(status == 'success')
+                .row
+                  | Thanks for Subscribing for services of Leagleaze. We wish you a pleasant service experience. We will shortly mail you the Invoice. We are taking you to the home page. 

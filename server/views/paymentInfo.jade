@@ -6,18 +6,76 @@ html(lang='en')
         .col-md-12.no-padding
           include ./partials/bars/navbar.part.jade     
       .row(style='padding-left:20px; padding-right:20px; margin-top:20px')
-        .col-md-4(style='padding-right:30px; padding-left:30px')
-          .row(style='background-color:white; padding: 3px 7px')
-            if(paymentToken == 1)  
-              | Transaction Status: #{status}
-              br
-              | Total Amount Paid: #{amountPaid}
+        .col-md-6
+          .col-md-12(style='text-align: center; color: white; background-color: rgb(107, 144, 240); border: 1px solid white; height: 2.5em')
+            b
+              | Billing Details
+          .col-md-12(style='text-align: center; background-color: rgb(152, 182, 236); height: 2.5em;border-bottom: 1px solid white;')
+            .col-md-3(style= 'border-right: 1px solid white;height: 2.5em')
+              | Name
+            .col-md-9
+              input#name.form-control(type='text', name='name', value = '#{name}', style = 'border: transparent; background: transparent;')
+          .col-md-12(style='text-align: center;  background-color: rgb(152, 182, 236); height: 2.5em; border-bottom: 1px solid white')
+            .col-md-3(style= 'border-right: 1px solid white;height: 2.5em')
+              | Email
+            .col-md-9
+              input#email.form-control(type='text', name='email', value = '#{email}', style = 'border: transparent; background: transparent;')
+          .col-md-12(style='text-align: center; background-color: rgb(152, 182, 236); height: 2.5em;border-bottom: 1px solid white;')
+            .col-md-3(style= 'border-right: 1px solid white;height: 2.5em')
+              | Mobile
+            .col-md-9
+              input#mobile.form-control(type='text', name='mobile', value = '#{mobile}', style = 'border: transparent; background: transparent;')
+          .col-md-12(style='text-align: center;  background-color: rgb(152, 182, 236); height: 2.5em; border-bottom: 1px solid white;')
+            .col-md-3(style= 'border-right: 1px solid white;height: 2.5em')
+              | Address
+            .col-md-9
+              input#address.form-control(type='text', name='address', value = '#{address}',style = 'border: transparent; background: transparent;')
           
+          .col-md-12(style='text-align: center;  background-color: rgb(152, 182, 236); height: 2.5em;border-bottom: 1px solid white;')
+            .col-md-3(style= 'border-right: 1px solid white;height: 2.5em')
+              | State
+            .col-md-9(style = 'color: white')
+              select.form-control( size='1', name='state_id', style = 'border: transparent; background: transparent;')
+                option(value='0') --Select State--
+                option(value='7') Andaman Nicobar
+                option(value='16') Andhra Pradesh
+                option(value='6') Chandigarh
+                option(value='23') Chhattisgarh
+                option(value='8') Delhi
+                option(value='33') Goa
+                option(value='20') Gujarat
+                option(value='9') Haryana
+                option(value='10') Himachal Pradesh
+                option(value='11') Jammu and Kashmir
+                option(value='2') Jharkhand
+                option(value='17') Kerala
+                option(value='22') Madhya Pradesh
+                option(value='21') Maharashtra
+                option(value='30') Meghalaya
+                option(value='35') Pondicherry
+                option(value='12') Punjab
+                option(value='13') Rajasthan
+                option(value='19') Tamil Nadu
+                option(value='14') Uttar Pradesh
+                option(value='15') Uttaranchal
+                option(value='4') West Bengal
+
+          .col-md-12(style='text-align: center;  background-color: rgb(152, 182, 236); height: 2.5em;border-bottom: 1px solid white;')
+            .col-md-3(style= 'border-right: 1px solid white;height: 2.5em')
+              | PIN Code
+            .col-md-9
+              input#pin.form-control(type='text', name='pin', value = '#{pin}', style = 'border: transparent; background: transparent;')
+        .row(style=' padding: 3px 7px')
+          if(paymentToken == 1)  
+            | Transaction Status: #{status}
+            br
+            | Total Amount Paid: #{amountPaid}
+                  
           form(action='https://secure.payu.in/_payment', method='post')
             input#csrf-token-bifr(type='hidden', name='_csrf', value='#{csrfToken}')
             input(type='hidden', name='firstname', value='#{name}')
-            input(type='hidden', name='surl', value='http://legaleaze.in/payment/status')
-            input(type='hidden', name='furl', value='http://legaleaze.in/payment/status')
+            input(type='hidden', name='surl', value='http://localhost:9010/payment/status')
+            input(type='hidden', name='furl', value='http://localhost:9010/payment/status')
             input(type='hidden', name='phone', value='#{mobile}')
             input(type='hidden', name='key', value='zzLz4z')
             input(type='hidden', name='hash', value='#{salt}')            
@@ -25,8 +83,12 @@ html(lang='en')
             input(type='hidden', name='productinfo', value='#{plan}')
             input(type='hidden', name='amount', value='#{amount}')
             input(type='hidden', name='email', value='#{email}')
-            input#payment(type='submit', style = 'border: 0px; height: 180px; width: 345px;background-repeat: no-repeat; cursor: pointer; background-image: url("/public/images/pyu.jpg")')
-  
+            input(type='hidden', name='udf1', value='#{udf1}')
+            input(type='hidden', name='udf2', value='#{udf2}')
+            input#payment.btn-warning.btn.btn-large(type='submit', style = 'border: 0px; background-repeat: no-repeat; cursor: pointer;' value = value = 'Click Here to Continue')
+          
+          
+
 
     
    
