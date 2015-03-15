@@ -779,9 +779,12 @@ UserCtl.payment = function(req, res) {
             '16/16 Civil Lines\n'+
             'Kanpur – 208001\n'
           };
-          smtpTransport.sendMail(mailOptions, function(err) {
-            if (err) {console.log(err)};
-          });
+          if(req.body.status != 'failure') {
+            smtpTransport.sendMail(mailOptions, function(err) {
+              if (err) {console.log(err)};
+            });  
+          }
+          
  res.render('paymentStatus.jade', {
   payment: req.body,
   status: req.body.status,
