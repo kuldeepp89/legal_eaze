@@ -16,7 +16,9 @@ var UserSchema = new mongoose.Schema({
     age: { type: Number, default: 0 },
     gender: { type: String, default: '' },
     address: { type: String, default: '' },
-    mobile: {type: Number, default: 0}
+    mobile: {type: Number, default: ''},
+    state: {type: String, default: ''},
+    pin: {type: String, default: ''}
   },
 
   keys: {

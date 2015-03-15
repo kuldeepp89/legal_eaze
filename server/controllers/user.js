@@ -656,7 +656,6 @@ UserCtl.subscription = function(req, res) {
 
   PlanDetail.find({}, {}, function(err, allPlans){
     if(err) console.log(err);
-    console.log(allPlans);
     if(allPlans.length == 0) {
       savePlan.save(err, function(){
         if(err) console.log(err);
@@ -709,12 +708,15 @@ UserCtl.getPaymentPage = function(req, res) {
   
   var money = 1.0;
   var plan = req.param('planName');
-  var mobile = req.user.profile.mobile;
+  var mobile = 8130857967;
   var address = req.user.profile.address;
   var udf1 = req.param('noOfSchedules');
   var udf2 = req.param('space');
+  var pin = req.user.profile.pin;
+  var state = req.user.profile.state;
   
-  console.log(userName + " "+ userEmail + " mobile" + mobile + "address" + address);
+  console.log(udf1 + udf2);
+  //console.log(userName + " "+ userEmail + " mobile" + mobile + "address" + address + " " + pin);
   shasum = sha512("zzLz4z|"+payuId+ "|" +money+ "|" +plan+ "|" +userName+ "|" +userEmail+ "|"+ udf1 +"|"+  udf2 + "|||||||||VXtL4f0y");
   
   res.render('paymentInfo.jade', {
@@ -728,7 +730,9 @@ UserCtl.getPaymentPage = function(req, res) {
     paymentToken: 0,
     udf1: udf1,
     udf2: udf2,
-    address: address
+    address: address,
+    pin: pin,
+    state: state
 
   });
 }
@@ -753,11 +757,11 @@ UserCtl.payment = function(req, res) {
             'We are pleased to inform you that you have been subscribed to the services of Legaleaze with following details: '+ '\n\n'+
             'Subscription Type: ' + req.body.productinfo + '\n'+
             'Maximum No of Schedules which can be maintained: ' + req.body.udf1+ '\n'+
-            'Maximum Space to upload necessary documents: ' + req.body.udf2+ '\n\n'+
+            'Maximum Space to upload necessary documents: ' + req.body.udf2/1024+ " GB"+ '\n\n'+
             'Details of your transaction are as follows:\n'+
             'Subscription ID :' + req.body.mihpayid+ '\n'+
-            'Order Date: ' +req.body.addedon+ '\n'+
-            'Invoice Date: ' +req.body.addedon+ '\n\n'+
+            'Order Date: ' +new Date()+ '\n'+
+            'Invoice Date: ' +new Date()+ '\n'+
 
             'Subscription Charges: ' + req.body.net_amount_debit+ '\n'+
             'Tax: ' +   0.0+ ' \n'+
@@ -788,3 +792,21 @@ UserCtl.payment = function(req, res) {
 }
 
 
+UserCtl.postProfileEdit = function(req, res, next) {
+
+  User.findById(req.user.id, function(err, user) {
+    if (err) return next(err);
+    console.log(req.body.state + "kdfkl") ;
+    user.profile.name = req.body.name || '';
+    user.profile.state = req.body.state || '';
+    user.profile.address = req.body.address || '';
+    user.profile.pin = req.body.pin || '';
+    user.local.email = req.body.email || '';
+    user.save(function(err) {
+      if (err) return next(err);
+      req.flash('success', { msg: 'Profile information updated.' });
+      res.redirect('/payment/detail');
+    });
+  });
+
+};

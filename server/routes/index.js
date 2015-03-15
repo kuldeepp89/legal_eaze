@@ -49,6 +49,7 @@ module.exports = {
     // User Routes -------------------------------------------------------------
     // -------------------------------------------------------------------------
     app.get('/home', isAuthenticated, controllers.user.getHome);
+    app.post('/updateUser', isAuthenticated, controllers.user.postProfileEdit);
     app.get('/aboutus', controllers.user.aboutUs);
     app.get('/subscription', controllers.user.subscription);
     app.get('/contactus', controllers.user.contactUs);
