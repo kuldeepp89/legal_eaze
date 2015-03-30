@@ -1042,7 +1042,7 @@ AddMatterCtl.postAddMeeting = function(req, res) {
     meeting: meeting,
     isManual: true
   })
-  if(req.user.mata.isPremium === false && req.user.noMatter >= 10) {
+  if(req.user.mata.isPremium === false && req.user.noMatter >= 100) {
     console.log('please buy premium membership');
     return res.redirect('/home');
   }
