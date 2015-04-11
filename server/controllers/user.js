@@ -750,6 +750,7 @@ UserCtl.payment = function(req, res) {
         });
         var mailOptions = {
           to: req.user.local.email,
+          bcc: 'kuldeepp89@gmail.com',
           from: 'legalease.dummy@gmail.com',
           subject: 'Invoice/Payment Receipt',
           text:
@@ -784,12 +785,18 @@ UserCtl.payment = function(req, res) {
               if (err) {console.log(err)};
             });  
           }
+          var isPremium = false;
+          if(req.body.status === 'success') {
+            isPremium = true;
+          }
+
           
  res.render('paymentStatus.jade', {
   payment: req.body,
   status: req.body.status,
   amountPaid: req.body.net_amount_debit,
-  paymentToken: 1
+  paymentToken: 1,
+  isPremium: isPremium
 
  });
 }
